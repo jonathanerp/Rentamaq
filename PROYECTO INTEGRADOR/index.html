@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Equipos de construccion</title>
+</head>
+<body>
+    <header>
+        <div class="logo-section">
+            <a href="index.html">
+                <img src="imagenes/logo.png" alt="Logo de la empresa">
+            </a>
+            <h1>Damos Forma a tus Ideas, Construimos tus Sueños</h1>
+        </div>
+        <div class="btn-section">
+            <button>Crear cuenta</button>
+            <button>Iniciar sesión</button>
+        </div>       
+    </header>
+        <nav class="Nav-bar">
+            <ul>
+                <!-- Puedes agregar más elementos de navegación aquí -->
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Contacto</a></li>
+                <!-- Enlace a la página "Agregar producto" -->
+                
+                <li><a href="detalle_producto.html"> Detalle producto<!-- Debes cambiar el id por el id real del producto -->
+                </a></li>
+            </ul>
+        </nav>
+
+
+    <!-- Barra de navegación -->
+
+
+<!-- <div>
+    <a href="agregar_producto.html"><button id="btnAgregarProducto">Agregar Producto</button></a>
+    
+</div> -->
+
+    
+
+<!-- Listado de productos -->
+<section id="list-product">
+    <div class="products">
+        <div id="productos-aleatorios">
+            <h2>Productos Aleatorios</h2>
+            <div id="productos-aleatorios-container">
+                <!-- Aquí se mostrarán los productos aleatorios -->
+            </div>
+        </div>
+    </div>
+        
+</section>
+
+
+
+    <section id="buscador">
+        <div class="buscador">
+            <h2>Buscador</h2>
+            <form class="searchForm">
+                <input type="text" id="searchInput" placeholder="Buscar productos...">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+        
+    </section>
+
+    <section id="categorias">
+        <h2>Categorías</h2>
+        <div class="cards">
+            <div class="card">  
+                <a href="maqpesada.html">
+                    <h3>MAQUINARIA PESADA</h3>
+                    <p>Encuentra maquinaria pesada para tus proyectos de construcción.</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="herramientas.html">
+                    <h3>HERRAMIENTAS PEQUEÑAS</h3>
+                    <p>Explora una variedad de herramientas pequeñas para trabajos específicos.</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="indumentaria.html">
+                    <h3>INDUMENTARIA</h3>
+                    <p>Descubre nuestra línea de indumentaria de seguridad para un trabajo protegido.</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="construccion.html">
+                    <h3>EQUIPOS PARA CONSTRUCCION</h3>
+                    <p>Descubre nuestra línea de construccion para un trabajo eficiente y resultados excepcionales.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="recomendaciones">
+        <h2>Recomendaciones</h2>
+        <div class="cards">
+            <div class="card">
+                <a href="detalles_producto1.html"></a>
+                    <img src="imagenes/imagen1.jfif" alt="Producto 1">
+                    <div class="card-content">
+                        <h3>Excavadora</h3>
+                        <p>La Miniexcavadora Cat 300.9D proporciona potencia y rendimiento en un tamaño compacto para que pueda trabajar en las aplicaciones más estrechas. Su capacidad de pasar por entradas reducidas la convierte en una máquina excelente para trabajos de demolición en interiores.</p>
+                        <button class="ver-detalles-btn">Ver Detalles</button>
+                    </div>
+                </a>
+            </div>
+        
+            <div class="card">
+                <a href="detalles_producto2.html"></a>
+                    <img src="imagenes/imagen2.jpg" alt="Producto 2">
+                    <div class="card-content">
+                        <h3>Juego de herramientas de 50 piezas</h3>
+                        <p>Kit de herramientas ideal para el hogar está aquí para ayudarte a sobrevivir a todas esas reparaciones y sucesos inesperados; ya sea en la oficina, trabajos de reparación del hogar, en el patio, en la carretera o otro tipo de emergencias.</p>
+                        <button class="ver-detalles-btn">Ver Detalles</button>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="detalles_producto2.html"></a>
+                    <img src="imagenes/imagen3.jfif" alt="Producto 3">
+                    <div class="card-content">
+                        <h3>Generador Eléctrico Glp 2500w 120v Toolcraft Tc3136</h3>
+                        <p>Planta Eléctrica a Gasolina 2500W Toolcraft TC3136</p>
+                        <button class="ver-detalles-btn">Ver Detalles</button>
+                    </div>
+                </a>
+            </div>
+        </div>    
+        <!-- Agrega más productos según tus necesidades -->
+    </section>
+
+    <footer>
+        <footer>
+            <div class="footer-content">
+                <img src="./imagenes/logo.png" alt="Isologotipo de la empresa">
+                <p>&copy; Año Actual Nombre de la Empresa</p>
+            </div>
+        </footer>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

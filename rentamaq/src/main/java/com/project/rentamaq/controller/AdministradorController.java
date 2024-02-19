@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -23,6 +24,7 @@ public class AdministradorController {
     @GetMapping()
     public String listarProductos(Model model){
         List<Producto> productos = productoRepository.findAll();
+        Collections.shuffle(productos);
         model.addAttribute("productos", productos);
         return "administrador";
     }
