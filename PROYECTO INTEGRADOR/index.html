@@ -1,117 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./scripts/script.js"></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/main.css" />
     <title>Equipos de construccion</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="logo-section">
-            <a href="index.html">
-                <img src="imagenes/logo.png" alt="Logo de la empresa">
-            </a>
-            <h1>Damos Forma a tus Ideas, Construimos tus Sueños</h1>
-        </div>
-        <div class="btn-section">
-            <button>Crear cuenta</button>
-            <button>Iniciar sesión</button>
-        </div>       
+      <div class="logo-section">
+        <a href="index.html">
+          <img src="imagenes/logo.png" alt="Logo de la empresa" />
+        </a>
+        <h1>Damos Forma a tus Ideas, Construimos tus Sueños</h1>
+      </div>
+      <div class="btn-section">
+        <button>Crear cuenta</button>
+        <button>Iniciar sesión</button>
+      </div>
     </header>
-        <nav class="Nav-bar">
-            <ul>
-                <!-- Puedes agregar más elementos de navegación aquí -->
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
-                <!-- Enlace a la página "Agregar producto" -->
-                
-                <li><a href="detalle_producto.html"> Detalle producto<!-- Debes cambiar el id por el id real del producto -->
-                </a></li>
-            </ul>
-        </nav>
+    <nav class="Nav-bar">
+      <ul>
+        <!-- Puedes agregar más elementos de navegación aquí -->
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Contacto</a></li>
+        <!-- Enlace a la página "Agregar producto" -->
 
+        <li>
+          <a href="detalle_producto.html">
+            Detalle producto<!-- Debes cambiar el id por el id real del producto -->
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <!-- Barra de navegación -->
 
-
-<!-- <div>
+    <!-- <div>
     <a href="agregar_producto.html"><button id="btnAgregarProducto">Agregar Producto</button></a>
     
 </div> -->
 
-    
-
-<!-- Listado de productos -->
-<section id="list-product">
-    <div class="products">
+    <!-- Listado de productos -->
+    <section id="list-product">
+      <div class="products">
         <div id="productos-aleatorios">
-            <h2>Productos Aleatorios</h2>
-            <div id="productos-aleatorios-container">
-                <!-- Aquí se mostrarán los productos aleatorios -->
-            </div>
+          <h2>Productos Aleatorios</h2>
+          <div id="productos-aleatorios-container">
+            <!-- Aquí se mostrarán los productos aleatorios -->
+          </div>
         </div>
-    </div>
-        
-</section>
-
-
+      </div>
+    </section>
 
     <section id="buscador">
-        <div class="buscador">
-            <h2>Buscador</h2>
-            <form class="searchForm">
-                <input type="text" id="searchInput" placeholder="Buscar productos...">
-                <button type="submit">Buscar</button>
-            </form>
-        </div>
-        
+      <div class="buscador">
+        <h2>Buscador</h2>
+        <form class="searchForm">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar productos..."
+          />
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
     </section>
 
     <section id="categorias">
-        <h2>Categorías</h2>
-        <div class="cards">
-            <div class="card">  
-                <a href="maqpesada.html">
-                    <h3>MAQUINARIA PESADA</h3>
-                    <p>Encuentra maquinaria pesada para tus proyectos de construcción.</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="herramientas.html">
-                    <h3>HERRAMIENTAS PEQUEÑAS</h3>
-                    <p>Explora una variedad de herramientas pequeñas para trabajos específicos.</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="indumentaria.html">
-                    <h3>INDUMENTARIA</h3>
-                    <p>Descubre nuestra línea de indumentaria de seguridad para un trabajo protegido.</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="construccion.html">
-                    <h3>EQUIPOS PARA CONSTRUCCION</h3>
-                    <p>Descubre nuestra línea de construccion para un trabajo eficiente y resultados excepcionales.</p>
-                </a>
-            </div>
+      <h2>Categorías</h2>
+      <div class="cards">
+        <div class="card">
+          <a href="maqpesada.html">
+            <h3>MAQUINARIA PESADA</h3>
+            <p>
+              Encuentra maquinaria pesada para tus proyectos de construcción.
+            </p>
+          </a>
         </div>
+        <div class="card">
+          <a href="herramientas.html">
+            <h3>HERRAMIENTAS PEQUEÑAS</h3>
+            <p>
+              Explora una variedad de herramientas pequeñas para trabajos
+              específicos.
+            </p>
+          </a>
+        </div>
+        <div class="card">
+          <a href="indumentaria.html">
+            <h3>INDUMENTARIA</h3>
+            <p>
+              Descubre nuestra línea de indumentaria de seguridad para un
+              trabajo protegido.
+            </p>
+          </a>
+        </div>
+        <div class="card">
+          <a href="construccion.html">
+            <h3>EQUIPOS PARA CONSTRUCCION</h3>
+            <p>
+              Descubre nuestra línea de construccion para un trabajo eficiente y
+              resultados excepcionales.
+            </p>
+          </a>
+        </div>
+      </div>
     </section>
 
     <section id="recomendaciones">
-        <h2>Recomendaciones</h2>
-        <div class="cards">
-            <div class="card">
-                <a href="detalles_producto1.html"></a>
+      <h2>Recomendaciones</h2>
+      <div class="cards grid-container">
+        <!-- <div class="card">
                     <img src="imagenes/imagen1.jfif" alt="Producto 1">
                     <div class="card-content">
                         <h3>Excavadora</h3>
                         <p>La Miniexcavadora Cat 300.9D proporciona potencia y rendimiento en un tamaño compacto para que pueda trabajar en las aplicaciones más estrechas. Su capacidad de pasar por entradas reducidas la convierte en una máquina excelente para trabajos de demolición en interiores.</p>
+                    <a href="detalles_producto1.html"></a>
+
                         <button class="ver-detalles-btn">Ver Detalles</button>
                     </div>
                 </a>
@@ -136,20 +151,18 @@
                         <button class="ver-detalles-btn">Ver Detalles</button>
                     </div>
                 </a>
-            </div>
-        </div>    
-        <!-- Agrega más productos según tus necesidades -->
+            </div> -->
+      </div>
+      <!-- Agrega más productos según tus necesidades -->
     </section>
 
     <footer>
-        <footer>
-            <div class="footer-content">
-                <img src="./imagenes/logo.png" alt="Isologotipo de la empresa">
-                <p>&copy; Año Actual Nombre de la Empresa</p>
-            </div>
-        </footer>
+      <footer>
+        <div class="footer-content">
+          <img src="./imagenes/logo.png" alt="Isologotipo de la empresa" />
+          <p>&copy; Año Actual Nombre de la Empresa</p>
+        </div>
+      </footer>
     </footer>
-
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
