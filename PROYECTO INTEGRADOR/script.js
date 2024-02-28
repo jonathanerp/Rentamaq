@@ -60,46 +60,61 @@ const productosConstruccionPesada = [
     description: 'Descripción del producto 10...',
   },
 ];
+
 window.addEventListener('load', function () {
   function renderizarRecomendaciones() {
     const cardsRecomendaciones = document.querySelector('#recomendaciones');
-    console.log(cardsRecomendaciones);
+
     // Limpiar el contenido existente en caso de que se estén mostrando productos antiguos
     cardsRecomendaciones.innerHTML = '';
+
     productosConstruccionPesada.forEach((prod) => {
-      cardsRecomendaciones.innerHTML += `
-              <div class="recoment-card">
-                  <img class="img" src=${prod.image} alt=${prod.name} />
-                  <h3>${prod.name}</h3>
-                  <div class="btn-ver">
-                    <h2>ver mas</h2>
-                    <a href="./detalle_producto.html?id=${prod.id}">
-                        <i class="fa-solid fa-circle-plus"></i>
-                    </a>
-                  </div>
-              </div>
-                    `;
+      const card = document.createElement('div');
+      card.classList.add('recoment-card');
+
+      const image = document.createElement('img');
+      image.src = prod.image;
+      image.alt = prod.name;
+      image.classList.add('img');
+      card.appendChild(image);
+
+      const title = document.createElement('h3');
+      title.textContent = prod.name;
+      card.appendChild(title);
+
+      const btnContainer = document.createElement('div');
+      btnContainer.classList.add('btn-ver');
+      const btnText = document.createElement('span');
+      btnText.textContent = 'Ver más';
+      const btnIcon = document.createElement('i');
+      // btnIcon.classList.add('fa-solid', 'fa-circle-plus');
+      btnContainer.appendChild(btnText);
+      btnContainer.appendChild(btnIcon);
+
+      const link = document.createElement('a');
+      link.href = `./detalle_producto.html?id=${prod.id}`;
+      link.appendChild(btnContainer);
+      card.appendChild(link);
+
+      cardsRecomendaciones.appendChild(card);
     });
   }
+
   renderizarRecomendaciones();
 
-  document
-    .querySelector('.logo-section a')
-    .addEventListener('click', function () {
-      window.location.href = 'index.html';
-    });
+  document.querySelector('.logo-section a').addEventListener('click', function () {
+    window.location.href = 'index.html';
+  });
 
   // Agrega un evento al formulario de búsqueda
-  document
-    .getElementById('searchForm')
-    .addEventListener('submit', function (event) {
-      event.preventDefault(); // Evita que el formulario se envíe por defecto (puede personalizarse según tus necesidades)
+  document.getElementById('searchForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe por defecto (puede personalizarse según tus necesidades)
 
-      // Obtén el valor del campo de búsqueda
-      const searchQuery = document.getElementById('searchInput').value;
+    // Obtén el valor del campo de búsqueda
+    const searchQuery = document.getElementById('searchInput').value;
 
-      // Puedes redirigir a una página de resultados de búsqueda o realizar otras acciones según el valor de searchQuery
-      // Por ejemplo:
-      //window.location.href = 'resultados.html?q=' + encodeURIComponent(searchQuery);
-    });
+    // Puedes redirigir a una página de resultados de búsqueda o realizar otras acciones según el valor de searchQuery
+    // Por ejemplo:
+    //window.location.href = 'resultados.html?q=' + encodeURIComponent(searchQuery);
+  });
 });
