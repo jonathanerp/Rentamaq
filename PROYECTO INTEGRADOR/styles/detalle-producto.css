@@ -1,6 +1,8 @@
+/* Estilos generales */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -9,66 +11,129 @@ body {
 }
 
 body {
+  font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
+  background-color: #f8f8f8;
+  color: #333;
 }
 
 main {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f0f0f0;
-}
-.back-arrow {
-  width: 80%;
-  margin-top: 50px;
-  display: flex;
-  align-items: flex-start;
-}
-.back-arrow a {
-  font-size: 50px;
-  color: black;
-}
-
-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  gap: 5em;
-  height: 100%;
-}
-
-.div-imagen {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-}
-.div-imagen img {
-  width: 60%;
-  height: 60%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.div-texto {
-  font-family: 'Inclusive Sans', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  width: 50%;
-  height: 200px;
-  border-radius: 15px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: #ffd100;
-}
-
-.container {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineación al inicio para el contenido principal */
+  padding: 20px;
+  margin-top: 150px;
 }
+
+.product-display {
+  display: flex;
+  flex-wrap: wrap; /* Permite envolver elementos */
+  max-width: 1200px;
+  gap: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  flex-basis: 100%; /* Ocupa el ancho completo */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos en el eje horizontal */
+  gap: 20px;
+}
+
+.product-image {
+  width: 100%; /* La imagen ocupa el ancho completo del .product-info */
+}
+
+.product-image img {
+  border-radius: 10px;
+  max-width: 100%;
+  width: 400px; /* Evita que la imagen se desborde de su contenedor */
+  height: auto;
+}
+
+.product-description {
+  text-align: left;
+  width: 100%; /* Asegura que la descripción ocupe el ancho completo debajo de la imagen */
+}
+
+.product-carousel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
+  grid-template-rows: auto auto; /* Dos filas */
+  gap: 10px;
+  width: 100%; /* El carrusel ocupa el ancho completo */
+  max-width: 400px; /* Ancho máximo del carrusel para que no sea demasiado grande */
+}
+
+.product-carousel img {
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Suaviza la transición del hover */
+}
+
+.product-carousel img:hover {
+  transform: scale(1.03); /* Escala ligeramente las imágenes al pasar el mouse */
+}
+
+/* Estilos responsive para iPad */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .product-display {
+    flex-direction: column; /* Apila los elementos verticalmente en tabletas */
+    align-items: center;
+  }
+
+  .product-info {
+    width: 100%; /* Ocupa el ancho completo en modo vertical */
+    order: 2; /* La descripción va debajo de la imagen principal */
+  }
+
+  .product-image {
+    width: 80%; /* Tamaño ligeramente más pequeño para la imagen principal */
+    margin-bottom: 20px; /* Espacio entre la imagen y la descripción */
+  }
+
+  .product-description {
+    order: 3; /* Asegura que la descripción se muestre después de la imagen */
+  }
+
+  .product-carousel {
+    width: 100%; /* El carrusel ocupa el ancho completo */
+    grid-template-columns: repeat(2, 1fr); /* Mantiene las dos columnas en iPad */
+    order: 1; /* El carrusel va en la parte superior */
+    max-width: 100%; /* Permite que el carrusel se expanda al ancho completo */
+    gap: 20px; /* Más espacio entre imágenes */
+  }
+}
+
+/* Estilos responsive para iPhone */
+@media screen and (max-width: 767px) {
+  .product-display {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-info {
+    width: 100%;
+  }
+
+  .product-image {
+    width: 100%; /* La imagen ocupa el ancho completo en móviles */
+  }
+
+  .product-description {
+    text-align: center; /* Centrado para una mejor lectura en dispositivos móviles */
+  }
+
+  .product-carousel {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas para el carrusel en móviles */
+    gap: 15px; /* Espacio entre imágenes ajustado para pantallas más pequeñas */
+  }
+}
+

@@ -1,7 +1,7 @@
 const productosConstruccionPesada = [
   {
     id: 1,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'EXCAVADORA KOMATSU',
     image: 'imagenes/recomendado1.jpg',
     description:
@@ -9,7 +9,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 2,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'BULLDOZER CATERPILLAR',
     image: 'imagenes/recomendado2.jpg',
     description:
@@ -17,7 +17,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 3,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'RETROEXCAVADORA CATERPILLAR',
     image: 'imagenes/recomendado3.jpg',
     description:
@@ -25,7 +25,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 4,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'APLANADORA CATERPILLAR',
     image: 'imagenes/recomendado4.jpg',
     description:
@@ -33,7 +33,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 5,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'MINICARGADOR BOBCAT',
     image: 'imagenes/recomendado5.jpg',
     description:
@@ -41,7 +41,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 6,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'MONTACARGA MITSUBISHI',
     image: 'imagenes/recomendado6.jpg',
     description:
@@ -49,7 +49,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 7,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'ANDAMIOS TUBULARES',
     image: 'imagenes/recomendado7.jpg',
     description:
@@ -57,7 +57,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 8,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'MOTONIVELADORA CATERPILLAR',
     image: 'imagenes/recomendado8.jpg',
     description:
@@ -65,7 +65,7 @@ const productosConstruccionPesada = [
   },
   {
     id: 9,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'VOLQUETA INTERNATIONAL',
     image: 'imagenes/recomendado9.jpg',
     description:
@@ -73,45 +73,44 @@ const productosConstruccionPesada = [
   },
   {
     id: 10,
-    carrousel: [],
+    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
     name: 'EXCAVADORA KOMATSU',
     image: 'imagenes/recomendado10.jpg',
     description:
       'La Excavadora Komatsu es una máquina poderosa y versátil diseñada para trabajos de construcción de cualquier tamaño. Equipada con un motor robusto y componentes de alta calidad, esta excavadora puede manejar una variedad de tareas, desde la excavación de zanjas hasta la demolición de edificios. Su diseño ergonómico y controles intuitivos hacen que sea fácil de operar y cómoda de usar durante largas jornadas de trabajo.',
   },
 ];
-window.addEventListener('load', function () {
-  // Función para cargar los datos del producto en la página
-  function cargarDetalleProducto() {
-    const divDetalleProducto = document.querySelector('#detalle-producto');
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    console.log(divDetalleProducto);
-    // Obtener el valor de un parámetro específico
-    const prodId = urlSearchParams.get('id');
 
-    divDetalleProducto.innerHTML = '';
-    productosConstruccionPesada.forEach((prod) => {
-      console.log(prod.id);
-      console.log(prodId);
-      if (prod.id.toString() === prodId) {
-        divDetalleProducto.innerHTML += `
-        <div class="div-imagen">
-            <img src=${prod.image} alt=${prod.name} />
-         </div>
-        <div class="div-texto">
-            <h1>${prod.name}</h1>
-            <div>
-                <h3>Descripción General</h3>
-                <p>
-                ${prod.description}
-                </p>
-            </div>
-        </div>
-            `;
-      }
-    });
+function crearCarruselImagenes(carrousel) {
+  return carrousel.map(image => `
+    <div class="carousel-item">
+      <img src="${image}" alt="Imagen del producto" />
+    </div>
+  `).join('');
+}
+
+function cargarDetalleProducto() {
+  const divDetalleProducto = document.getElementById('detalle-producto');
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const prodId = urlSearchParams.get('id');
+
+  const producto = productosConstruccionPesada.find(prod => prod.id.toString() === prodId);
+
+  if (producto) {
+    divDetalleProducto.innerHTML = `
+      <div class="product-image">
+        <img src="${producto.image}" alt="${producto.name}" />
+      </div>
+      <div class="product-carousel">
+        ${crearCarruselImagenes(producto.carrousel)}
+      </div>
+      <div class="product-description">
+        <h1>${producto.name}</h1>
+        <h3>Descripción General</h3>
+        <p>${producto.description}</p>
+      </div>
+    `;
   }
+}
 
-  // Llamar a la función para cargar los datos del producto al cargar la página
-  cargarDetalleProducto();
-});
+window.addEventListener('DOMContentLoaded', cargarDetalleProducto);
