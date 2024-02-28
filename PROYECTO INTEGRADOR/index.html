@@ -1,195 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <title>Equipos de construccion</title>
-    <script src="https://kit.fontawesome.com/ae1d842f3c.js" crossorigin="anonymous"></script>
-</head>
+    <script
+      src="https://kit.fontawesome.com/ae1d842f3c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-
-<body>
+  <body>
     <!--------- HEADER------------>
     <header>
-        <div class="logo-section">
-            <a href="index.html"><img src="imagenes/Logooscuro.png" alt="Logo de la empresa"></a>
-            <p>El mejor aliado de tus proyectos</p>
-        </div>
-        <div class="btn-section">
-            <button>Crear cuenta</button>
-            <button>Iniciar sesión</button>
-        </div>       
+      <div class="logo-section">
+        <a href="index.html"
+          ><img src="imagenes/Logooscuro.png" alt="Logo de la empresa"
+        /></a>
+        <p>El mejor aliado de tus proyectos</p>
+      </div>
+      <div class="btn-section">
+        <button>Crear cuenta</button>
+        <button>Iniciar sesión</button>
+      </div>
     </header>
-    
+
     <!-- Listado de productos -->
     <main>
-        <!---------------------- BUSCADOR ---------------------->
-            <section class="content-buscador">
-                <div class="buscador">
-                    <h2>¿Que buscas para tus proyectos?</h2>
-                    <form class="searchForm">
-                        <input class="searchInput" type="text" id="searchInput" placeholder="Ingresa palabras claves de tu busqueda...">
-                        <button class="icon" type="submit"><img src="./imagenes/search.svg" alt=""></button>
-                    </form>
-                </div>        
-            </section>
-        <!---------------------- BUSCADOR ---------------------->
+      <!---------------------- BUSCADOR ---------------------->
+      <section class="content-buscador">
+        <div class="buscador">
+          <h2>¿Que buscas para tus proyectos?</h2>
+          <form class="searchForm">
+            <input
+              class="searchInput"
+              type="text"
+              id="searchInput"
+              placeholder="Ingresa palabras claves de tu busqueda..."
+            />
+            <button class="icon" type="submit">
+              <img src="./imagenes/search.svg" alt="" />
+            </button>
+          </form>
+        </div>
+      </section>
+      <!---------------------- BUSCADOR ---------------------->
 
+      <!---------------------- categorias ---------------------->
+      <section class="category">
+        <div class="cards">
+          <div class="card1">
+            <div class="text">
+              <a href="maqpesada.html"><h3>MAQUINARIA PESADA</h3></a>
+            </div>
+          </div>
+          <div class="card2">
+            <div class="text">
+              <a href="herramientas.html"><h3>HERRAMIENTAS PEQUEÑAS</h3></a>
+            </div>
+          </div>
+          <div class="card3">
+            <div class="text">
+              <a href="indumentaria.html"><h3>INDUMENTARIA</h3></a>
+            </div>
+          </div>
+          <div class="card4">
+            <div class="text">
+              <a href="construccion.html"><h3>EQUIPOS PARA CONSTRUCCION</h3></a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!---------------------- categorias ---------------------->
-            <section class="category" >
-                <div class="cards">
-                    <div class="card1">
-                        <div class="text">
-                            <a href="maqpesada.html"><h3>MAQUINARIA PESADA</h3></a>
-                        </div>                
-                    </div>
-                    <div class="card2">
-                        <div class="text">
-                            <a href="herramientas.html"><h3>HERRAMIENTAS PEQUEÑAS</h3></a>
-                        </div>
-                    </div>
-                    <div class="card3">
-                        <div class="text">
-                            <a href="indumentaria.html"><h3>INDUMENTARIA</h3></a>
-                        </div>
-                    </div>
-                    <div class="card4">
-                        <div class="text">
-                            <a href="construccion.html"><h3>EQUIPOS PARA CONSTRUCCION</h3></a>
-                        </div>
-                    </div>            
-                </div>
-            </section>
+      <!-- categorias -->
 
-        <!-- categorias -->
+      <!------------------------ recomendaciones ----------------->
+      <section class="recomendaciones">
+        <div class="title-recomend"><h2>Recomendaciones</h2></div>
+        <div class="content-recoment-cards" id="recomendaciones">
+          <!-- <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado1.jpg" alt="Producto 1" />
+            <h3>EXCAVADORA KOMATSU</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado2.jpg" alt="Producto 2" />
+            <h3>BULLDOZER CATERPILLAR</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado3.jpg" alt="Producto 3" />
+            <h3>RETROEXCAVADORA CATERPILLAR</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
-        <!------------------------ recomendaciones ----------------->
-            <section class="recomendaciones">
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado4.jpg" alt="Producto 4" />
+            <h3>APLANADORA CATERPILLAR</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
-                <div class="title-recomend"><h2>Recomendaciones</h2></div>        
-                <div class="content-recoment-cards">
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado5.jpg" alt="Producto 5" />
+            <h3>MINICARGADOR BOBCAT</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
-                    <div class="recoment-card">
-                        <img class="img" src="imagenes/recomendado1.jpg" alt="Producto 1">
-                        <h3>EXCAVADORA KOMATSU</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado6.jpg" alt="Producto 6" />
+            <h3>MONTACARGA MITSUBISHI</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
-                    <div class="recoment-card">
-                        <img class="img" src="imagenes/recomendado2.jpg" alt="Producto 2">
-                        <h3>BULLDOZER CATERPILLAR</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado7.jpg" alt="Producto 7" />
+            <h3>ANDAMIOS TUBULARESL</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
-                    <div class="recoment-card">
-                        <img class="img" src="imagenes/recomendado3.jpg" alt="Producto 3">
-                        <h3>RETROEXCAVADORA CATERPILLAR</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado8.jpg" alt="Producto 8" />
+            <h3>MOTONIVELADORA CATERPILLAR</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
-                    <div class="recoment-card">
-                        <img class="img" src="imagenes/recomendado4.jpg" alt="Producto 4">
-                        <h3>APLANADORA CATERPILLAR</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
+          <div class="recoment-card">
+            <img class="img" src="imagenes/recomendado9.jpg" alt="Producto 9" />
+            <h3>VOLQUETA INTERNATIONAL</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div>
 
-                    <div class="recoment-card">
-                        <img class="img" src="imagenes/recomendado5.jpg" alt="Producto 5">
-                        <h3>MINICARGADOR BOBCAT</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>                
-                    </div>
+          <div class="recoment-card">
+            <img
+              class="img"
+              src="imagenes/recomendado10.jpg"
+              alt="Producto 10"
+            />
+            <h3>EXCAVADORA KOMATSU</h3>
+            <div class="btn-ver">
+              <h2>ver mas</h2>
+              <a href="detalles_producto1.html" class="ver-detalles-btn"
+                ><i class="fa-solid fa-circle-plus"></i
+              ></a>
+            </div>
+          </div> -->
+        </div>
+      </section>
+      <!-- recomendaciones -->
 
-                    <div class="recoment-card">
-                        <img class="img" src="imagenes/recomendado6.jpg" alt="Producto 6">
-                        <h3>MONTACARGA MITSUBISHI</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
+      <!-------------------- footer -------------------->
 
-                    <div class="recoment-card">
-                        <img class="img" src="imagenes/recomendado7.jpg" alt="Producto 7">
-                        <h3>ANDAMIOS TUBULARESL</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="recoment-card">                        
-                        <img class="img" src="imagenes/recomendado8.jpg" alt="Producto 8">
-                        <h3>MOTONIVELADORA CATERPILLAR</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="recoment-card">                        
-                        <img class="img" src="imagenes/recomendado9.jpg" alt="Producto 9">
-                        <h3>VOLQUETA INTERNATIONAL</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="recoment-card">                    
-                        <img class="img" src="imagenes/recomendado10.jpg" alt="Producto 10">
-                        <h3>EXCAVADORA KOMATSU</h3>
-                        <div class="btn-ver">
-                            <h2>ver mas</h2>
-                            <a href="detalles_producto1.html" class="ver-detalles-btn"><i class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-        <!-- recomendaciones -->
-
-
-
-        <!-------------------- footer -------------------->    
-
-        <footer>            
-                <div class="footer-logo">
-                    <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa">
-                    <p> Todos los derechos reservados &copy;</p>
-                </div>
-                <div class="social">
-                    <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://twitter.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
-                </div>
-        </footer>
+      <footer>
+        <div class="footer-logo">
+          <img
+            src="./imagenes/Logooscuro.png"
+            alt="Isologotipo de la empresa"
+          />
+          <p>Todos los derechos reservados &copy;</p>
+        </div>
+        <div class="social">
+          <a href="http://facebook.com"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://twitter.com/?lang=es"
+            ><i class="fa-brands fa-x-twitter"></i
+          ></a>
+        </div>
+      </footer>
     </main>
 
-
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
