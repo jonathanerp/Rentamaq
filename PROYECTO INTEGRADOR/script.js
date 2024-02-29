@@ -92,6 +92,7 @@ window.addEventListener('load', function () {
       btnContainer.appendChild(btnIcon);
 
       const link = document.createElement('a');
+      link.classList.add('btn-link');
       link.href = `./detalle_producto.html?id=${prod.id}`;
       link.appendChild(btnContainer);
       card.appendChild(link);

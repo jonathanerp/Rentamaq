@@ -15,32 +15,32 @@ body {
 header {
   background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(./imagenes/header01.jpg);
   background-size: cover;
-  background-position: center; /* Centra la imagen de fondo */
+  background-position: center; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px 30px; /* Aumenta el espacio de relleno */
+  padding: 20px 30px; 
   z-index: 999;
 }
 
 .logo-section {
   display: flex;
   align-items: center;
-  gap: 10px; /* Añade espacio entre el logo y el texto */
+  gap: 10px; 
 }
 
 .logo-section img {
-  width: 120px; /* Reduce el tamaño del logo para mayor elegancia */
+  width: 120px; 
 }
 
 .logo-section p {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: 18px; /* Aumenta el tamaño del texto del encabezado */
-  color: #fff; /* Cambia el color del texto para que sea más visible */
+  font-size: 18px; 
+  color: #fff; 
   cursor: pointer;
   margin: 0;
 }
@@ -48,23 +48,23 @@ header {
 .btn-section {
   display: flex;
   align-items: center;
-  gap: 15px; /* Aumenta el espacio entre los botones */
+  gap: 15px; 
 }
 
 .btn-section button {
   font-family: 'Kanit', sans-serif;
   background-color: #ffd100;
-  padding: 12px 20px; /* Ajusta el tamaño de los botones */
+  padding: 12px 20px; 
   color: #333533;
   border: none;
-  border-radius: 25px; /* Aumenta el radio de borde para un aspecto más suave */
+  border-radius: 25px; 
   cursor: pointer;
-  font-size: 16px; /* Reduce el tamaño de la fuente */
-  transition: background-color 0.3s ease; /* Añade una transición suave al color de fondo */
+  font-size: 16px; 
+  transition: background-color 0.3s ease; 
 }
 
 .btn-section button:hover {
-  background-color: #f7c200; /* Cambia el color de fondo al pasar el mouse */
+  background-color: #f7c200; 
 }
 
 /* Estilos para el navbar */
@@ -85,11 +85,11 @@ nav ul li a {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 16px;
-  transition: color 0.3s ease; /* Transición suave para el cambio de color */
+  transition: color 0.3s ease; 
 }
 
 nav ul li a:hover {
-  color: #ffd100; /* Cambia el color al pasar el mouse */
+  color: #ffd100; 
 }
 
 /* header */
@@ -113,9 +113,9 @@ main {
 }
 
 .buscador h2 {
-  font-size: 1.5em; /* Tamaño del título */
-  color: #333; /* Color del texto */
-  margin-bottom: 15px; /* Espaciado inferior del título */
+  font-size: 1.5em; 
+  color: #333;
+  margin-bottom: 15px; 
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   text-align: center;
@@ -123,32 +123,32 @@ main {
 
 .searchForm {
   font-family: 'Prompt', sans-serif;
-  display: flex; /* Utiliza un modelo de caja flexible para alinear elementos */
-  justify-content: center; /* Centra el formulario horizontalmente */
-  align-items: center; /* Centra los elementos verticalmente */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 #searchInput {
   width: 300px;
-  padding: 10px; /* Espaciado interno */
-  border: 1px solid #ccc; /* Borde del campo de entrada */
-  border-radius: 10px; /* Bordes redondeados */
-  margin-right: 10px; /* Espaciado derecho entre el campo de entrada y el botón */
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  margin-right: 10px; 
   color: #333;
   background-color: #f8f8f8;
 }
 
 .icon {
-  padding: 10px 15px; /* Espaciado interno del botón */
+  padding: 10px 15px; 
   border: none;
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  border-radius: 5px; 
+  cursor: pointer; 
   background-color: #ffd100;
-  transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+  transition: background-color 0.3s ease; 
 }
 
 .icon:hover {
-  background-color: #f3c500; /* Cambia el color de fondo al pasar sobre el botón */
+  background-color: #f3c500; 
 }
 
 .icon img {
@@ -169,13 +169,13 @@ main {
 .card1, .card2, .card3, .card4 {
   background-size: cover;
   border-radius: 8px;
-  width: calc(25% - 20px); /* Calcula el ancho para que entren 4 tarjetas */
-  flex-grow: 1; /* Permite que las tarjetas ocupen todo el espacio disponible */
+  width: calc(25% - 20px); 
+  flex-grow: 1; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   margin: 10px;
   height: 400px;
-  position: relative; /* Añade posición relativa para los hijos absolutos */
+  position: relative; 
 }
 
 .card1 {
@@ -195,27 +195,27 @@ main {
 }
 
 .card1:hover, .card2:hover, .card3:hover, .card4:hover {
-  transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+  transform: scale(1.05); 
 }
 
 .text {
-  position: absolute; /* Posición absoluta para centrar */
-  top: 50%; /* Alinea el texto en el centro verticalmente */
-  left: 50%; /* Alinea el texto en el centro horizontalmente */
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
   width: 100%;
-  transform: translate(-50%, -50%); /* Centra el texto */
-  background: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
-  padding: 10px; /* Espaciado interior */
-  border-radius: 5px; /* Bordes redondeados */
+  transform: translate(-50%, -50%); 
+  background: rgba(255, 255, 255, 0.7); 
+  padding: 10px; 
+  border-radius: 5px; 
   font-family: 'Oswald', sans-serif;
   font-size: 20px;
-  text-align: center; /* Alineación centrada del texto */
-  opacity: 0; /* Inicialmente oculto */
-  transition: opacity 0.3s ease; /* Transición suave de opacidad */
+  text-align: center; 
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
 }
 
 .card1:hover .text, .card2:hover .text, .card3:hover .text, .card4:hover .text {
-  opacity: 1; /* Muestra el texto al pasar el mouse */
+  opacity: 1; 
 }
 
 .text a {
@@ -224,19 +224,19 @@ main {
 }
 
 .card img {
-  width: 50px; /* Ajusta el tamaño de las imágenes */
+  width: 50px; 
 }
 
-/* ----------------card------------------ */
+
 /* CATEGORIA */
 
 /* --------------RECOMENDACIONES------------- */
-/* Estilos para la sección de recomendaciones */
+
 .recomendaciones {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 20px; /* Añadimos espacio alrededor de la sección */
+  padding: 50px 20px; 
 }
 
 /* Estilos para el título de la sección de recomendaciones */
@@ -245,22 +245,22 @@ main {
   color: #202020;
   font-size: 24px;
   text-align: center;
-  margin-bottom: 20px; /* Espacio inferior */
+  margin-bottom: 20px; 
 }
 
 /* Estilos para los contenedores de las tarjetas de recomendación */
 .content-recoment-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Cinco columnas */
-  gap: 20px; /* Espacio entre las tarjetas */
-  max-width: 1200px; /* Ancho máximo para evitar que las tarjetas se expandan demasiado */
-  margin: 0 auto; /* Centramos horizontalmente */
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 20px; 
+  max-width: 1200px; 
+  margin: 0 auto; 
 }
 
 /* Estilos para las tarjetas de recomendación */
 .recoment-card {
   width: 100%;
-  height: 30px;
+  /* height: 30px; */
   border-radius: 20px;
   overflow: hidden;
   background: #fff;
@@ -269,7 +269,7 @@ main {
 }
 
 .recoment-card:hover {
-  transform: translateY(-5px); /* Elevamos ligeramente la tarjeta al pasar el cursor */
+  transform: translateY(-5px); 
 }
 
 .recoment-card .img {
@@ -283,7 +283,7 @@ main {
   font-family: 'Oswald', sans-serif;
   font-size: 20px;
   text-align: center;
-  margin: 15px 0; /* Aumentamos el espacio alrededor del título */
+  margin: 15px 0; 
 }
 
 /* Estilos para el botón "Ver más" */
@@ -303,7 +303,7 @@ main {
 }
 
 .btn-ver:hover {
-  background-color: #ffec80; /* Cambiamos el color de fondo al pasar el cursor */
+  background-color: #ffec80; 
 }
 
 /*---------------FOOTER--------------- */
@@ -351,8 +351,8 @@ footer {
     width: 80px;
   }
   .btn-section button {
-    font-size: 12px; /* Reducir el tamaño del texto del botón */
-    padding: 8px 12px; /* Reducir el espacio alrededor del texto */
+    font-size: 12px; 
+    padding: 8px 12px; 
   }
   nav ul li {
     margin-right: 10px;
@@ -370,13 +370,13 @@ footer {
   }
   .content-recoment-cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px; /* Agregar espacio entre las tarjetas */
+    gap: 20px; 
   }
   .recoment-card {
-    height: auto; /* Ajustar automáticamente la altura de las tarjetas */
+    height: auto;
   }
   .btn-ver {
-    padding: 8px 12px; /* Reducir el espacio alrededor del texto del botón */
+    padding: 8px 12px; 
   }
   .social i {
     font-size: 30px;
@@ -429,11 +429,11 @@ footer {
   }
   .category .cards {
     margin: 20px auto;
-    flex-direction: row; /* Cambiar la dirección del flexbox para mostrar las tarjetas en una fila */
+    flex-direction: row; 
   }
   .card1, .card2, .card3, .card4 {
     width: calc(25% - 20px);
-    margin-bottom: 0; /* Eliminar el margen inferior para evitar espacio adicional entre las tarjetas */
+    margin-bottom: 0; 
   }
   .recomendaciones {
     padding: 40px 20px;
@@ -467,7 +467,4 @@ footer {
   }
 }
 
-/* Resto de tus estilos y media queries */
 
-
-/* --------------------------RESPONSIVE------------------------ */
