@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles/detalle-producto.css">
-  <title>Detalle del Producto</title>
-  <script src="https://kit.fontawesome.com/ae1d842f3c.js" crossorigin="anonymous"></script>
-</head>
-<body>
-  <header>
-    <div class="logo-section">
-      <a href="index.html"><img src="imagenes/Logooscuro.png" alt="Logo de la empresa"></a>
-      <p>El mejor aliado de tus proyectos</p>
-    </div>
-    <div class="btn-section">
-      <button>Crear cuenta</button>
-      <button>Iniciar sesión</button>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/detalle-producto.css" />
+    <title>Detalle del Producto</title>
+    <script
+      src="https://kit.fontawesome.com/ae1d842f3c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-section">
+        <a href="index.html"
+          ><img src="img/Logooscuro.png" alt="Logo de la empresa"
+        /></a>
+        <p>El mejor aliado de tus proyectos</p>
+      </div>
+      <div class="btn-section">
+        <button>Crear cuenta</button>
+        <button>Iniciar sesión</button>
+      </div>
+    </header>
 
-  <main>
-    <div id="detalle-producto" class="product-display">
-      <!-- Aquí se insertará dinámicamente el contenido del detalle del producto -->
-    </div>
-  </main>
+    <main>
+      <div id="detalle-producto" class="product-display">
+        <div class="back-arrow">
+          <a href="./index.html"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <!-- Aquí se insertará dinámicamente el contenido del detalle del producto -->
+      </div>
+    </main>
 
+    <footer>
+      <div class="footer-logo">
+        <img src="./img/Logooscuro.png" alt="Isologotipo de la empresa" />
+        <p>Todos los derechos reservados &copy;</p>
+      </div>
+      <div class="social">
+        <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://twitter.com/?lang=es"
+          ><i class="fa-brands fa-x-twitter"></i
+        ></a>
+      </div>
+    </footer>
 
-  <footer>
-    <div class="footer-logo">
-      <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
-      <p>Todos los derechos reservados &copy;</p>
-    </div>
-    <div class="social">
-      <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://twitter.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
-    </div>
-  </footer>
-
-  <script src="./script_detalle_producto.js"></script>
-</body>
+    <script src="./scripts/script_carrousel.js"></script>
+    <script src="./scripts/script_detalle_producto.js"></script>
+  </body>
 </html>
