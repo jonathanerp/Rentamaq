@@ -1,11 +1,12 @@
 const productosConstruccionPesada = [
   {
     id: 1,
-    carrousel: ['./imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png','imagenes/imagen1.png',],
+    carrousel: ['./imagenes/recomendado1.png','imagenes/recomendado1.png','imagenes/recomendado1.png','imagenes/recomendado1.png',],
     name: 'EXCAVADORA KOMATSU',
     image: 'imagenes/recomendado1.jpg',
     description:
       'La Excavadora Komatsu es una máquina poderosa y versátil diseñada para trabajos de construcción de cualquier tamaño. Equipada con un motor robusto y componentes de alta calidad, esta excavadora puede manejar una variedad de tareas, desde la excavación de zanjas hasta la demolición de edificios. Su diseño ergonómico y controles intuitivos hacen que sea fácil de operar y cómoda de usar durante largas jornadas de trabajo.',
+    precio: '$100.000.000',
   },
   {
     id: 2,
@@ -81,36 +82,51 @@ const productosConstruccionPesada = [
   },
 ];
 
-function crearCarruselImagenes(carrousel) {
-  return carrousel.map(image => `
-    <div class="carousel-item">
-      <img src="${image}" alt="Imagen del producto" />
-    </div>
-  `).join('');
+function renderizarDetalleProducto(producto) {
+  const detalleProducto = document.getElementById('detalle-producto');
+
+  // Limpiar el contenedor del producto antes de agregar el nuevo producto
+  detalleProducto.innerHTML = '';
+
+  // Crear el contenedor del producto
+  const productoElemento = document.createElement('div');
+  productoElemento.classList.add('product-display');
+
+  // Contenedor para la imagen principal y el carrusel
+  const contenedorImagenes = document.createElement('div');
+  contenedorImagenes.classList.add('product-images');
+
+  // Insertar la imagen principal del producto
+  const imagenPrincipal = document.createElement('img');
+  imagenPrincipal.src = producto.image;
+  contenedorImagenes.appendChild(imagenPrincipal);
+
+  // Crear el carrusel de imágenes
+  const carrusel = document.createElement('div');
+  carrusel.classList.add('carousel');
+  producto.carrousel.forEach(function(imagenUrl) {
+    const imagenCarrusel = document.createElement('img');
+    imagenCarrusel.src = imagenUrl;
+    carrusel.appendChild(imagenCarrusel);
+  });
+  contenedorImagenes.appendChild(carrusel);
+
+  // Agregar el contenedor de imágenes al contenedor del producto
+  productoElemento.appendChild(contenedorImagenes);
+
+  // Insertar la descripción del producto
+  const descripcionProducto = document.createElement('div');
+  descripcionProducto.classList.add('product-description');
+  descripcionProducto.innerHTML = `
+    <h2>${producto.name}</h2>
+    <p>${producto.description}</p>
+    <p>${producto.precio}</p>
+  `;
+  productoElemento.appendChild(descripcionProducto);
+
+  // Agregar el producto al contenedor del detalle del producto
+  detalleProducto.appendChild(productoElemento);
 }
 
-function cargarDetalleProducto() {
-  const divDetalleProducto = document.getElementById('detalle-producto');
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const prodId = urlSearchParams.get('id');
-
-  const producto = productosConstruccionPesada.find(prod => prod.id.toString() === prodId);
-
-  if (producto) {
-    divDetalleProducto.innerHTML = `
-      <div class="product-image">
-        <img src="${producto.image}" alt="${producto.name}" />
-      </div>
-      <div class="product-carousel">
-        ${crearCarruselImagenes(producto.carrousel)}
-      </div>
-      <div class="product-description">
-        <h1>${producto.name}</h1>
-        <h3>Descripción General</h3>
-        <p>${producto.description}</p>
-      </div>
-    `;
-  }
-}
-
-window.addEventListener('DOMContentLoaded', cargarDetalleProducto);
+// Inicialmente renderizar el primer producto
+renderizarDetalleProducto(productosConstruccionPesada[0]);
