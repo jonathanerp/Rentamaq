@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Equipos de construccion</title>
+    <script
+      src="https://kit.fontawesome.com/ae1d842f3c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!--------- HEADER------------>
+    <header>
+      <div class="logo-section">
+        <a href="index.html"
+          ><img src="img/Logooscuro.png" alt="Logo de la empresa"
+        /></a>
+        <p>El mejor aliado de tus proyectos</p>
+      </div>
+      <!-- <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav> -->
+      <div class="btn-section">
+        <button>Crear cuenta</button>
+        <button>Iniciar sesión</button>
+      </div>
+    </header>
+
+    <!-- Listado de productos -->
+    <main>
+      <!---------------------- BUSCADOR ---------------------->
+      <section class="content-buscador">
+        <div class="buscador">
+          <h2>¿Que buscas para tus proyectos?</h2>
+          <form class="searchForm">
+            <input
+              class="searchInput"
+              type="text"
+              id="searchInput"
+              placeholder="Ingresa palabras claves de tu busqueda..."
+            />
+            <button class="icon" type="submit">
+              <img src="./img/search.svg" alt="" />
+            </button>
+          </form>
+        </div>
+      </section>
+      <!---------------------- BUSCADOR ---------------------->
+
+      <!---------------------- categorias ---------------------->
+      <section class="category">
+        <div class="cards">
+          <div class="card1">
+            <div class="text">
+              <a href="maqpesada.html"><h3>MAQUINARIA PESADA</h3></a>
+            </div>
+          </div>
+          <div class="card2">
+            <div class="text">
+              <a href="herramientas.html"><h3>HERRAMIENTAS PEQUEÑAS</h3></a>
+            </div>
+          </div>
+          <div class="card3">
+            <div class="text">
+              <a href="indumentaria.html"><h3>INDUMENTARIA</h3></a>
+            </div>
+          </div>
+          <div class="card4">
+            <div class="text">
+              <a href="construccion.html"><h3>EQUIPOS PARA CONSTRUCCION</h3></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- categorias -->
+
+      <!------------------------ recomendaciones ----------------->
+      <section class="recomendaciones">
+        <div class="title-recomend"><h2>Recomendaciones</h2></div>
+        <div class="content-recoment-cards" id="recomendaciones">
+          <!-- se encuentran en los archivos de javascript renderizado -->
+        </div>
+      </section>
+      <!-- recomendaciones -->
+
+      <!-------------------- footer -------------------->
+
+      <footer>
+        <div class="footer-logo">
+          <img src="./img/Logooscuro.png" alt="Isologotipo de la empresa" />
+          <p>Todos los derechos reservados &copy;</p>
+        </div>
+        <div class="social">
+          <a href="http://facebook.com"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://twitter.com/?lang=es"
+            ><i class="fa-brands fa-x-twitter"></i
+          ></a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
