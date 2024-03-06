@@ -39,33 +39,34 @@ public class ProductoService implements IProductoService {
     @Override
     public ProductoSalidaDto guardarProducto(ProductoEntradaDto productoEntradaDto) {
 
-        MultipartFile imagen = productoEntradaDto.getImagen();
-        String nombreImagen = imagen.getOriginalFilename();
-        String urlImagen = "http://localhost:8080/imagenes/" + nombreImagen;
+//        MultipartFile imagen = productoEntradaDto.getImagen();
+//        String nombreImagen = imagen.getOriginalFilename();
+//        String urlImagen = "http://localhost:8080/imagenes/" + nombreImagen;
 
-        try {
-            String ruta = "public/imagenes/";
-            Path subirRuta = Paths.get(ruta);
-
-            if(!Files.exists(subirRuta)){
-                Files.createDirectories(subirRuta);
-            }
-
-            try (InputStream inputStream = imagen.getInputStream()){
-                Files.copy(inputStream, Paths.get(ruta + nombreImagen), StandardCopyOption.REPLACE_EXISTING);
-            }
-        }catch (Exception ex){
-            LOGGER.error("Excepcion: {}", ex.getMessage());
-        }
+//        try {
+//            String ruta = "public/imagenes/";
+//            Path subirRuta = Paths.get(ruta);
+//
+//            if(!Files.exists(subirRuta)){
+//                Files.createDirectories(subirRuta);
+//            }
+//
+//            try (InputStream inputStream = imagen.getInputStream()){
+//                Files.copy(inputStream, Paths.get(ruta + nombreImagen), StandardCopyOption.REPLACE_EXISTING);
+//            }
+//        }catch (Exception ex){
+//            LOGGER.error("Excepcion: {}", ex.getMessage());
+//        }
 
         Producto producto = new Producto();
         producto.setNombre(productoEntradaDto.getNombre());
         producto.setDescripcion(productoEntradaDto.getDescripcion());
-        producto.setUrlImagen(urlImagen);
+//        producto.setUrlImagen(urlImagen);
+        producto.setUrlImagen(productoEntradaDto.getImagen());
 
         productoRepository.save(producto);
         ProductoSalidaDto productoSalidaDto = entidadADtoSalida(producto);
-        LOGGER.info("Paciente guardado: {}", productoSalidaDto);
+        LOGGER.info("Producto guardado: {}", productoSalidaDto);
 
         return productoSalidaDto;
     }

@@ -1,13 +1,15 @@
 package com.backend.rentamaq.exception;
 
+import com.backend.rentamaq.dto.ErrorDto;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,9 +35,19 @@ public class GlobalExceptionHandler {
         Map<String, String> exceptionMessage = new HashMap<>();
         if (exception.getMessage().startsWith("could not execute statement")) {
             exceptionMessage.put("nombre", "El nombre ya esta en uso");
-        }else{
+        } else if (exception.getMessage().startsWith("Bad credentials")) {
+            BadRequestException responseException = new BadRequestException("Contraseña o email incorrectos", "User");
+            exceptionMessage.put("message", responseException.getMessage());
+            exceptionMessage.put("entity", responseException.getEntity());
+        } else {
             exceptionMessage.put("message", "Internal Server error: " + exception.getMessage());
         }
         return exceptionMessage;
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<?> badRequestException(BadRequestException ex, WebRequest req) {
+        ErrorDto response = new ErrorDto(ex.getMessage(), ex.getEntity());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }

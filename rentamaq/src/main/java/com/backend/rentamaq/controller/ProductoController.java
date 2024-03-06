@@ -22,7 +22,8 @@ public class ProductoController {
     }
 
     @PostMapping("guardar")
-    public ResponseEntity<ProductoSalidaDto> guardarProducto(@Valid @ModelAttribute ProductoEntradaDto productoEntradaDto) {
+    public ResponseEntity<ProductoSalidaDto> guardarProducto(@Valid @RequestBody ProductoEntradaDto productoEntradaDto) {
+        System.out.println(productoEntradaDto);
         return new ResponseEntity<>(productoService.guardarProducto(productoEntradaDto), HttpStatus.CREATED);
     }
 
@@ -37,7 +38,7 @@ public class ProductoController {
     }
 
     @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarPaciente(@PathVariable Long id){
+    public ResponseEntity<?> eliminarProducto(@PathVariable Long id) {
         productoService.eliminarPaciente(id);
         return new ResponseEntity<>("Producto eliminado correctamente", HttpStatus.OK);
     }
