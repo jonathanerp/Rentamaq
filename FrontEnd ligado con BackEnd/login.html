@@ -81,15 +81,20 @@
 
                             botonRegistrar.addEventListener('click', function (event) {
                                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                                if (!emailPattern.test(email.value.trim())) {
+                                if (nombre.value.trim() === '' || apellido.value.trim() === '') {
+                                    alert('Por favor, ingrese su nombre y apellido');
+                                    event.preventDefault();
+                                } else if (!emailPattern.test(email.value.trim())) {
                                     alert('El correo electrónico no es válido');
                                     email.value = '';
                                     email.focus();
                                     event.preventDefault();
-                                } else if (nombre.value.trim() === '' || apellido.value.trim() === '') {
-                                    alert('Por favor, ingrese su nombre y apellido');
+                                } else if (nuevopassword.value.trim() === '') {
+                                    alert('ingrese una contraseña valida');
+                                    nuevopassword.focus();
                                     event.preventDefault();
                                 }
+
                                 else if (nuevopassword.value.trim() !== '' && nuevopassword.value !== confirmacionpassword.value) {
                                     alert('Las contraseñas no coinciden');
                                     nuevopassword.value = '';
@@ -98,6 +103,8 @@
                                     event.preventDefault();
                                 } else {
                                     alert('Usted se ha registrado correctamente, ya es rentamaq!');
+                                    window.location.reload();
+
                                 }
                             });
                         });
