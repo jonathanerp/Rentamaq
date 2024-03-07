@@ -1,5 +1,4 @@
-const productosConstruccionPesada = [
-  {
+const productosConstruccionPesada = [{
     id: 1,
     name: 'EXCAVADORA KOMATSU',
     image: 'img/recomendado1.jpg',
@@ -107,15 +106,36 @@ window.addEventListener('load', function () {
     window.location.href = 'index.html';
   });
 
-  // Agrega un evento al formulario de búsqueda
-  document.getElementById('searchForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita que el formulario se envíe por defecto (puede personalizarse según tus necesidades)
+  
+});
 
-    // Obtén el valor del campo de búsqueda
-    const searchQuery = document.getElementById('searchInput').value;
-
-    // Puedes redirigir a una página de resultados de búsqueda o realizar otras acciones según el valor de searchQuery
-    // Por ejemplo:
-    //window.location.href = 'resultados.html?q=' + encodeURIComponent(searchQuery);
-  });
+window.addEventListener('load', function(){
+	new Glider(document.querySelector('.carousel__lista'), {
+		slidesToShow: 1,
+		slidesToScroll: 1,
+    rewind: true,
+		dots: '.carousel__indicadores',
+		arrows: {
+			prev: '.carousel__anterior',
+			next: '.carousel__siguiente'
+		},
+		responsive: [
+			{
+			  // screens greater than >= 775px
+			  breakpoint: 450,
+			  settings: {
+				// Set to `auto` and provide item width to adjust to viewport
+				slidesToShow: 2,
+				slidesToScroll: 2
+			  }
+			},{
+			  // screens greater than >= 1024px
+			  breakpoint: 800,
+			  settings: {
+				slidesToShow: 4,
+				slidesToScroll: 4
+			  }
+			}
+		]
+	});
 });
