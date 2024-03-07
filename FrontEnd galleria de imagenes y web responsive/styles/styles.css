@@ -9,6 +9,7 @@ body {
   padding: 0;
   background-color: #ffffff;
   height: 100vh;
+  min-height: 100vh;
 }
 
 /* ---------------header--------------- */
@@ -100,6 +101,7 @@ nav ul li a:hover {
 main {
   padding-top: 190px;
 }
+
 /* -------------------BUSCADOR------------------ */
 .content-buscador {
   position: relative;
@@ -157,88 +159,110 @@ main {
 }
 
 /* BUSCADOR */
-/* -----------------CATEGORIA---------------- */
 
-.category .cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 20px auto;
-}
-
-/* ----------------card------------------ */
-.card1,
-.card2,
-.card3,
-.card4 {
-  background-size: cover;
-  border-radius: 8px;
-  width: calc(25% - 20px);
-  flex-grow: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  margin: 10px;
-  height: 400px;
+/* Carousel */
+/* --- --- CAROUSEL --- --- */
+.carousel__contenedor {
   position: relative;
 }
 
-.card1 {
-  background-image: url('../img/maquinariapesada.jpg');
+
+.carousel__anterior,
+.carousel__siguiente {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  color: #fff;
+  opacity: 20%;
+  transition: opacity 0.3s; /* Transición suave */
+  display: flex; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;
 }
 
-.card2 {
-  background-image: url('../img/herramientapequeña.jpg');
+.carousel__anterior:hover,
+.carousel__siguiente:hover {
+  opacity: 100%;
 }
 
-.card3 {
-  background-image: url('../img/indumentaria.jpg');
+.carousel__anterior {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10px; /* Ajusta el margen izquierdo */
 }
 
-.card4 {
-  background-image: url('../img/equipoconstruccion.jpg');
+.carousel__siguiente {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 10px; /* Ajusta el margen derecho */
 }
 
-.card1:hover,
-.card2:hover,
-.card3:hover,
-.card4:hover {
-  transform: scale(1.05);
+
+.carousel__lista {
+  overflow: hidden;
+  margin-top: 30px;
 }
 
-.text {
+.carousel__elemento {
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Asegura que los elementos estén en línea */
+}
+
+.carousel__indicadores .glider-dot {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background: black;
+  opacity: .2;
+  border-radius: 0;
+}
+
+.glider-dots{
+  margin-top: 15px;
+}
+
+.carousel__indicadores .glider-dot:hover {
+  opacity: .5;
+}
+
+.carousel__indicadores .glider-dot.active {
+  opacity: 1;
+}
+/* Estilo del contenedor de la imagen */
+.image-container {
+  position: relative;
+}
+/* Estilo del título */
+.title-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.7);
+  margin: 0;
   padding: 10px;
-  border-radius: 5px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 20px;
-  text-align: center;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
+  text-align: center;
 }
 
-.card1:hover .text,
-.card2:hover .text,
-.card3:hover .text,
-.card4:hover .text {
+.titleCategory{
+  color: white;
+}
+.anchorCategory{
+  text-decoration: none;
+}
+/* Mostrar el título al hacer hover */
+.carousel__elemento:hover .title-container {
   opacity: 1;
 }
-
-.text a {
-  text-decoration: none;
-  color: #202020;
-}
-
-.card img {
-  width: 50px;
-}
-
-/* CATEGORIA */
-
 /* --------------RECOMENDACIONES------------- */
 
 .recomendaciones {
@@ -252,16 +276,19 @@ main {
 .title-recomend {
   font-family: 'Oswald', sans-serif;
   color: #202020;
-  font-size: 24px;
+  font-size: 32px;
+  /* Tamaño de fuente aumentado */
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  /* Mayor espacio inferior */
 }
 
 /* Estilos para los contenedores de las tarjetas de recomendación */
 .content-recoment-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 30px;
+  /* Mayor espacio entre las tarjetas */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -269,30 +296,36 @@ main {
 /* Estilos para las tarjetas de recomendación */
 .recoment-card {
   width: 100%;
-  /* height: 30px; */
-  border-radius: 20px;
+  border-radius: 40px;
+  /* Bordes más redondeados */
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  /* Sombra más pronunciada */
   transition: transform 0.3s ease;
 }
 
 .recoment-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  /* Elevación mayor al hacer hover */
 }
 
 .recoment-card .img {
   width: 100%;
-  height: 200px;
+  height: 300px;
+  /* Altura aumentada */
   object-fit: cover;
-  border-radius: 20px 20px 0 0;
+  border-radius: 40px 40px 0 0;
+  /* Bordes redondeados solo arriba */
 }
 
 .recoment-card h3 {
   font-family: 'Oswald', sans-serif;
-  font-size: 20px;
+  font-size: 28px;
+  /* Tamaño de fuente aumentado */
   text-align: center;
-  margin: 15px 0;
+  margin: 30px 0;
+  /* Mayor espacio superior e inferior */
 }
 
 /* Estilos para el botón "Ver más" */
@@ -302,18 +335,28 @@ main {
   color: #202020;
   font-family: 'Open Sans', sans-serif;
   border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
+  border-radius: 30px;
+  padding: 15px 40px;
+  /* Mayor relleno */
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-decoration: none;
-  margin: 0 auto; /* Centramos horizontalmente */
+  /* Elimina el subrayado */
+  margin: 30px auto;
+  /* Espacio mayor alrededor y centrado horizontalmente */
+  outline: none;
+  /* Elimina el borde de enfoque */
+}
+
+.btn-link {
+  text-decoration: none;
 }
 
 .btn-ver:hover {
   background-color: #ffec80;
 }
+
 
 /*---------------FOOTER--------------- */
 footer {
@@ -336,6 +379,10 @@ footer {
   height: 80px;
 }
 
+.rights{
+  margin-left: 20px;
+}
+
 .social {
   display: flex;
   margin-right: 50px;
@@ -346,7 +393,12 @@ footer {
   font-size: 40px;
   color: #202020;
 }
-/* Tu CSS base aquí */
+
+.btn-left,
+.btn-right {
+  display: none;
+  /* Ocultar las flechas en dispositivos de escritorio */
+}
 
 /* Media query para dispositivos con una pantalla de hasta 600px de ancho (celulares) */
 @media only screen and (max-width: 600px) {
@@ -363,62 +415,125 @@ footer {
     font-size: 12px;
     padding: 8px 12px;
   }
-  nav ul li {
-    margin-right: 10px;
-  }
-  .category .cards {
-    margin: 20px auto;
-    flex-direction: column;
-  }
-  .card1,
-  .card2,
-  .card3,
-  .card4 {
-    width: calc(100% - 20px);
+ 
+
+  .title-recomend {
+    font-size: 24px;
     margin-bottom: 20px;
   }
-  .recomendaciones {
-    padding: 20px 10px;
-  }
+
   .content-recoment-cards {
     grid-template-columns: repeat(2, 1fr);
+    /* Cambiar a dos columnas */
     gap: 20px;
+    /* Espacio entre las tarjetas */
   }
+
   .recoment-card {
-    height: auto;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
   }
+
+  .recoment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .recoment-card .img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.3s ease;
+  }
+
+  .recoment-card:hover .img {
+    transform: scale(1.1);
+  }
+
+  .recoment-card h3 {
+    font-size: 20px;
+    /* Tamaño de fuente reducido */
+    margin: 15px 0;
+    /* Espacio inferior y superior */
+    text-align: center;
+    color: #202020;
+    transition: color 0.3s ease;
+  }
+
+  .recoment-card:hover h3 {
+    color: #ffd100;
+  }
+
   .btn-ver {
-    padding: 8px 12px;
+    display: block;
+    background-color: #ffd100;
+    color: #202020;
+    font-family: 'Open Sans', sans-serif;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    /* Relleno del botón ajustado */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    margin: 20px auto;
+    /* Espacio alrededor y centrado horizontalmente */
   }
+
+  .btn-ver:hover {
+    background-color: #ffec80;
+    transform: scale(1.1);
+  }
+  footer {
+    padding: 10px; /* Reducir el padding aún más en dispositivos móviles */
+  }
+
+  .footer-logo img {
+    height: 40px; /* Reducir más el tamaño del logo en dispositivos móviles */
+  }
+
   .social i {
-    font-size: 30px;
+    font-size: 20px; /* Reducir más el tamaño de los íconos sociales en dispositivos móviles */
   }
 }
+
 
 /* Media query para dispositivos con una pantalla entre 601px y 992px de ancho (tabletas) */
 @media only screen and (min-width: 601px) and (max-width: 992px) {
   header {
     padding: 15px 20px;
   }
+
   .logo-section {
     max-width: 120px;
   }
+
   .logo-section img {
     width: 100px;
   }
+
   .btn-section button {
     font-size: 14px;
     padding: 10px 18px;
   }
+
   .category .cards {
     margin: 15px auto;
   }
+
   .card1,
   .card2,
   .card3,
   .card4 {
     width: calc(33.33% - 20px);
   }
+
   .recomendaciones {
     padding: 40px 20px;
   }
@@ -430,20 +545,25 @@ footer {
   header {
     padding: 15px 20px;
   }
+
   .logo-section {
     max-width: 120px;
   }
+
   .logo-section img {
     width: 100px;
   }
+
   .btn-section button {
     font-size: 14px;
     padding: 10px 18px;
   }
+
   .category .cards {
     margin: 20px auto;
     flex-direction: row;
   }
+
   .card1,
   .card2,
   .card3,
@@ -451,6 +571,7 @@ footer {
     width: calc(25% - 20px);
     margin-bottom: 0;
   }
+
   .recomendaciones {
     padding: 40px 20px;
   }
@@ -461,25 +582,31 @@ footer {
   header {
     padding: 20px 30px;
   }
+
   .logo-section {
     max-width: 200px;
   }
+
   .logo-section img {
     width: 150px;
   }
+
   .btn-section button {
     font-size: 20px;
     padding: 12px 20px;
   }
+
   .category .cards {
     margin: 30px auto;
   }
+
   .card1,
   .card2,
   .card3,
   .card4 {
     width: calc(25% - 20px);
   }
+
   .recomendaciones {
     padding: 60px 40px;
   }
