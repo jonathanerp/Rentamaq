@@ -1,4 +1,3 @@
-/* efectos por defecto */
 body {
     font-family: 'Overpass', sans-serif;
     font-weight: normal;
@@ -18,7 +17,6 @@ body {
 
 }
 
-/* efectos para el contenedor de pantalla completa */
 #contenedor {
     display: flex;
     align-items: center;
@@ -33,7 +31,6 @@ body {
 
 }
 
-/* contenedor del login a la izquierda */
 #contenedorlogin {
     display: flex;
     align-items: center;
@@ -43,12 +40,9 @@ body {
     min-width: 380px;
     max-width: 900px;
     width: 80%;
-    margin:  auto;
+    margin: auto;
 
     background-color: #d6d6d6;
-
-    /*opacity: 0.50;
-    filter: alpha(opacity=50);*/
 
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
@@ -75,9 +69,6 @@ body {
 
     background-color: #d6d6d6;
 
-    /*opacity: 0.50;
-    filter: alpha(opacity=50);*/
-
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
@@ -90,8 +81,7 @@ body {
     box-sizing: border-box;
 }
 
-/* formulario de login */
-/* formulario de login */
+
 #login {
     width: 100%;
     max-width: 320px;
@@ -134,19 +124,16 @@ body {
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
 
-    
-
     opacity: 1;
     filter: alpha(opacity=1);
 }
-
 
 #registroform {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100%; /* Ajusta el ancho del formulario según tu diseño */
+    height: 100%;
 }
 
 #login label {
@@ -263,11 +250,7 @@ body {
     transform: scale(1.10);
 }
 
-#derecho {
-    /*display: flex;
-    align-items:center;
-    justify-content:center;*/
-
+.infoform {
     text-align: center;
     width: 100%;
 
@@ -311,48 +294,31 @@ hr {
     transform: scale(1.15);
 }
 
-/* seccion de la derecha */
-/* seccion de la derecha */
-
 /* ajustar a pantallas con ancho menor o igual a 775px; */
-/* ajustar a pantallas con ancho menor o igual a 775px; */
-@media all and (max-width: 775px) {
-    #contenedorlogin {
-        flex-direction: column-reverse;
-
-        min-width: 380px;
-        max-width: 900px;
-        width: 90%;
-
-        background-color: #5f6769;
-
-        /*opacity: 0.50;
-        filter: alpha(opacity=50);*/
-
-        border-radius: 10px 10px 10px 10px;
-        -moz-border-radius: 10px 10px 10px 10px;
-        -webkit-border-radius: 10px 10px 10px 10px;
-
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-        box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-
-        padding: 30px;
-        box-sizing: border-box;
+@media (max-width: 775px) {
+    #contenedorlogin,
+    #contenedorregistro {
+        flex-direction: column;
+        width: 100%;
+        max-width: none;
+        margin: 0 30px;
     }
 
-    #login {
-        margin: 0 auto;
+    #login,
+    #registro {
+        width: 100%;
+        max-width: none;
+        padding: 20px;
     }
 
-    #derecho {
-        padding: 20px 20px 20px 20px;
+    #login input,
+    #registro input {
+        width: calc(100% - 20px);
+        /* Resta el padding para que el ancho sea correcto */
     }
 
-    #login label {
-        text-align: left;
+    #login button,
+    #registro button {
+        width: 100%;
     }
 }
-
-/* ajustar a pantallas con ancho menor o igual a 775px; */
-/* ajustar a pantallas con ancho menor o igual a 775px; */

@@ -401,6 +401,19 @@ footer {
         /* Ajusta el tamaño de la fuente de los botones para pantallas extra grandes */
     }
 }
+/* Media query para dispositivos con una pantalla de 901px a 1200px de ancho */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    .logo-section {
+        max-width: 150px;
+        /* Ajusta el tamaño del logo para pantallas grandes */
+    }
+
+
+    .btn-section {
+        font-size: 18px;
+        /* Ajusta el tamaño de la fuente de los botones para pantallas grandes */
+    }
+}
 
 /* Media query para dispositivos con una pantalla entre 601px y 900px de ancho */
 @media only screen and (min-width: 601px) and (max-width: 900px) {
@@ -419,22 +432,8 @@ footer {
 
 }
 
-/* Media query para dispositivos con una pantalla de 901px a 1200px de ancho */
-@media only screen and (min-width: 901px) and (max-width: 1200px) {
-    .logo-section {
-        max-width: 150px;
-        /* Ajusta el tamaño del logo para pantallas grandes */
-    }
-
-
-    .btn-section {
-        font-size: 18px;
-        /* Ajusta el tamaño de la fuente de los botones para pantallas grandes */
-    }
-}
-
 /* Media query para dispositivos con una pantalla de 300px a 600px de ancho */
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 600px) {
     .recomendaciones {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
