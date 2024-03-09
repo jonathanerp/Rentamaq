@@ -12,7 +12,9 @@ import java.util.Set;
 @NoArgsConstructor
 public class SignUpDto {
     @NotNull
-    private String username;
+    private String name;
+    @NotNull
+    private String lastname;
     @NotNull
     private String email;
     @NotNull
