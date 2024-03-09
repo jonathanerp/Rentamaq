@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public class LoginDto {
     @NotNull
-    private String username;
+    private String email;
     @NotNull
     private String password;
 }

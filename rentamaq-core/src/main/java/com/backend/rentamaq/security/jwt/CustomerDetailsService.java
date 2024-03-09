@@ -26,12 +26,12 @@ public class CustomerDetailsService implements UserDetailsService {
     private User userDetail;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        LOGGER.info("Dentro de loadUserByEmail -> " + username);
-        userDetail = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("username not found"));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        LOGGER.info("Dentro de loadUserByEmail -> " + email);
+        userDetail = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("user with this email not found"));
 
         if (!Objects.isNull(userDetail)) {
-            LOGGER.info("DENTRO DEL IF -" + userDetail.getUsername() + " -> " + userDetail.getEmail());
+            LOGGER.info("DENTRO DEL IF -" + userDetail.getName() + " -> " + userDetail.getEmail());
 
             Set<Role> roles = userRepository.findRolesByUserId(userDetail.getId());
             userDetail.setRoles(roles);
@@ -40,13 +40,13 @@ public class CustomerDetailsService implements UserDetailsService {
             GrantedAuthority autorizacion = null;
 
             for (Role role : userDetail.getRoles()) {
-                LOGGER.info("Roles de -> " + userDetail.getUsername());
+                LOGGER.info("Roles de -> " + userDetail.getName());
                 autorizacion = new SimpleGrantedAuthority(role.getName());
                 autorizaciones.add(autorizacion);
             }
-            return new org.springframework.security.core.userdetails.User(userDetail.getUsername(), userDetail.getPassword(), autorizaciones);
+            return new org.springframework.security.core.userdetails.User(userDetail.getEmail(), userDetail.getPassword(), autorizaciones);
         } else {
-            throw new UsernameNotFoundException("User " + username + " not found");
+            throw new UsernameNotFoundException("User email : [" + email + "] not found");
         }
     }
 }

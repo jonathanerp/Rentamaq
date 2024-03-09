@@ -20,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -55,7 +56,8 @@ public class UserService {
 
         User newUser = new User();
         newUser.setEmail(data.getEmail());
-        newUser.setUsername(data.getUsername());
+        newUser.setName(data.getName());
+        newUser.setLastname(data.getLastname());
         newUser.setPassword(bCryptPasswordEncoder.encode(data.getPassword()));
         newUser.setRoles(roles);
 
@@ -63,11 +65,12 @@ public class UserService {
     }
 
     public String login(LoginDto data) throws BadRequestException {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword()));
-        if (!authentication.isAuthenticated()) {
-            throw new BadRequestException("Contraseña o email incorrectos", "User");
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(data.getEmail(), data.getPassword()));
+        if (authentication.isAuthenticated()) {
+            Optional<User> user = userRepository.findByEmail(customerDetailsService.getUserDetail().getEmail());
+            return jwtUtil.generateToken(user.get().getId(), customerDetailsService.getUserDetail().getRoles());
         } else {
-            return jwtUtil.generateToken(customerDetailsService.getUserDetail().getUsername(), customerDetailsService.getUserDetail().getRoles());
+            throw new BadRequestException("Contraseña o email incorrectos", "User");
         }
     }
 
