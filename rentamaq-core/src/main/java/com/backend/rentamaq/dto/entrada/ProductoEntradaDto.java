@@ -18,6 +18,6 @@ public class ProductoEntradaDto {
     @NotBlank(message = "Debe especificarse la descripcion del producto")
     private String descripcion;
 
-    private String imagen;
+    private MultipartFile imagen;
 }
 

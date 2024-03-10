@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const nombre = document.getElementById('nombre');
   const apellido = document.getElementById('apellido');
 
-  botonRegistrar.addEventListener('click', function (event) {
+  document.forms[1].addEventListener('submit', async (event) => {
+    event.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (nombre.value.trim() === '' || apellido.value.trim() === '') {
       alert('Por favor, ingrese su nombre y apellido');
@@ -34,7 +35,31 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
     } else {
       alert('Usted se ha registrado correctamente, ya es rentamaq!');
-      window.location.reload();
+      // window.location.reload();
+    }
+
+    const payload = {
+      name: nombre.value,
+      lastname: apellido.value,
+      email: email.value,
+      password: nuevopassword.value,
+      roles: ['ROLE_CLIENT'],
+    };
+
+    console.log(payload);
+    const settings = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    };
+
+    try {
+      const res = await fetch('https://localhost:8080/auth/login', settings);
+      if (res.status === 201) {
+        // location.replace('login.html');
+      }
+    } catch (error) {
+      console.log(error);
     }
   });
 

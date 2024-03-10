@@ -22,7 +22,7 @@ public class ProductoController {
     }
 
     @PostMapping("guardar")
-    public ResponseEntity<ProductoSalidaDto> guardarProducto(@Valid @RequestBody ProductoEntradaDto productoEntradaDto) {
+    public ResponseEntity<ProductoSalidaDto> guardarProducto(@Valid @RequestBody @ModelAttribute ProductoEntradaDto productoEntradaDto) {
         System.out.println(productoEntradaDto);
         return new ResponseEntity<>(productoService.guardarProducto(productoEntradaDto), HttpStatus.CREATED);
     }
