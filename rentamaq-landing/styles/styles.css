@@ -21,7 +21,8 @@ header {
     align-items: center;
     position: fixed;
     width: 100%;
-    height: 20%;
+    height: 23vh;
+    padding: 5%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 0 30px;
     z-index: 999;
@@ -50,12 +51,11 @@ header {
 }
 
 .btn-section {
-    display: block;
+    display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     align-content: center;
     gap: 5px;
-    margin-right: 70px;
-
 }
 
 .btn-section button {
@@ -73,17 +73,16 @@ header {
     box-shadow: inset 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* header */
-
 /* Listado de productos  */
 
 main {
-    padding-top: 190px;
+    padding-top: 20vh;
 }
 
 /* -------------------BUSCADOR------------------ */
 .content-buscador {
     position: relative;
+    margin: 10px;
 
 }
 
@@ -91,7 +90,7 @@ main {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 .buscador h2 {
@@ -107,10 +106,7 @@ main {
 .searchForm {
     font-family: "Prompt", sans-serif;
     display: flex;
-    /* Utiliza un modelo de caja flexible para alinear elementos */
-    /* Ancho máximo del formulario */
     margin: auto;
-    /* Centra el formulario horizontalmente */
 }
 
 .searchInput {
@@ -120,13 +116,9 @@ main {
 #searchInput {
     width: 400px;
     padding: 10px;
-    /* Espaciado interno */
     border: 1px solid #ccc;
-    /* Borde del campo de entrada */
     border-radius: 10px;
-    /* Bordes redondeados */
     margin-right: 10px;
-    /* Espaciado derecho entre el campo de entrada y el botón */
     color: #999;
     background-color: #FFD100;
     box-shadow: #333533;
@@ -134,18 +126,14 @@ main {
 
 .icon {
     padding: 10px 15px;
-    /* Espaciado interno del botón */
     border: 0;
     border-radius: 5px;
-    /* Bordes redondeados */
     cursor: pointer;
-    /* Cambia el cursor al pasar sobre el botón */
     background: none;
 }
 
 .icon:hover {
     background-color: #ffd100;
-    /* Cambia el color de fondo al pasar sobre el botón */
     border: none;
     color: #fff;
 }
@@ -153,11 +141,6 @@ main {
 .icon img {
     width: 40px;
 }
-
-/* BUSCADOR */
-
-
-
 
 /* -----------------CATEGORIA---------------- */
 
@@ -173,51 +156,62 @@ main {
 
 /* ----------------card------------------ */
 .card1 {
-    background-image: url('../imagenes/maquinariapesada.jpg');
+    background-image: url('../imagenes/maquinariapesada.png');
     background-size: cover;
+    background-position: center;
     border-radius: 8px;
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin: 10px;
-    width: 400px;
+    margin-right: -30px;
+    width: 350px;
     height: 400px;
+    clip-path: polygon(0% 0, 100% 0, 75% 100%, 0 100%);
 }
 
+
 .card2 {
-    background-image: url('../imagenes/herramientapequeña.jpg');
+    background-image: url('../imagenes/herramientapequeña.png ');
     background-size: cover;
-    border-radius: 8px;
+    background-position: center;
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin: 10px;
-    width: 400px;
+    margin-left: -30px;
+    margin-right: -30px;
+    width: 350px;
     height: 400px;
+    clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
+
 }
 
 .card3 {
-    background-image: url('../imagenes/indumentaria.jpg');
+    background-image: url('../imagenes/indumentaria.png');
     background-size: cover;
-    border-radius: 8px;
+    background-position: center;
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin: 10px;
-    width: 400px;
+    margin-left: -30px;
+    margin-right: -30px;
+    width: 350px;
     height: 400px;
+    clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
+
 }
 
 .card4 {
-    background-image: url('../imagenes/equipoconstruccion.jpg');
+    background-image: url('../imagenes/equipoconstruccion.png');
     background-size: cover;
-    border-radius: 8px;
+    background-position: center;
+    border-radius: 8px 0px 0x 8px;
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin: 10px;
-    width: 400px;
+    margin-left: -30px;
+    width: 350px;
     height: 400px;
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .card1:hover {
@@ -256,11 +250,6 @@ main {
 .card img {
     width: 50px;
 }
-
-/* ----------------card------------------ */
-/* CATEGORIA */
-
-
 
 /* --------------RECOMENDACIONES------------- */
 .recomendaciones {
@@ -345,9 +334,6 @@ main {
     color: #202020;
 }
 
-/* RECOMENDACIONES */
-
-
 /*---------------FOOTER--------------- */
 footer {
     display: flex;
@@ -382,44 +368,46 @@ footer {
     color: #202020;
 }
 
-/*---------------FOOTER--------------- */
-
-
-
 /* --------------------------RESPONSIVE------------------------ */
 
 /* Media query para dispositivos con una pantalla de más de 1200px de ancho */
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 1224px) {
+    header {
+        padding: 20px 30px;
+    }
+
     .logo-section {
         max-width: 200px;
-        /* Ajusta el tamaño del logo para pantallas extra grandes */
     }
 
+    .logo-section img {
+        width: 150px;
+    }
 
-    .btn-section {
+    .btn-section button {
         font-size: 20px;
-        /* Ajusta el tamaño de la fuente de los botones para pantallas extra grandes */
+        padding: 12px 20px;
     }
-}
-/* Media query para dispositivos con una pantalla de 901px a 1200px de ancho */
-@media only screen and (min-width: 901px) and (max-width: 1200px) {
-    .logo-section {
-        max-width: 150px;
-        /* Ajusta el tamaño del logo para pantallas grandes */
+
+    .category .cards {
+        margin: 30px auto;
     }
 
 
-    .btn-section {
-        font-size: 18px;
-        /* Ajusta el tamaño de la fuente de los botones para pantallas grandes */
+    .recomendaciones {
+        padding: 60px 40px;
     }
 }
 
 /* Media query para dispositivos con una pantalla entre 601px y 900px de ancho */
-@media only screen and (min-width: 601px) and (max-width: 900px) {
+@media only screen and (min-width: 601px) and (max-width: 1223px) {
+    header {
+        padding: 15px 20px;
+        height: 160px;
+    }
+
     .logo-section {
         max-width: 120px;
-        /* Ajusta el tamaño del logo para pantallas medianas */
     }
 
     .logo-section img {
@@ -430,69 +418,34 @@ footer {
         font-size: 10px;
     }
 
-}
 
-/* Media query para dispositivos con una pantalla de 300px a 600px de ancho */
-@media only screen and (max-width: 600px) {
-    .recomendaciones {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 10px;
-        justify-items: center;
-    }
-
-    .btn-section {
-        flex-direction: column;
-    }
 
     .btn-section button {
-        font-size: 15px;
+        font-size: 14px;
+        padding: 10px 18px;
     }
+
+    .category .cards {
+        margin: 20px auto;
+        flex-direction: row;
+    }
+
+    .card1,
+    .card2,
+    .card3,
+    .card4 {
+        width: calc(25% - 20px);
+        margin-bottom: 0;
+        clip-path: none;
+    }
+
+    .recomendaciones {
+        padding: 40px 20px;
+    }
+
 }
 
-/* --------------------------RESPONSIVE------------------------ */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Tu CSS base aquí */
-
-/* Media query para dispositivos con una pantalla de hasta 600px de ancho (celulares) */
+/* Media query para dispositivos con una pantalla hasta 600px de ancho */
 @media only screen and (max-width: 600px) {
     header {
         padding: 10px;
@@ -526,10 +479,7 @@ footer {
     .card4 {
         width: calc(100% - 20px);
         margin-bottom: 20px;
-    }
-
-    .recomendaciones {
-        padding: 20px 10px;
+        clip-path: none;
     }
 
     .content-recoment-cards {
@@ -548,112 +498,20 @@ footer {
     .social i {
         font-size: 30px;
     }
-}
 
-/* Media query para dispositivos con una pantalla entre 601px y 992px de ancho (tabletas) */
-@media only screen and (min-width: 601px) and (max-width: 992px) {
-    header {
-        padding: 15px 20px;
+    .recomendaciones {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        justify-items: center;
+        padding: 20px 10px;
     }
 
-    .logo-section {
-        max-width: 120px;
-    }
-
-    .logo-section img {
-        width: 100px;
+    .btn-section {
+        flex-direction: column;
     }
 
     .btn-section button {
-        font-size: 14px;
-        padding: 10px 18px;
-    }
-
-    .category .cards {
-        margin: 15px auto;
-    }
-
-    .card1,
-    .card2,
-    .card3,
-    .card4 {
-        width: calc(33.33% - 20px);
-    }
-
-    .recomendaciones {
-        padding: 40px 20px;
-    }
-}
-
-/* Media query para dispositivos con una pantalla entre 993px y 1200px de ancho (iPad Pro) */
-/* Media query para dispositivos con una pantalla entre 601px y 992px de ancho (iPad) */
-@media only screen and (min-width: 601px) and (max-width: 992px) {
-    header {
-        padding: 15px 20px;
-    }
-
-    .logo-section {
-        max-width: 120px;
-    }
-
-    .logo-section img {
-        width: 100px;
-    }
-
-    .btn-section button {
-        font-size: 14px;
-        padding: 10px 18px;
-    }
-
-    .category .cards {
-        margin: 20px auto;
-        flex-direction: row;
-    }
-
-    .card1,
-    .card2,
-    .card3,
-    .card4 {
-        width: calc(25% - 20px);
-        margin-bottom: 0;
-    }
-
-    .recomendaciones {
-        padding: 40px 20px;
-    }
-}
-
-/* Media query para dispositivos con una pantalla de más de 1200px de ancho (escritorio grande) */
-@media only screen and (min-width: 1201px) {
-    header {
-        padding: 20px 30px;
-    }
-
-    .logo-section {
-        max-width: 200px;
-    }
-
-    .logo-section img {
-        width: 150px;
-    }
-
-    .btn-section button {
-        font-size: 20px;
-        padding: 12px 20px;
-    }
-
-    .category .cards {
-        margin: 30px auto;
-    }
-
-    .card1,
-    .card2,
-    .card3,
-    .card4 {
-        width: calc(25% - 20px);
-    }
-
-    .recomendaciones {
-        padding: 60px 40px;
+        font-size: 15px;
     }
 }
