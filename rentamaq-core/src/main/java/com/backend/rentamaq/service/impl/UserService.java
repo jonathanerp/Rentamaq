@@ -4,14 +4,12 @@ import com.backend.rentamaq.entity.Role;
 import com.backend.rentamaq.entity.User;
 import com.backend.rentamaq.exception.BadRequestException;
 import com.backend.rentamaq.repository.UserRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.backend.rentamaq.dto.Auth.LoginDto;
 import com.backend.rentamaq.dto.Auth.SignUpDto;
 
 import com.backend.rentamaq.repository.RoleRepository;
 import com.backend.rentamaq.security.jwt.CustomerDetailsService;
 import com.backend.rentamaq.security.jwt.JwtUtil;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +23,6 @@ import java.util.Set;
 
 @Service
 public class UserService {
-    private final Logger LOGGER = Logger.getLogger(UserService.class);
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -36,8 +33,7 @@ public class UserService {
     private JwtUtil jwtUtil;
     @Autowired
     private CustomerDetailsService customerDetailsService;
-    @Autowired
-    private ObjectMapper mapper;
+
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
 
 

@@ -14,16 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (nombre.value.trim() === '' || apellido.value.trim() === '') {
       alert('Por favor, ingrese su nombre y apellido');
-      event.preventDefault();
+      return;
     } else if (!emailPattern.test(email.value.trim())) {
       alert('El correo electrónico no es válido');
       email.value = '';
       email.focus();
-      event.preventDefault();
+      return;
     } else if (nuevopassword.value.trim() === '') {
       alert('ingrese una contraseña valida');
       nuevopassword.focus();
-      event.preventDefault();
+      return;
     } else if (
       nuevopassword.value.trim() !== '' &&
       nuevopassword.value !== confirmacionpassword.value
@@ -32,10 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
       nuevopassword.value = '';
       confirmacionpassword.value = '';
       password.focus();
-      event.preventDefault();
-    } else {
-      alert('Usted se ha registrado correctamente, ya es rentamaq!');
-      // window.location.reload();
+      return;
     }
 
     const payload = {
@@ -54,8 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch('https://localhost:8080/auth/login', settings);
+      const res = await fetch('http://localhost:8080/auth/signup', settings);
       if (res.status === 201) {
+        alert('Usted se ha registrado correctamente, ya es rentamaq!');
+         //mostrar login
         // location.replace('login.html');
       }
     } catch (error) {
