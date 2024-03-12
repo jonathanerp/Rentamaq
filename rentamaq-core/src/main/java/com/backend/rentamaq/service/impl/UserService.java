@@ -1,15 +1,17 @@
 package com.backend.rentamaq.service.impl;
 
+import com.backend.rentamaq.dto.salida.UserDto;
 import com.backend.rentamaq.entity.Role;
 import com.backend.rentamaq.entity.User;
 import com.backend.rentamaq.exception.BadRequestException;
 import com.backend.rentamaq.repository.UserRepository;
 import com.backend.rentamaq.dto.Auth.LoginDto;
 import com.backend.rentamaq.dto.Auth.SignUpDto;
-
 import com.backend.rentamaq.repository.RoleRepository;
 import com.backend.rentamaq.security.jwt.CustomerDetailsService;
 import com.backend.rentamaq.security.jwt.JwtUtil;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,9 +35,17 @@ public class UserService {
     private JwtUtil jwtUtil;
     @Autowired
     private CustomerDetailsService customerDetailsService;
+    private final ModelMapper modelMapper;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
 
+    public UserService(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    private UserDto toDto(User user) {
+        return modelMapper.map(user, UserDto.class);
+    }
 
     public void signup(SignUpDto data) throws BadRequestException {
         if (userRepository.findByEmail(data.getEmail()).isPresent()) {
@@ -61,7 +71,8 @@ public class UserService {
     }
 
     public String login(LoginDto data) throws BadRequestException {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(data.getEmail(), data.getPassword()));
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(data.getEmail(), data.getPassword()));
         if (authentication.isAuthenticated()) {
             Optional<User> user = userRepository.findByEmail(customerDetailsService.getUserDetail().getEmail());
             return jwtUtil.generateToken(user.get().getId(), customerDetailsService.getUserDetail().getRoles());
@@ -70,4 +81,14 @@ public class UserService {
         }
     }
 
+    public UserDto findUserById(Long id) throws BadRequestException {
+        Optional<User> userResult = this.userRepository.findById(id);
+
+        if (userResult.isEmpty()){
+            throw new BadRequestException("User not found", "User");
+        }
+
+        User user = userResult.get();
+        return toDto(user);
+    }
 }
