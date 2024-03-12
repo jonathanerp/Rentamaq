@@ -50,6 +50,15 @@ header {
     text-align: center;
 }
 
+.admin-section{
+    display: none;
+}
+
+.adminRoute{
+    width: 100px;
+    height: 100px;
+}
+
 .btn-section {
     display: flex;
     flex-direction: column;
