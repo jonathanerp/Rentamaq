@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // ----------------------------------------------------------------
+  
   //SIGNUP
   const formRegistro = document.getElementById('registroform');
   const email = document.getElementById('email');

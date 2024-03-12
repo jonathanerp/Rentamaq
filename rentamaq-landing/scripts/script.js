@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userSection = document.querySelector('.user-info');
     const btnSection = document.querySelector('.btn-section');
     const token = localStorage.getItem('token');
+    const adminSection = document.querySelector('admin-section');
 
     if (form === 'pass') {
         alert("Para acceder debes de iniciar sesion")
@@ -63,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (token) {
         userSection.style.display = 'flex';
         btnSection.style.display = 'none';
+        adminSection.style.display = 'flex';
     }
 
     const logoutBtn = document.getElementById('logout');
