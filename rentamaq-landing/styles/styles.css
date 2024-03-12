@@ -163,7 +163,7 @@ main {
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin-right: -30px;
+    margin-right: -35px;
     width: 350px;
     height: 400px;
     clip-path: polygon(0% 0, 100% 0, 75% 100%, 0 100%);
@@ -177,8 +177,8 @@ main {
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin-left: -30px;
-    margin-right: -30px;
+    margin-left: -35px;
+    margin-right: -35px;
     width: 350px;
     height: 400px;
     clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
@@ -192,8 +192,8 @@ main {
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin-left: -30px;
-    margin-right: -30px;
+    margin-left: -35px;
+    margin-right: -35px;
     width: 350px;
     height: 400px;
     clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
@@ -208,7 +208,7 @@ main {
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin-left: -30px;
+    margin-left: -35px;
     width: 350px;
     height: 400px;
     clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
@@ -349,8 +349,7 @@ footer {
 
 .footer-logo {
     display: flex;
-    align-content: center;
-    vertical-align: middle;
+    align-content: flex-end;
 }
 
 .footer-logo img {
@@ -393,6 +392,15 @@ footer {
         margin: 30px auto;
     }
 
+    .card1 .text {
+        justify-content: left;
+        margin-left: 5px;
+    }
+
+    .card4 .text {
+        justify-content: right;
+        margin-right: 5px;
+    }
 
     .recomendaciones {
         padding: 60px 40px;
@@ -456,7 +464,8 @@ footer {
     }
 
     .logo-section img {
-        width: 80px;
+       width: 100px;
+       height: 100px;
     }
 
     .btn-section button {
@@ -513,5 +522,14 @@ footer {
 
     .btn-section button {
         font-size: 15px;
+    }
+
+    .footer-logo{
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .footer-logo .p {
+        font-size: 0.7em;
     }
 }
