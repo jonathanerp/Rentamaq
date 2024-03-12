@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const res = await fetch('http://localhost:8080/auth/signup', settings);
       if (res.status === 201) {
         alert('Usted se ha registrado correctamente, ya es rentamaq!');
-         //mostrar login
-        // location.replace('login.html');
+        location.replace('auth.html');
       }
     } catch (error) {
       console.log(error);
@@ -64,6 +63,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ----------------------------------------------------------------
   //lOGIN
+
+  document.getElementById('loginform').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const usuario = document.getElementById('usuario').value;
+    const password = document.getElementById('password').value;
+
+    const payload = {
+      email: usuario,
+      password: password
+    };
+
+    const settings = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    };
+
+    try {
+      const res = await fetch('http://localhost:8080/auth/login', settings);
+      if (res.status === 200) {
+        const data = await res.json();
+        alert('Inicio de sesión exitoso!');
+        localStorage.setItem('token', data.token);
+        window.location.href = 'index.html?pass';
+      } else {
+        alert('Inicio de sesión incorrecto. Por favor, verifica tu usuario y/o contraseña.');
+      }
+    } catch (error) {
+      console.log(error);
+      alert('Ocurrió un error al intentar iniciar sesión intenta mas tarde o contacta al administrador del sitio');
+    }
+  });
+
   const urlParams = new URLSearchParams(window.location.search);
   const form = urlParams.get('form');
   const enlaceRegistro = document.getElementById('sinregistrar');

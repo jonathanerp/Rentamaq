@@ -1,19 +1,21 @@
-document.querySelector('.logo-section a').addEventListener('click', function() {
+
+
+document.querySelector('.logo-section a').addEventListener('click', function () {
     window.location.href = 'index.html';
 });
 
 const productosConstruccionPesada = [];
 
-const cargarProductos = async() =>{
-    try{
+const cargarProductos = async () => {
+    try {
         const apiData = await fetch('http://localhost:8080/productos');
         const apiDataJson = await apiData.json();
         console.log(apiDataJson);
-    
+
         apiDataJson.forEach(producto => {
             productosConstruccionPesada.push(producto);
         });
-    }catch (error) {
+    } catch (error) {
         console.error('Error fetching data from API:', error);
     }
 }
@@ -45,7 +47,33 @@ window.addEventListener('load', function () {
             `;
         }
     }
-renderizarRecomendaciones();
+    renderizarRecomendaciones();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const form = urlParams.get('form');
+    const userSection = document.querySelector('.user-info');
+    const btnSection = document.querySelector('.btn-section');
+    const token = localStorage.getItem('token');
+
+    if (form === 'pass') {
+        alert("Para acceder debes de iniciar sesion")
+        window.location.replace('auth.html');
+    } else if (token) {
+        userSection.style.display = 'flex';
+        btnSection.style.display = 'none';
+    }
+
+    const logoutBtn = document.getElementById('logout');
+
+    logoutBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        sessionStorage.clear();
+        localStorage.clear();
+        alert("Has cerrado sesión correctamente");
+        window.location.href = "index.html";
+    });
 });
 
 
@@ -53,4 +81,9 @@ renderizarRecomendaciones();
 
 
 
-    
+
+
+
+
+
+

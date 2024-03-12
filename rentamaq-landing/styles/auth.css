@@ -44,18 +44,12 @@ body {
 
     background-color: #d6d6d6;
 
-    border-radius: 10px 10px 10px 10px;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
-
-
 
     padding: 30px;
     box-sizing: border-box;
+
 }
 
 #contenedorregistro {
