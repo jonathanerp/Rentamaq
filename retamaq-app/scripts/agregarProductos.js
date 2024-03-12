@@ -1,3 +1,35 @@
+const categorias = [];
+
+const cargarCategorias = async() =>{
+    try{
+        const apiData = await fetch('http://localhost:8080/categorias');
+        const apiDataJson = await apiData.json();
+        console.log(apiDataJson);
+    
+        apiDataJson.forEach(categoria => {
+            categorias.push(categoria);
+        });
+    }catch (error) {
+        console.error('Error fetching data from API:', error);
+    }
+}
+
+cargarCategorias();
+
+window.addEventListener('load', function () {
+
+    function renderizarCategorias() {
+        const categoriashtml = document.querySelector('#categoriaId');
+        categoriashtml.innerHTML = '';
+        categorias.forEach(function(cat) {
+            categoriashtml.innerHTML += `
+                <option value="${cat.id}">${cat.titulo}</option>
+            `;
+        });
+    }
+    renderizarCategorias();
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const formulario = document.getElementById('formularioProducto');
 
@@ -6,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Construir el objeto FormData para enviar los datos del formulario
         const formData = new FormData(formulario);
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
         
         document.getElementById('error-nombre').textContent = "";
         document.getElementById('error-descripcion').textContent = "";
