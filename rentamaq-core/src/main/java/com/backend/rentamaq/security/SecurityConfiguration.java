@@ -38,6 +38,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                                 .requestMatchers(
+                                "/imagenes/**",
                                         "/productos",
                                         "/productos/**",
                                         "/roles",
