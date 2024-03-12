@@ -15,4 +15,8 @@ public interface IProductoService {
 
     void eliminarPaciente(Long id);
 
+    List<ProductoSalidaDto> listarProductosSinCategoria();
+
+    ProductoSalidaDto asignarCategoriaAProducto(Long productoId, Long categoriaId);
+
 }

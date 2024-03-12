@@ -42,7 +42,9 @@ public class SecurityConfiguration {
                                         "/productos/**",
                                         "/roles",
                                         "/auth/signup",
-                                        "/auth/login"
+                                        "/auth/login",
+                                        "/imagenes/**",
+                                        "/categorias"
                                 ).permitAll()
 //                        .requestMatchers(HttpMethod.POST, "api/v1/**").hasRole("ADMIN")
 //                        .requestMatchers(HttpMethod.GET, "api/v1/**").hasAnyRole("USER", "ADMIN")

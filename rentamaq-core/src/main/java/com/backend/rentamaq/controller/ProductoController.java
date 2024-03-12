@@ -2,7 +2,7 @@ package com.backend.rentamaq.controller;
 
 import com.backend.rentamaq.dto.entrada.ProductoEntradaDto;
 import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
-import com.backend.rentamaq.service.impl.ProductoService;
+import com.backend.rentamaq.service.IProductoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +15,14 @@ import java.util.List;
 @RequestMapping("/productos")
 public class ProductoController {
 
-    private final ProductoService productoService;
+    private final IProductoService productoService;
 
-    public ProductoController(ProductoService productoService) {
+    public ProductoController(IProductoService productoService) {
         this.productoService = productoService;
     }
 
     @PostMapping("guardar")
-    public ResponseEntity<ProductoSalidaDto> guardarProducto(@Valid @RequestBody @ModelAttribute ProductoEntradaDto productoEntradaDto) {
-        System.out.println(productoEntradaDto);
+    public ResponseEntity<ProductoSalidaDto> guardarProducto(@Valid @ModelAttribute ProductoEntradaDto productoEntradaDto) {
         return new ResponseEntity<>(productoService.guardarProducto(productoEntradaDto), HttpStatus.CREATED);
     }
 
@@ -37,10 +36,14 @@ public class ProductoController {
         return new ResponseEntity<>(productoService.buscarProductoPorId(id), HttpStatus.OK);
     }
 
-    @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarProducto(@PathVariable Long id) {
-        productoService.eliminarPaciente(id);
-        return new ResponseEntity<>("Producto eliminado correctamente", HttpStatus.OK);
+    @GetMapping("/sincategoria")
+    public ResponseEntity<List<ProductoSalidaDto>> listarProductosSinCategoria() {
+        return new ResponseEntity<>(productoService.listarProductosSinCategoria(), HttpStatus.OK);
     }
 
+    @PostMapping("/{productoId}/categoria/{categoriaId}")
+    public ResponseEntity<ProductoSalidaDto> asignarCategoriaAProducto(@PathVariable Long productoId, @PathVariable Long categoriaId) {
+        ProductoSalidaDto producto = productoService.asignarCategoriaAProducto(productoId, categoriaId);
+        return ResponseEntity.ok().body(producto);
+    }
 }

@@ -1,6 +1,9 @@
 package com.backend.rentamaq.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="productos", uniqueConstraints = @UniqueConstraint(columnNames = "nombre"))
@@ -15,13 +18,23 @@ public class Producto {
     private String descripcion;
     private String urlImagen;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    @JsonIgnore
+    private Categoria categoria;
+
+    @OneToMany(mappedBy = "producto")
+    @JsonIgnore
+    private List<Caracteristica> caracteristicas;
+
     public Producto() {
     }
 
-    public Producto(String nombre, String descripcion, String urlImagen) {
+    public Producto(String nombre, String descripcion, String urlImagen, Categoria categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.urlImagen = urlImagen;
+        this.categoria = categoria;
     }
 
     public Long getId() {
@@ -56,8 +69,16 @@ public class Producto {
         this.urlImagen = urlImagen;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     @Override
     public String toString() {
-        return "Id: " + id + " - Nombre: " + nombre + " - Descripcion: " + descripcion + " - URLImagen: " + urlImagen;
+        return "Id: " + id + " - Nombre: " + nombre + " - Descripcion: " + descripcion + " - URLImagen: " + urlImagen + " - Categoria: " + categoria;
     }
 }

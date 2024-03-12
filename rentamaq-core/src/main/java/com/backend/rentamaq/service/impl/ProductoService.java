@@ -2,7 +2,9 @@ package com.backend.rentamaq.service.impl;
 
 import com.backend.rentamaq.dto.entrada.ProductoEntradaDto;
 import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
+import com.backend.rentamaq.entity.Categoria;
 import com.backend.rentamaq.entity.Producto;
+import com.backend.rentamaq.repository.CategoriaRepository;
 import com.backend.rentamaq.repository.ProductoRepository;
 import com.backend.rentamaq.service.IProductoService;
 import org.modelmapper.ModelMapper;
@@ -25,10 +27,12 @@ public class ProductoService implements IProductoService {
     private final Logger LOGGER = LoggerFactory.getLogger(ProductoService.class);
     private final ProductoRepository productoRepository;
 
+    private final CategoriaRepository categoriaRepository;
     private final ModelMapper modelMapper;
 
-    public ProductoService(ProductoRepository productoRepository, ModelMapper modelMapper) {
+    public ProductoService(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ModelMapper modelMapper) {
         this.productoRepository = productoRepository;
+        this.categoriaRepository = categoriaRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -62,11 +66,13 @@ public class ProductoService implements IProductoService {
         producto.setNombre(productoEntradaDto.getNombre());
         producto.setDescripcion(productoEntradaDto.getDescripcion());
         producto.setUrlImagen(urlImagen);
-//        producto.setUrlImagen(productoEntradaDto.getImagen());
+
+        Categoria categoria = categoriaRepository.findById(productoEntradaDto.getCategoriaId()).orElse(null);
+        producto.setCategoria(categoria);
 
         productoRepository.save(producto);
         ProductoSalidaDto productoSalidaDto = entidadADtoSalida(producto);
-        LOGGER.info("Producto guardado: {}", productoSalidaDto);
+        LOGGER.info("Paciente guardado: {}", productoSalidaDto);
 
         return productoSalidaDto;
     }
@@ -76,7 +82,7 @@ public class ProductoService implements IProductoService {
         List<ProductoSalidaDto> listaProductos = new java.util.ArrayList<>(productoRepository.findAll().stream()
                 .map(this::entidadADtoSalida).toList());
 
-        LOGGER.info("Listado de todos los pacientes: {}", listaProductos);
+        LOGGER.info("Listado de todos los productos: {}", listaProductos);
         Collections.shuffle(listaProductos);
         return listaProductos;
     }
@@ -104,4 +110,26 @@ public class ProductoService implements IProductoService {
         }
     }
 
+    public List<ProductoSalidaDto> listarProductosSinCategoria() {
+        List<ProductoSalidaDto> listaProductosSinCategoria = new java.util.ArrayList<>(productoRepository.listarProductosSinCategoria().stream()
+                .map(this::entidadADtoSalida).toList());
+        LOGGER.info("Listado de todos los productos Sin categoria: {}", listaProductosSinCategoria);
+        return listaProductosSinCategoria;
+    }
+
+    @Override
+    public ProductoSalidaDto asignarCategoriaAProducto(Long productoId, Long categoriaId) {
+        Producto productoBuscado = productoRepository.findById(productoId).orElse(null);
+        Categoria categoriaBuscada = categoriaRepository.findById(categoriaId).orElse(null);
+
+        ProductoSalidaDto productoSalidaDto = null;
+        if (productoBuscado != null && categoriaBuscada != null ) {
+            productoBuscado.setCategoria(categoriaBuscada);
+            productoRepository.save(productoBuscado);
+            productoSalidaDto = entidadADtoSalida(productoBuscado);
+            LOGGER.info("Categoria asignada al producto: {}", productoSalidaDto);
+        } else LOGGER.error("Alguno de los id no se encuentra registrado en la base de datos");
+
+        return productoSalidaDto;
+    }
 }
