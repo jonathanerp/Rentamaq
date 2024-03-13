@@ -38,4 +38,8 @@ public class CaracteristicaService implements ICaracteristicaService {
         LOGGER.info("Listado de todas las caracteristicas: {}", listaCaracteristicas);
         return listaCaracteristicas;
     }
+
+    public List<Caracteristica> obtenerCaracteristicasPorProductoId(Long productoId) {
+        return caracteristicaRepository.findByProductoId(productoId);
+    }
 }

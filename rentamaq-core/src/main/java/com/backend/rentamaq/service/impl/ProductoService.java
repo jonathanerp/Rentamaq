@@ -110,13 +110,6 @@ public class ProductoService implements IProductoService {
         }
     }
 
-    public List<ProductoSalidaDto> listarProductosSinCategoria() {
-        List<ProductoSalidaDto> listaProductosSinCategoria = new java.util.ArrayList<>(productoRepository.listarProductosSinCategoria().stream()
-                .map(this::entidadADtoSalida).toList());
-        LOGGER.info("Listado de todos los productos Sin categoria: {}", listaProductosSinCategoria);
-        return listaProductosSinCategoria;
-    }
-
     @Override
     public ProductoSalidaDto asignarCategoriaAProducto(Long productoId, Long categoriaId) {
         Producto productoBuscado = productoRepository.findById(productoId).orElse(null);
@@ -131,5 +124,8 @@ public class ProductoService implements IProductoService {
         } else LOGGER.error("Alguno de los id no se encuentra registrado en la base de datos");
 
         return productoSalidaDto;
+    }
+    public List<Producto> obtenerProductosPorCategoriaId(Long categoriaId) {
+        return productoRepository.findByCategoriaId(categoriaId);
     }
 }
