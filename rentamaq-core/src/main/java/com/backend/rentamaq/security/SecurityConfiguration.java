@@ -44,7 +44,8 @@ public class SecurityConfiguration {
                                         "/roles",
                                         "/user/**",
                                         "/categorias"
-                                ).permitAll()
+
+                                        ).permitAll()
 //                        .requestMatchers(HttpMethod.POST, "api/v1/**").hasRole("ADMIN")
 //                        .requestMatchers(HttpMethod.GET, "api/v1/**").hasAnyRole("USER", "ADMIN")
 //                        .requestMatchers(HttpMethod.PUT, "api/v1/**").hasRole("ADMIN")
