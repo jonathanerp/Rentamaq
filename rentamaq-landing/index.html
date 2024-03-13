@@ -9,8 +9,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
     rel="stylesheet" />
-
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./styles/styles.css" />
   <title>Equipos de construccion</title>
   <script src="https://kit.fontawesome.com/ae1d842f3c.js" crossorigin="anonymous"></script>
 </head>
@@ -28,18 +30,7 @@
     </div>
 
 
-    <div class="content-buscador">
-      <div class="buscador">
-        <h2>¿Que buscas para tus proyectos?</h2>
-        <form class="searchForm">
-          <input class="searchInput" type="text" id="searchInput"
-            placeholder="Ingresa palabras claves de tu busqueda..." />
-          <button class="icon" type="submit">
-            <img src="./imagenes/search.svg" alt="" />
-          </button>
-        </form>
-      </div>
-    </div>
+
 
     <div class="btn-section">
       <button onclick="window.location.href='auth.html?form=registro'">
@@ -52,7 +43,8 @@
 
     <div class="user-info">
       <div class="avatar">
-        <text class="iniciales">SM<!-- Acá se debe capturar las iniciales--></text>
+        <text class="iniciales">SM
+          <!-- Acá se debe capturar las iniciales--></text>
       </div>
       <button id="logout">Cerrar sesion</button>
     </div>
@@ -61,66 +53,172 @@
 
   <!-- Listado de productos -->
   <main>
-    <!---------------------- categorias ---------------------->
-    <section class="category">
-      <div class="cards">
-        <div class="card1">
-          <div class="text">
-            <a href="maqpesada.html">
-              <h3>MAQUINARIA PESADA</h3>
-            </a>
-          </div>
-        </div>
-        <div class="card2">
-          <div class="text">
-            <a href="herramientas.html">
-              <h3>HERRAMIENTAS PEQUEÑAS</h3>
-            </a>
-          </div>
-        </div>
-        <div class="card3">
-          <div class="text">
-            <a href="indumentaria.html">
-              <h3>INDUMENTARIA</h3>
-            </a>
-          </div>
-        </div>
-        <div class="card4">
-          <div class="text">
-            <a href="construccion.html">
-              <h3>EQUIPOS PARA CONSTRUCCION</h3>
-            </a>
-          </div>
-        </div>
+    <section class="content-buscador">
+      <div class="buscador">
+        <h2>¿Que buscas para tus proyectos?</h2>
+        <form class="searchForm">
+          <input class="searchInput" type="text" id="searchInput"
+            placeholder="Ingresa palabras claves de tu busqueda..." />
+          <button class="icon" type="submit">
+            <img src="./imagenes/search.svg" alt="" />
+          </button>
+        </form>
       </div>
     </section>
+    <!---------------------- categorias ---------------------->
 
-    <!-- categorias -->
+    <!-- <div class="contenedor">
+      <div class="carousel">
+        <div class="carousel__contenedor">
 
-    <!------------------------ recomendaciones ----------------->
-    <div class="title-recomend">
-      <h2>Recomendaciones</h2>
-    </div>
-    <div class="content-recoment-cards">
-      <section id="recomendaciones" class="recomendaciones"></section>
-    </div>
-    <!-- recomendaciones -->
+          <button aria-label="Anterior" class="carousel__anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
 
-    <!-------------------- footer -------------------->
+          <div class="carousel__lista">
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/maquinariapesada.png" alt="Rock and Roll Hall of Fame" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
+                  <h3 class="titleCategory">MAQUINARIA PESADA</h3>
+                </a>
+              </div>
+            </div>
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/maquinariapesada.png" alt="Rock and Roll Hall of Fame" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory">
+                  <h3 class="titleCategory">MAQUINARIA PESADA</h3>
+                </a>
+              </div>
+            </div>
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/maquinariapesada.png" alt="Rock and Roll Hall of Fame" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory">
+                  <h3 class="titleCategory">MAQUINARIA PESADA</h3>
+                </a>
+              </div>
+            </div>
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/maquinariapesada.png" alt="Rock and Roll Hall of Fame" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory">
+                  <h3 class="titleCategory">MAQUINARIA PESADA</h3>
+                </a>
+              </div>
+            </div>
 
-    <footer>
-      <div class="footer-logo">
-        <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
-        <p>Todos los derechos reservados &copy;</p>
+            <button aria-label="Siguiente" class="carousel__siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+
+          </div>
+          <div role="tablist" class="carousel__indicadores"></div>
+        </div>
+
       </div>
-      <div class="social">
-        <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://twitter.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
+    </div> -->
+    <div class="contenedor">
+      <div class="carousel">
+        <div class="carousel__contenedor">
+          <button aria-label="Anterior" class="carousel__anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+  
+          <div class="carousel__lista">
+            
+            
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/maquinariapesada.png" alt="maquinaria pesada" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
+                  <h3 class="titleCategory">MAQUINARIA PESADA</h3>
+                </a>
+              </div>
+            </div>
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/equipoconstruccion.png" alt="equipos de construccion" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
+                  <h3 class="titleCategory">EQUIPOS CONSTRUCCIÓN</h3>
+                </a>
+              </div>
+            </div>
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/indumentaria.png" alt="indumentaria" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
+                  <h3 class="titleCategory">INDUMENTARIA</h3>
+                </a>
+              </div>
+            </div>
+            <div class="carousel__elemento">
+              <div class="image-container">
+                <img src="./imagenes/herramientapequeña.png" alt="herramientas pequeñas" class="imgCategory">
+              </div>
+              <div class="title-container">
+                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
+                  <h3 class="titleCategory">HERRAMIENTAS PEQUEÑAS</h3>
+                </a>
+              </div>
+            </div>
+            
+            
+          </div>
+  
+          <button aria-label="Siguiente" class="carousel__siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+  
+        <div role="tablist" class="carousel__indicadores"></div>
       </div>
-    </footer>
+    </div>
+  
+
+
+      <!-- categorias -->
+
+      <!------------------------ recomendaciones ----------------->
+      <div class="title-recomend">
+        <h2>Recomendaciones</h2>
+      </div>
+      <div class="content-recoment-cards">
+        <section id="recomendaciones" class="recomendaciones"></section>
+      </div>
+      <!-- recomendaciones -->
+
+      <!-------------------- footer -------------------->
+
+      <footer>
+        <div class="footer-logo">
+          <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
+          <p>Todos los derechos reservados &copy;</p>
+        </div>
+        <div class="social">
+          <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://twitter.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </footer>
   </main>
 
   <script src="./scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
 </body>
 
 </html>

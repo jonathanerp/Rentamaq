@@ -133,175 +133,199 @@ main {
 /* -------------------BUSCADOR------------------ */
 .content-buscador {
     position: relative;
-    margin: 10px;
-
-}
-
-.content-buscador .buscador {
+  }
+  
+  .buscador {
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
     padding: 20px;
-
-}
-
-.buscador h2 {
-    display: flex;
-    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .buscador h2 {
+    font-size: 1.5em;
     color: #333;
     margin-bottom: 15px;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     text-align: center;
-}
-
-.searchForm {
-    font-family: "Prompt", sans-serif;
+  }
+  
+  .searchForm {
+    font-family: 'Prompt', sans-serif;
     display: flex;
-    margin: auto;
-}
-
-.searchInput {
-    box-shadow: inset 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
-}
-
-#searchInput {
-    width: 400px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #searchInput {
+    width: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     margin-right: 10px;
-    color: #999;
-    background-color: #FFD100;
-    box-shadow: #333533;
-}
-
-.icon {
+    color: #333;
+    background-color: #f8f8f8;
+  }
+  
+  .icon {
     padding: 10px 15px;
-    border: 0;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    background: none;
-}
-
-.icon:hover {
     background-color: #ffd100;
-    border: none;
-    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .icon:hover {
+    background-color: #f3c500;
+  }
+  
+  .icon img {
+    width: 20px;
+  }
+  
+
+/* --- --- CONTENEDOR PRINCIPAL --- --- */
+
+.contenido-principal {
+	margin-bottom: 50px;
+	display: flex;
+	align-items: center;
 }
 
-.icon img {
-    width: 40px;
+.contenido-principal__imagen {
+	vertical-align: top;
+	margin-right: 20px;
+	width: 50%;
+	max-width: 550px;
 }
 
-/* -----------------CATEGORIA---------------- */
-
-.category .cards {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    box-sizing: content-box;
-    margin: 20px auto;
-    flex-wrap: wrap;
-
+.contenido-principal__contenedor {
+	width: 50%;
 }
 
-/* ----------------card------------------ */
-.card1 {
-    background-image: url('../imagenes/maquinariapesada.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    width: 30%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    margin-right: -35px;
-    width: 350px;
-    height: 400px;
-    clip-path: polygon(0% 0, 100% 0, 75% 100%, 0 100%);
+.contenido-principal__titulo {
+	font-weight: normal;
+	font-size: 28px;
 }
 
-
-.card2 {
-    background-image: url('../imagenes/herramientapequeña.png ');
-    background-size: cover;
-    background-position: center;
-    width: 30%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    margin-left: -35px;
-    margin-right: -35px;
-    width: 350px;
-    height: 400px;
-    clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
-
+.contenido-principal__resumen {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 30px;
+	color: #CFCFCF;
+}
+/* Categorias */
+.contenedor {
+	max-width: 1200px;
+	width: 90%;
+	margin: auto;
+}
+.carousel__contenedor {
+    position: relative;
+ 
+  }
+  
+  .carousel__anterior,
+  .carousel__siguiente {
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 30px;
+      border: none;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      line-height: 30px;
+      text-align: center;
+      background: none;
+      color: black;
+      opacity: 20%;
+      z-index: 1; /* Asegura que los botones estén por encima del contenido */
+  }
+  
+  .carousel__anterior:hover,
+  .carousel__siguiente:hover {
+    opacity: 100%;
+  }
+  
+  .carousel__anterior {
+    left: -12px;
+    margin-left: 10px; /* Ajusta el margen para evitar el espacio */
 }
 
-.card3 {
-    background-image: url('../imagenes/indumentaria.png');
-    background-size: cover;
-    background-position: center;
-    width: 30%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    margin-left: -35px;
-    margin-right: -35px;
-    width: 350px;
-    height: 400px;
-    clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
-
+.carousel__siguiente {
+    right: 15px;
+    margin-right: -10px; /* Ajusta el margen para evitar el espacio */
+    z-index: 1;
 }
-
-.card4 {
-    background-image: url('../imagenes/equipoconstruccion.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px 0px 0x 8px;
-    width: 30%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    margin-left: -35px;
-    width: 350px;
-    height: 400px;
-    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.card1:hover {
-    transform: scale(1.15);
-}
-
-.card2:hover {
-    transform: scale(1.15);
-}
-
-.card3:hover {
-    transform: scale(1.15);
-}
-
-.card4:hover {
-    transform: scale(1.15);
-}
-
-.text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 168px;
-    width: 100%;
-    height: 70px;
-    background: #D9D9D9;
-    font-family: "Oswald", sans-serif;
-    font-size: 20px;
-}
-
-.text a {
+  
+  .carousel__lista {
+    overflow: hidden;
+    margin-top: 30px;
+  }
+  
+  .carousel__elemento {
+    text-align: center;
+    position: relative;
+    display: inline-block; /* Asegura que los elementos estén en línea */
+  }
+  
+  .carousel__indicadores .glider-dot {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: black;
+    opacity: .2;
+    border-radius: 0;
+  }
+  
+  .glider-dots{
+    margin-top: 15px;
+  }
+  
+  .carousel__indicadores .glider-dot:hover {
+    opacity: .5;
+  }
+  
+  .carousel__indicadores .glider-dot.active {
+    opacity: 1;
+  }
+  /* Estilo del contenedor de la imagen */
+  .image-container {
+    position: relative;
+  }
+  /* Estilo del título */
+  .title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 10px;
+    color: black;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+  }
+  
+  .titleCategory{
+    color: white;
+  }
+  .anchorCategory{
     text-decoration: none;
-    color: #202020;
-}
+  }
+  /* Mostrar el título al hacer hover */
+  .carousel__elemento:hover .title-container {
+    opacity: 1;
+  }
 
-.card img {
-    width: 50px;
-}
-
+  .imgCategory{
+    width: 280px;
+    height: 280px;
+  }
 /* --------------RECOMENDACIONES------------- */
 .recomendaciones {
     display: grid;
@@ -455,6 +479,11 @@ footer {
     .recomendaciones {
         padding: 60px 40px;
     }
+    .carousel__anterior,
+    .carousel__siguiente,
+    .carousel__indicadores {
+        display: none; /* Oculta las flechas en dispositivos móviles */
+    }
 }
 
 /* Media query para dispositivos con una pantalla entre 601px y 900px de ancho */
@@ -475,8 +504,6 @@ footer {
     .logo-section p {
         font-size: 10px;
     }
-
-
 
     .btn-section button {
         font-size: 14px;
