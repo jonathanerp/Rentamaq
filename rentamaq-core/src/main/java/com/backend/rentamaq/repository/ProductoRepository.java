@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
-    @Query("SELECT p FROM Producto p WHERE p.categoria IS NULL")
-    List<Producto> listarProductosSinCategoria();
+    List<Producto> findByCategoriaId(Long categoriaId);
 }

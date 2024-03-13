@@ -2,13 +2,11 @@ package com.backend.rentamaq.controller;
 
 
 import com.backend.rentamaq.dto.salida.CaracteristicaSalidaDto;
+import com.backend.rentamaq.entity.Caracteristica;
 import com.backend.rentamaq.service.ICaracteristicaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,10 @@ public class CaracteristicaController {
     @GetMapping()
     public ResponseEntity<List<CaracteristicaSalidaDto>> listarCaracteristicas() {
         return new ResponseEntity<>(caracteristicaService.listarCaracteristicas(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{productoId}")
+    public List<Caracteristica> obtenerCaracteristicasPorProductoId(@PathVariable Long productoId) {
+        return caracteristicaService.obtenerCaracteristicasPorProductoId(productoId);
     }
 }

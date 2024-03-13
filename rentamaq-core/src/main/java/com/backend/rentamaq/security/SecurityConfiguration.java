@@ -43,8 +43,8 @@ public class SecurityConfiguration {
                                         "/productos/**",
                                         "/roles",
                                         "/user/**",
-                                        "/categorias"
-
+                                        "/categorias/**",
+                                        "/caracteristicas/**"
                                         ).permitAll()
 //                        .requestMatchers(HttpMethod.POST, "api/v1/**").hasRole("ADMIN")
 //                        .requestMatchers(HttpMethod.GET, "api/v1/**").hasAnyRole("USER", "ADMIN")

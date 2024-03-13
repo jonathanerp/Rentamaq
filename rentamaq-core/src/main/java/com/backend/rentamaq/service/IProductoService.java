@@ -2,6 +2,7 @@ package com.backend.rentamaq.service;
 
 import com.backend.rentamaq.dto.entrada.ProductoEntradaDto;
 import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
+import com.backend.rentamaq.entity.Producto;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public interface IProductoService {
 
     void eliminarPaciente(Long id);
 
-    List<ProductoSalidaDto> listarProductosSinCategoria();
-
     ProductoSalidaDto asignarCategoriaAProducto(Long productoId, Long categoriaId);
+
+    List<Producto> obtenerProductosPorCategoriaId(Long categoriaId);
 
 }

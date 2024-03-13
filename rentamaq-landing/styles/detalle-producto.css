@@ -73,3 +73,44 @@ section {
 .container {
   flex: 1;
 }
+
+
+#caracteristicas {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  margin: auto;
+}
+
+#caracteristicas h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#caracteristicas ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+#caracteristica-lista {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.icono {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  background-size: cover;
+  display: inline-block;
+}
+
