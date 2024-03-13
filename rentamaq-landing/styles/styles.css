@@ -141,6 +141,8 @@ main {
     background-color: #ffffff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   
   .buscador h2 {
@@ -310,18 +312,22 @@ main {
     transition: opacity 0.3s;
     text-align: center;
   }
-  
+
+
   .titleCategory{
     color: white;
   }
   .anchorCategory{
     text-decoration: none;
   }
-  /* Mostrar el título al hacer hover */
-  .carousel__elemento:hover .title-container {
-    opacity: 1;
+  .carousel__elemento .title-container {
+    opacity: 0; /* Inicialmente, oculta el título */
+    transition: opacity 0.3s ease; /* Agrega una transición suave */
   }
-
+  
+  .carousel__elemento:hover .title-container {
+    opacity: 1; /* Muestra el título al pasar el cursor sobre la tarjeta */
+  }
   .imgCategory{
     width: 280px;
     height: 280px;
@@ -532,6 +538,7 @@ footer {
 
 /* Media query para dispositivos con una pantalla hasta 600px de ancho */
 @media only screen and (max-width: 600px) {
+    
     header {
         padding: 10px;
     }
