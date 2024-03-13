@@ -40,9 +40,8 @@ window.addEventListener('load', function () {
               </div>
               <h3>${producto.nombre}</h3>
               <div class="btn-ver">
-                  <h2>ver mas</h2>
                   <a href="./detalle_producto.html?id=${producto.id}">
-                  <i class="fa-solid fa-circle-plus"></i>
+                  <h2>ver mas</h2>
                   </a>
               </div>
           </div>

@@ -253,7 +253,7 @@ main {
   }
   
   .carousel__anterior {
-    left: -12px;
+    left: -18px;
     margin-left: 10px; /* Ajusta el margen para evitar el espacio */
 }
 
@@ -333,31 +333,33 @@ main {
     height: 280px;
   }
 /* --------------RECOMENDACIONES------------- */
+/* Estilos para las recomendaciones */
 .recomendaciones {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 60px; /* Aumenta el espacio entre las tarjetas */
     justify-items: center;
+    animation: fadeIn 1s ease; /* Animación para que aparezcan gradualmente */
 }
 
 .title-recomend {
     font-family: "Oswald", sans-serif;
     color: #202020;
-    font-size: 20px;
+    font-size: 24px; /* Aumenta el tamaño del título */
     text-align: center;
+    margin-bottom: 20px; /* Agrega espacio inferior */
+    animation: slideInDown 1s ease; /* Animación para que aparezca desde arriba */
 }
 
 .content-recoment-cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    margin: 0 30% 0;
 }
 
+/* Estilos para cada tarjeta de recomendación */
 .recoment-card {
     position: relative;
-    transition: all 0.8s ease-in-out;
     width: 250px;
     height: 350px;
     overflow: hidden;
@@ -365,54 +367,105 @@ main {
     border-radius: 20px;
     background: #d6d6d6;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-    transition: box-shadow 0.3 ease;
+    transition: transform 0.3s ease; /* Agrega una transición al hacer hover */
+    animation: fadeIn 1s ease; /* Animación para que aparezcan gradualmente */
 }
 
 .recoment-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Agrega efecto de elevación al hacer hover */
 }
 
-.recoment-card .image-container {
-    width: 250px;
+.image-container {
+    width: 100%;
     height: 220px;
+    overflow: hidden;
+}
+.image-container1{
+    width: 95%;
+    height: 90%;
+    overflow: hidden;
 }
 
-.recoment-card .image-container img {
+.image-container img {
     width: 100%;
     height: 100%;
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
 }
 
 .recoment-card h3 {
     font-family: "Oswald", sans-serif;
     font-size: 18px;
     text-align: center;
-}
-
-.ver-detalles-btn {
-    display: inline-block;
-    color: #202020;
-    font-family: "Open Sans", sans-serif;
-    border-radius: 10px;
-    border: none;
-    padding: 8px 25px;
-}
-
-.recoment-card a {
-    display: flex;
-    justify-content: center;
+    margin-top: 15px; /* Añade espacio superior al título */
+    text-transform: uppercase;
 }
 
 .btn-ver {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Oswald", sans-serif;
+    margin-top: 20px; /* Añade espacio entre el título y el botón */
+    animation: fadeInUp 1s ease; /* Animación para que aparezca desde abajo */
+    
 }
 
 .btn-ver a {
-    font-size: 30px;
+    display: inline-block;
+    padding: 10px 50px; /* Ajusta el padding según sea necesario */
+    background-color: #ffd100;
+    color: #fff; /* Cambia el color del texto según desees */
+    font-family: "Open Sans", sans-serif;
     text-decoration: none;
-    color: #202020;
+    border: 2px solid gold;
+    border-radius: 30px; /* Ajusta el radio de borde según desees */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Agrega transición de color de fondo y texto */
+    text-transform: uppercase;
+}
+
+.btn-ver a:hover {
+    background-color: darkgoldenrod;
+    color: #fff; /* Cambia el color del texto al pasar el ratón por encima */
+}
+
+.btn-ver h2 {
+    font-size: 15px; /* Ajusta el tamaño del texto */
+    margin-right: 5px;
+}
+
+.btn-ver i {
+    font-size: 20px;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /*---------------FOOTER--------------- */
@@ -565,7 +618,9 @@ footer {
         margin: 20px auto;
         flex-direction: column;
     }
-
+    .recomendaciones {
+        grid-template-columns: repeat(1, 1fr); /* Cambia a una sola columna en pantallas pequeñas */
+    }
     .card1,
     .card2,
     .card3,
