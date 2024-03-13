@@ -1,5 +1,3 @@
-
-
 document.querySelector('.logo-section a').addEventListener('click', function () {
     window.location.href = 'index.html';
 });
@@ -23,7 +21,7 @@ const cargarProductos = async () => {
 cargarProductos();
 
 
-window.addEventListener('load', function () {
+document.addEventListener("DOMContentLoaded", function () {
     function renderizarRecomendaciones() {
         const cardsRecomendaciones = document.querySelector('#recomendaciones');
         console.log(cardsRecomendaciones);
@@ -31,6 +29,7 @@ window.addEventListener('load', function () {
         cardsRecomendaciones.innerHTML = '';
         for (let i = 0; i < Math.min(productosConstruccionPesada.length, 10); i++) {
             const prod = productosConstruccionPesada[i];
+            console.log(prod);
             cardsRecomendaciones.innerHTML += `
                 <div class="recoment-card">
                     <div class="image-container">
@@ -77,6 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "index.html";
     });
 });
+
+// Carousel
 window.addEventListener('load', function(){
 	new Glider(document.querySelector('.carousel__lista'), {
 		slidesToShow: 1,

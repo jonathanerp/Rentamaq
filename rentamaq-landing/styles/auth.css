@@ -115,7 +115,8 @@ button:hover {
     font-size: 2em;
     color: #333;
     margin-bottom: 20px;
-    margin-left: 120px;
+    display: flex;
+    justify-content: center;
 }
 
 .logo-empresa img {
