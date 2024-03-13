@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/auth")
+@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
@@ -21,6 +21,12 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+     @GetMapping("/{id}")
+    public ResponseEntity obtenerProductoPorId(@PathVariable Long id) throws BadRequestException {
+        return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
+    }
+
 
     @PostMapping("/signup")
     public ResponseEntity<ResponseDto> signup(@RequestBody(required = true) SignUpDto data) throws BadRequestException {

@@ -38,13 +38,11 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                                 .requestMatchers(
-                                "/imagenes/**",
+                                        "/imagenes/**",
                                         "/productos",
                                         "/productos/**",
                                         "/roles",
-                                        "/auth/signup",
-                                        "/auth/login",
-                                        "/imagenes/**",
+                                        "/user/**",
                                         "/categorias"
                                 ).permitAll()
 //                        .requestMatchers(HttpMethod.POST, "api/v1/**").hasRole("ADMIN")

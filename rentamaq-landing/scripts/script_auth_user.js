@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch('http://localhost:8080/auth/signup', settings);
+      const res = await fetch('http://localhost:8080/user/signup', settings);
       if (res.status === 201) {
         alert('Usted se ha registrado correctamente, ya es rentamaq!');
         location.replace('auth.html');
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch('http://localhost:8080/auth/login', settings);
+      const res = await fetch('http://localhost:8080/user/login', settings);
       if (res.status === 200) {
         const data = await res.json();
         alert('Inicio de sesión exitoso!');
