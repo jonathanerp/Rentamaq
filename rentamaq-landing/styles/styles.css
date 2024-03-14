@@ -220,8 +220,8 @@ main {
 }
 /* Categorias */
 .contenedor {
-	max-width: 1200px;
-	width: 90%;
+	max-width: 2500px;
+	width: 100%;
 	margin: auto;
 }
 .carousel__contenedor {
@@ -329,8 +329,8 @@ main {
     opacity: 1; /* Muestra el título al pasar el cursor sobre la tarjeta */
   }
   .imgCategory{
-    width: 280px;
-    height: 280px;
+    width: 95%;
+    height: 400px;
   }
 /* --------------RECOMENDACIONES------------- */
 /* Estilos para las recomendaciones */
@@ -360,8 +360,8 @@ main {
 /* Estilos para cada tarjeta de recomendación */
 .recoment-card {
     position: relative;
-    width: 250px;
-    height: 350px;
+    width: 550px;
+    height: 750px;
     overflow: hidden;
     margin: 15px;
     border-radius: 20px;
@@ -377,7 +377,7 @@ main {
 
 .image-container {
     width: 100%;
-    height: 220px;
+    height: 70%;
     overflow: hidden;
 }
 .image-container1{
@@ -394,9 +394,10 @@ main {
 
 .recoment-card h3 {
     font-family: "Oswald", sans-serif;
-    font-size: 18px;
+    font-size: 30px;
     text-align: center;
-    margin-top: 15px; /* Añade espacio superior al título */
+    margin-top: 30px; /* Añade espacio superior al título */
+    margin-bottom: 30px;
     text-transform: uppercase;
 }
 
@@ -404,7 +405,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px; /* Añade espacio entre el título y el botón */
+    margin-top: 40px; /* Añade espacio entre el título y el botón */
     animation: fadeInUp 1s ease; /* Animación para que aparezca desde abajo */
     
 }
@@ -504,7 +505,7 @@ footer {
 /* --------------------------RESPONSIVE------------------------ */
 
 /* Media query para dispositivos con una pantalla de más de 1200px de ancho */
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 1301px) {
     header {
         padding: 20px 30px;
     }
@@ -546,7 +547,7 @@ footer {
 }
 
 /* Media query para dispositivos con una pantalla entre 601px y 900px de ancho */
-@media only screen and (min-width: 601px) and (max-width: 1223px) {
+@media only screen and (min-width: 761px) and (max-width: 1300px) {
     header {
         padding: 15px 20px;
         height: 160px;
@@ -586,11 +587,27 @@ footer {
     .recomendaciones {
         padding: 40px 20px;
     }
+    .recoment-card {
+        width: 300px;
+        height: 400px;
+    }
+    .recoment-card h3 {
+        font-size: 20px;
+        margin-top: 15px; /* Añade espacio superior al título */
+        margin-bottom: 15px;
+    }
+    .btn-ver {
+        margin-top: 10px; /* Añade espacio entre el título y el botón */
+    }
+
+    .btn-ver a {
+        padding: 5px 50px; /* Ajusta el padding según sea necesario */
+    }
 
 }
 
 /* Media query para dispositivos con una pantalla hasta 600px de ancho */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 760px) {
     
     header {
         padding: 10px;
@@ -670,5 +687,23 @@ footer {
 
     .footer-logo .p {
         font-size: 0.7em;
+    }
+
+    .recoment-card {
+        width: 300px;
+        height: 400px;
+    }
+
+    .recoment-card h3 {
+        font-size: 20px;
+        margin-top: 10px; /* Añade espacio superior al título */
+        margin-bottom: 10px;
+    }
+    .btn-ver {
+        margin-top: 0px; /* Añade espacio entre el título y el botón */
+    }
+
+    .btn-ver a {
+        padding: 5px 50px; /* Ajusta el padding según sea necesario */
     }
 }
