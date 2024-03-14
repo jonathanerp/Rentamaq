@@ -17,12 +17,15 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
+<<<<<<< HEAD
   min-height: 88vh;
+=======
+>>>>>>> ae2329e05d1b79e398762ea83aa112ad0075736f
   background-color: #f0f0f0;
 }
 
-.headerDetail{
-  margin-bottom:20px;
+.headerDetail {
+  margin-bottom: 20px;
 }
 
 /* Estilos de la caja contenedora */
@@ -115,7 +118,6 @@ section {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregando sombra */
 }
 
-
 #caracteristicas h2 {
   color: #333;
   text-align: center;
@@ -146,7 +148,6 @@ section {
 #caracteristicas li:nth-child(even) {
   animation: fadeInRight 0.5s ease-in-out forwards;
 }
-
 
 .icono {
   width: 40px;
@@ -179,44 +180,46 @@ section {
 }
 
 /* Media query para dispositivos móviles */
+<<<<<<< HEAD
 @media only screen and (max-width: 784px) {
   main {
     min-height: 120vh;
   }
+=======
+@media only screen and (max-width: 768px) {
+>>>>>>> ae2329e05d1b79e398762ea83aa112ad0075736f
   section {
-      flex-direction: column; /* Cambia la dirección del flexbox a columna para dispositivos móviles */
-      padding: 10px; /* Reducir el padding para dispositivos móviles */
+    flex-direction: column; /* Cambia la dirección del flexbox a columna para dispositivos móviles */
+    padding: 10px; /* Reducir el padding para dispositivos móviles */
   }
 
   .div-imagen {
-      width: 100%; /* Ajustar el ancho de la imagen al 100% para ocupar todo el ancho */
-      height: auto; /* Permitir que la altura de la imagen se ajuste automáticamente */
-      margin-bottom: 20px; /* Agregar margen inferior para separar la imagen de la descripción */
-      margin-right: 50px;
+    width: 100%; /* Ajustar el ancho de la imagen al 100% para ocupar todo el ancho */
+    height: auto; /* Permitir que la altura de la imagen se ajuste automáticamente */
+    margin-bottom: 20px; /* Agregar margen inferior para separar la imagen de la descripción */
+    margin-right: 50px;
   }
-  .card-container{
+  .card-container {
     max-width: 350px;
   }
   .div-texto {
-      width: 280px; /* Ajustar el ancho del texto al 100% para ocupar todo el ancho */
-      height: auto; /* Permitir que la altura del texto se ajuste automáticamente */
-      margin-left: -40px;
+    width: 280px; /* Ajustar el ancho del texto al 100% para ocupar todo el ancho */
+    height: auto; /* Permitir que la altura del texto se ajuste automáticamente */
+    margin-left: -40px;
   }
 
   #caracteristicas {
-      width: 90%; /* Ajustar el ancho de las características al 100% para ocupar todo el ancho */
-      margin-bottom: 20px; /* Agregar margen inferior para separar las características del footer */
+    width: 90%; /* Ajustar el ancho de las características al 100% para ocupar todo el ancho */
+    margin-bottom: 20px; /* Agregar margen inferior para separar las características del footer */
   }
 
   #caracteristicas ul {
-      grid-template-columns: 1fr; /* Cambiar las características a una sola columna */
+    grid-template-columns: 1fr; /* Cambiar las características a una sola columna */
   }
 
   #caracteristicas li {
-      opacity: 1; /* Mostrar todas las características */
-      transform: translateY(0); /* Eliminar la transformación */
-      margin-bottom: 10px; /* Agregar margen inferior para separar cada característica */
+    opacity: 1; /* Mostrar todas las características */
+    transform: translateY(0); /* Eliminar la transformación */
+    margin-bottom: 10px; /* Agregar margen inferior para separar cada característica */
   }
-  
 }
-
