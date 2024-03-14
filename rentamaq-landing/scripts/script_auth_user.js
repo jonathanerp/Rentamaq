@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     console.log(payload);
+
     const settings = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

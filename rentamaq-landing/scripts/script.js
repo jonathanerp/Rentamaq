@@ -1,3 +1,4 @@
+
 window.addEventListener('load', function () {
     document
       .querySelector('.logo-section a')
@@ -46,28 +47,9 @@ window.addEventListener('load', function () {
               </div>
           </div>
       `;
-      });
-      // for (let i = 0; i < Math.min(productosConstruccionPesada.length, 10); i++) {
-      //   const prod = productosConstruccionPesada[i];
-      //   cardsRecomendaciones.innerHTML += `
-      //             <div class="recoment-card">
-      //                 <div class="image-container">
-      //                     <img src="${prod.urlImagen}" alt="${prod.nombre}">
-      //                 </div>
-      //                 <h3>${prod.nombre}</h3>
-      //                 <div class="btn-ver">
-      //                     <h2>ver mas</h2>
-      //                     <a href="./detalle_producto.html?id=${prod.id}">
-      //                     <i class="fa-solid fa-circle-plus"></i>
-      //                     </a>
-      //                 </div>
-      //             </div>
-      //         `;
-      // }
+      });  
     }
-    //   renderizarRecomendaciones();
-  
-  
+
     new Glider(document.querySelector('.carousel__lista'), {
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -104,7 +86,7 @@ window.addEventListener('load', function () {
     const userSection = document.querySelector('.user-info');
     const btnSection = document.querySelector('.btn-section');
     const token = localStorage.getItem('token');
-    const adminSection = document.querySelector('admin-section');
+    const adminSection = document.querySelector('.admin-section');
 
     if (form === 'pass') {
       alert('Para acceder debes de iniciar sesion');
@@ -112,7 +94,13 @@ window.addEventListener('load', function () {
     } else if (token) {
       userSection.style.display = 'flex';
       btnSection.style.display = 'none';
-      adminSection.style.display = 'flex';
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      console.log(decodedToken);
+      console.log(decodedToken.roles[0])
+      if(decodedToken.roles[0] === 'ROLE_ADMIN'){
+        adminSection.style.display = 'flex';
+      }
+      
     }
   });
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Productos</title>
+    <link rel="stylesheet" href="styles/agregarProducto.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-section">
+            <a href="administracion.html"><img src="imagenes/Logooscuro.png" alt="Logo de la empresa"></a>
+            <p>El mejor aliado de tus proyectos</p>
+        </div>
+        <div class="title-header">
+            <h1>LISTAR PRODUCTOS</h1>
+        </div>
+    </header>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody id="productosTableBody">
+            </tbody>
+        </table>
+    </div>
+    <div class="button-category">
+        <button id="btnAgregarProducto">Editar categoria</button>
+    </div>
+
+    <div id="modalAgregarProducto" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar categoria a producto</h2>
+            <form id="formularioProducto" class="form">
+                <label for="productos">Producto:</label>
+                <select name="productos" id="productos">
+                </select>
+
+                <label for="categorias">Categorías:</label>
+                <select name="categorias" id="categorias">
+                </select>
+
+                <button type="submit" class="btn primary full">Guardar Producto</button>
+            </form>
+            <script src="scripts/agregarcategoriaproducto.js"></script>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-logo">
+            <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa">
+            <p> Todos los derechos reservados &copy;</p>
+        </div>
+        <div class="social">
+            <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script src="scripts/listarProductos.js" type="module"></script>
+</body>
+
+</html>
