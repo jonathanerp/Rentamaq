@@ -43,7 +43,7 @@ public class ProductoController {
         return ResponseEntity.ok().body(producto);
     }
 
-    @GetMapping("/categoria/{categoriaId}")
+    @GetMapping("categoria/{categoriaId}")
     public List<Producto> obtenerProductosPorCategoriaId(@PathVariable Long categoriaId) {
         return productoService.obtenerProductosPorCategoriaId(categoriaId);
     }

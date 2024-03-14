@@ -67,33 +67,6 @@ window.addEventListener('load', function () {
     }
     //   renderizarRecomendaciones();
   
-    document.addEventListener('DOMContentLoaded', function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const form = urlParams.get('form');
-      const userSection = document.querySelector('.user-info');
-      const btnSection = document.querySelector('.btn-section');
-      const token = localStorage.getItem('token');
-      const adminSection = document.querySelector('admin-section');
-  
-      if (form === 'pass') {
-        alert('Para acceder debes de iniciar sesion');
-        window.location.replace('auth.html');
-      } else if (token) {
-        userSection.style.display = 'flex';
-        btnSection.style.display = 'none';
-        adminSection.style.display = 'flex';
-      }
-  
-      const logoutBtn = document.getElementById('logout');
-  
-      logoutBtn.addEventListener('click', function (event) {
-        event.preventDefault();
-        sessionStorage.clear();
-        localStorage.clear();
-        alert('Has cerrado sesión correctamente');
-        window.location.href = 'index.html';
-      });
-    });
   
     new Glider(document.querySelector('.carousel__lista'), {
       slidesToShow: 1,
@@ -124,5 +97,33 @@ window.addEventListener('load', function () {
       ],
     });
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const form = urlParams.get('form');
+    const userSection = document.querySelector('.user-info');
+    const btnSection = document.querySelector('.btn-section');
+    const token = localStorage.getItem('token');
+    const adminSection = document.querySelector('admin-section');
+
+    if (form === 'pass') {
+      alert('Para acceder debes de iniciar sesion');
+      window.location.replace('auth.html');
+    } else if (token) {
+      userSection.style.display = 'flex';
+      btnSection.style.display = 'none';
+      adminSection.style.display = 'flex';
+    }
+  });
+
+  const logoutBtn = document.getElementById('logout');
+
+    logoutBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      sessionStorage.clear();
+      localStorage.clear();
+      alert('Has cerrado sesión correctamente');
+      window.location.href = 'index.html';
+    });
   
 
