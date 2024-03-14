@@ -43,6 +43,7 @@ public class SecurityConfiguration {
                                         "/productos/**",
                                         "/roles",
                                         "/user/**",
+                                        "/user",
                                         "/categorias/**",
                                         "/caracteristicas/**"
                                         ).permitAll()

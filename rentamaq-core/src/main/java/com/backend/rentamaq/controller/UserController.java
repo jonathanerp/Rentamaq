@@ -2,6 +2,7 @@ package com.backend.rentamaq.controller;
 
 import com.backend.rentamaq.dto.Auth.AuthenticateResponse;
 import com.backend.rentamaq.dto.Auth.LoginDto;
+import com.backend.rentamaq.dto.Auth.RoleDto;
 import com.backend.rentamaq.dto.Auth.SignUpDto;
 import com.backend.rentamaq.dto.ResponseDto;
 import com.backend.rentamaq.exception.BadRequestException;
@@ -22,11 +23,22 @@ public class UserController {
         this.userService = userService;
     }
 
-     @GetMapping("/{id}")
-    public ResponseEntity obtenerProductoPorId(@PathVariable Long id) throws BadRequestException {
+
+    @GetMapping("/{id}")
+    public ResponseEntity getUser(@PathVariable Long id) throws BadRequestException {
         return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
     }
 
+    @GetMapping()
+    public ResponseEntity getUsersByRole() {
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/set-role")
+    public ResponseEntity<ResponseDto> setRole(@PathVariable Long id, @RequestBody(required = true) RoleDto data) throws BadRequestException {
+        userService.setRole(data, id);
+        return new ResponseEntity<>(new ResponseDto("Nuevo rol asignado!"), HttpStatus.OK);
+    }
 
     @PostMapping("/signup")
     public ResponseEntity<ResponseDto> signup(@RequestBody(required = true) SignUpDto data) throws BadRequestException {

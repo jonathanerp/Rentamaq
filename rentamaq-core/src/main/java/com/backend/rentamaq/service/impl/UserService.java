@@ -1,5 +1,6 @@
 package com.backend.rentamaq.service.impl;
 
+import com.backend.rentamaq.dto.Auth.RoleDto;
 import com.backend.rentamaq.dto.salida.UserDto;
 import com.backend.rentamaq.entity.Role;
 import com.backend.rentamaq.entity.User;
@@ -19,9 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -84,11 +83,49 @@ public class UserService {
     public UserDto findUserById(Long id) throws BadRequestException {
         Optional<User> userResult = this.userRepository.findById(id);
 
-        if (userResult.isEmpty()){
+        if (userResult.isEmpty()) {
             throw new BadRequestException("User not found", "User");
         }
 
         User user = userResult.get();
         return toDto(user);
+    }
+
+    public List<UserDto> findAll() {
+        List<User> users = this.userRepository.findAll();
+        List<UserDto> usersDto = new ArrayList<>();
+        for (User user : users) {
+            UserDto userResult = toDto(user);
+            Set<Role> roles = this.userRepository.findRolesByUserId(user.getId());
+            userResult.setRoles(roles);
+
+            usersDto.add(userResult);
+        }
+        return usersDto;
+    }
+
+    public void setRole(RoleDto data, Long id) throws BadRequestException {
+        Role role = this.roleRepository.findByName(data.getName());
+
+        if (role == null) {
+            throw new BadRequestException("Invalid role", "User");
+        }
+
+        Optional<User> userResult = this.userRepository.findById(id);
+
+        if (userResult.isEmpty()) {
+            throw new BadRequestException("User not found", "User");
+        }
+
+        User user = userResult.get();
+        Set<Role> userRoles = user.getRoles();
+
+        userRoles.add(role);
+
+        try {
+            this.userRepository.save(user);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

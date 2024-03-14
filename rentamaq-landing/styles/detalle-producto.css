@@ -17,10 +17,6 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
-<<<<<<< HEAD
-  min-height: 88vh;
-=======
->>>>>>> ae2329e05d1b79e398762ea83aa112ad0075736f
   background-color: #f0f0f0;
 }
 
@@ -180,14 +176,7 @@ section {
 }
 
 /* Media query para dispositivos móviles */
-<<<<<<< HEAD
-@media only screen and (max-width: 784px) {
-  main {
-    min-height: 120vh;
-  }
-=======
 @media only screen and (max-width: 768px) {
->>>>>>> ae2329e05d1b79e398762ea83aa112ad0075736f
   section {
     flex-direction: column; /* Cambia la dirección del flexbox a columna para dispositivos móviles */
     padding: 10px; /* Reducir el padding para dispositivos móviles */

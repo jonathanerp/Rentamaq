@@ -31,5 +31,10 @@ public class DataLoader implements ApplicationRunner {
             Role userRole = new Role("ROLE_CLIENT");
             roleRepository.save(userRole);
         }
+        if (!roleRepository.existsByName("ROLE_EDITOR")) {
+            // Si no existe, crear el rol de usuario
+            Role userRole = new Role("ROLE_EDITOR");
+            roleRepository.save(userRole);
+        }
     }
 }
