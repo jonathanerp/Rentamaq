@@ -50,6 +50,63 @@ window.addEventListener('load', function () {
       });  
     }
 
+    cargarDatosUsuario();
+
+async function cargarDatosUsuario() {
+  try {
+    const token = localStorage.getItem('token');
+    const decodedToken = JSON.parse(atob(token.split('.')[1]));
+    const userId = decodedToken.userId; 
+    const url = `http://localhost:8080/user/${userId}`;
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const userData = await response.json();
+      console.log('Información del usuario:', userData);
+
+      const initials = `${userData.name.charAt(0).toUpperCase()}${userData.lastname.charAt(0).toUpperCase()}`;
+      console.log('Iniciales:', initials);
+
+      mostrarIniciales(initials);
+      agregarEventoTarjeta(userData);
+    } else {
+      throw new Error('Error al obtener la información del usuario');
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+function mostrarIniciales(initials) {
+  const initialsElement = document.querySelector('.iniciales');
+  initialsElement.textContent = initials;
+}
+
+function agregarEventoTarjeta(userData) {
+  const initialsElement = document.querySelector('.iniciales');
+  initialsElement.addEventListener('click', function() {
+    const card = document.createElement('div');
+    card.classList.add('user-card');
+
+    const name = document.createElement('p');
+    name.textContent = 'Nombre: ' + userData.name.toUpperCase();
+
+    const lastname = document.createElement('p');
+    lastname.textContent = 'Apellido: ' + userData.lastname.toUpperCase();
+
+    const email = document.createElement('p');
+    email.textContent = 'Email: ' + userData.email;
+
+    card.appendChild(name);
+    card.appendChild(lastname);
+    card.appendChild(email);
+
+    const infoUser = document.querySelector('.infoUser');
+    infoUser.innerHTML = '';
+    infoUser.appendChild(card);
+  });
+}
+
     new Glider(document.querySelector('.carousel__lista'), {
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -96,7 +153,7 @@ window.addEventListener('load', function () {
       btnSection.style.display = 'none';
       const decodedToken = JSON.parse(atob(token.split('.')[1]));
       console.log(decodedToken);
-      console.log(decodedToken.roles[0])
+      console.log(decodedToken.roles[0]);
       if(decodedToken.roles[0] === 'ROLE_ADMIN'){
         adminSection.style.display = 'flex';
       }
