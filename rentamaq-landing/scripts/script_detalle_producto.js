@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
       console.error('Error fetching data from API:', error);
     }
   }
-  
+
   const urlSearchParams = new URLSearchParams(window.location.search);
   const prodId = urlSearchParams.get('id');
 
@@ -58,16 +58,16 @@ window.addEventListener('load', function () {
       console.error('Error fetching data from API:', error);
     }
   }
-  
+
   function renderizarCaracteristicas(caracteristicas) {
     const divCaracteristicaProducto = document.querySelector('#caracteristica-producto');
 
     divCaracteristicaProducto.innerHTML = '';
     caracteristicas.forEach((car) => {
-        divCaracteristicaProducto.innerHTML += `
+      divCaracteristicaProducto.innerHTML += `
         <li id="caracteristica-lista"><img src=${car.urlImagen} alt="No disponible" class="icono"/></i>${car.descripcion}</li>
             `;
-      })
+    })
   };
 
 });

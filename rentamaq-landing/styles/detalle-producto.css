@@ -17,8 +17,24 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 115vh;
   background-color: #f0f0f0;
+}
+
+.headerDetail{
+  margin-bottom:20px;
+}
+
+/* Estilos de la caja contenedora */
+.card-container {
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  padding: 50px; /* Aumentar el espaciado interno */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Agregar margen inferior para separar las tarjetas */
+  max-width: 800px; /* Aumentar el ancho máximo */
+  margin: 0 auto; /* Centrar horizontalmente */
+  margin-bottom: 20px;
 }
 .back-arrow {
   width: 80%;
@@ -26,31 +42,44 @@ main {
   display: flex;
   align-items: flex-start;
 }
+
 .back-arrow a {
-  font-size: 50px;
+  font-size: 30px; /* Reduciendo el tamaño de la flecha */
   color: black;
+}
+
+.back-arrow a:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
 }
 
 section {
   display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando no caben en una sola fila */
   align-items: center;
   justify-content: center;
   padding: 20px;
-  gap: 5em;
-  height: 100%;
+  gap: 20px; /* Aumenta el espacio entre los elementos */
+  height: auto; /* Establece una altura automática para adaptarse al contenido */
 }
-
 .div-imagen {
   display: flex;
   justify-content: center;
-  width: 800px;
-  height: 800px;
+  width: 300px; /* Reducir el tamaño de la imagen */
+  height: 300px; /* Reducir el tamaño de la imagen */
+  border-radius: 10px; /* Agregando bordes */
+  overflow: hidden; /* Ocultando partes de la imagen que se desborden */
 }
+
 .div-imagen img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.div-imagen img:hover {
+  transform: scale(1.05);
 }
 
 .div-texto {
@@ -58,7 +87,7 @@ section {
   font-weight: 400;
   font-style: normal;
   width: 50%;
-  height: 200px;
+  /* height: 200px; */
   border-radius: 15px;
   text-align: center;
   justify-content: center;
@@ -68,20 +97,24 @@ section {
   flex-direction: column;
   gap: 15px;
   background-color: #ffd100;
+  border: 2px solid #ccc; /* Agregando bordes */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregando sombra */
 }
 
 .container {
   flex: 1;
 }
 
-
 #caracteristicas {
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 5px;
-  width: 80%;
-  margin: auto;
+  width: 75%;
+  margin: 20px auto 50px; /* Agrega margen inferior para separarlo del footer */
+  border: 2px solid #ccc; /* Agregando bordes */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregando sombra */
 }
+
 
 #caracteristicas h2 {
   color: #333;
@@ -100,11 +133,20 @@ section {
   justify-items: center;
 }
 
-#caracteristica-lista {
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
+#caracteristicas li {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
+#caracteristicas li:nth-child(odd) {
+  animation: fadeInLeft 0.5s ease-in-out forwards;
+}
+
+#caracteristicas li:nth-child(even) {
+  animation: fadeInRight 0.5s ease-in-out forwards;
+}
+
 
 .icono {
   width: 40px;
@@ -112,5 +154,69 @@ section {
   margin-right: 10px;
   background-size: cover;
   display: inline-block;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+  main {
+    min-height: 170vh;
+  }
+  section {
+      flex-direction: column; /* Cambia la dirección del flexbox a columna para dispositivos móviles */
+      padding: 10px; /* Reducir el padding para dispositivos móviles */
+  }
+
+  .div-imagen {
+      width: 100%; /* Ajustar el ancho de la imagen al 100% para ocupar todo el ancho */
+      height: auto; /* Permitir que la altura de la imagen se ajuste automáticamente */
+      margin-bottom: 20px; /* Agregar margen inferior para separar la imagen de la descripción */
+      margin-right: 50px;
+  }
+  .card-container{
+    max-width: 350px;
+  }
+  .div-texto {
+      width: 280px; /* Ajustar el ancho del texto al 100% para ocupar todo el ancho */
+      height: auto; /* Permitir que la altura del texto se ajuste automáticamente */
+      margin-left: -40px;
+  }
+
+  #caracteristicas {
+      width: 90%; /* Ajustar el ancho de las características al 100% para ocupar todo el ancho */
+      margin-bottom: 20px; /* Agregar margen inferior para separar las características del footer */
+  }
+
+  #caracteristicas ul {
+      grid-template-columns: 1fr; /* Cambiar las características a una sola columna */
+  }
+
+  #caracteristicas li {
+      opacity: 1; /* Mostrar todas las características */
+      transform: translateY(0); /* Eliminar la transformación */
+      margin-bottom: 10px; /* Agregar margen inferior para separar cada característica */
+  }
+  
 }
 
