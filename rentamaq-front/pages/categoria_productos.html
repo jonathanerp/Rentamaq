@@ -1,0 +1,95 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../imagenes/Logooscuro.png" type="image/png" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <title>Equipos de construccion</title>
+    <script
+      src="https://kit.fontawesome.com/ae1d842f3c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!--------- HEADER------------>
+    <header>
+      <div class="logo-section">
+        <a href="../index.html"
+          ><img src="../imagenes/Logooscuro.png" alt="Logo de la empresa"
+        /></a>
+        <p>El mejor aliado de tus proyectos</p>
+      </div>
+
+      <div class="btn-section">
+        <a href="./signup.html">
+          <button>Crear cuenta</button>
+        </a>
+        <a href="./login.html">
+          <button>Iniciar sesión</button>
+        </a>
+      </div>
+
+      <div class="user-info">
+        <div class="admin-section">
+          <a href="../admin/administracion.html" style="text-decoration: none">
+            <button>Ir al Dashboard</button>
+          </a>
+        </div>
+        <button class="avatar" id="user-details-button">
+          <text class="iniciales"></text>
+        </button>
+        <button id="logout">Cerrar sesion</button>
+        <div class="infoUser"></div>
+      </div>
+    </header>
+
+    <!-- Listado de productos -->
+    <main>
+      <!------------------------ recomendaciones ----------------->
+      <div class="title-recomend">
+        <h2>Productos</h2>
+      </div>
+      <div class="content-recoment-cards">
+        <section id="recomendaciones" class="recomendaciones"></section>
+      </div>
+      <!-- recomendaciones -->
+    </main>
+
+    <!-------------------- footer -------------------->
+
+    <footer>
+      <div class="footer-logo">
+        <img src="../imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
+        <p>Todos los derechos reservados &copy;</p>
+      </div>
+      <div class="social">
+        <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://twitter.com/?lang=es"
+          ><i class="fa-brands fa-x-twitter"></i
+        ></a>
+      </div>
+    </footer>
+    <script src="../scripts/productos/getProductosPorCategoria.js"></script>
+    <script type="module" src="../scripts/usuarios/renderUserInitials.js"></script>
+    <script type="module" src="../scripts/usuarios/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+  </body>
+</html>

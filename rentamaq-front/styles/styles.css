@@ -1,0 +1,718 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  height: 100vh;
+}
+
+/* ---------------header--------------- */
+header {
+  background: #202020;
+  background-image: url(../imagenes/header01.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 15vh;
+  padding: 5%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0 30px;
+  z-index: 999;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px;
+}
+
+.logo-section img {
+  width: 198px;
+  height: 127px;
+}
+
+.logo-section p {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: -19px;
+  text-align: center;
+}
+
+.admin-section {
+  display: none;
+}
+
+.adminRoute {
+  width: 100px;
+  height: 100px;
+}
+
+.btn-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: center;
+  gap: 5px;
+}
+
+.btn-section button {
+  display: block;
+  margin-top: 10%;
+  font-family: 'Kanit', sans-serif;
+  background-color: #ffd100;
+  padding: 10px;
+  color: #333533;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 15px;
+  box-shadow: inset 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.user-info button {
+  display: block;
+  font-family: 'Kanit', sans-serif;
+  background-color: #ffd100;
+  padding: 15px;
+  color: #333533;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 15px;
+  box-shadow: inset 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 100% !important;
+  background-color: rgb(188, 196, 203);
+  box-shadow: 0px 5px 5px 0px #000000;
+}
+
+.iniciales {
+  text-align: center;
+  font-size: 25px;
+}
+
+.user-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-card p {
+  margin: 5px 0;
+}
+
+.user-card p:first-child {
+  font-weight: bold;
+}
+
+/* Listado de productos  */
+
+main {
+  padding-top: 15vh;
+}
+
+/* -------------------BUSCADOR------------------ */
+.content-buscador {
+  position: relative;
+}
+
+.buscador {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.buscador h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.searchForm {
+  font-family: 'Prompt', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchInput {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: #333;
+  background-color: #f8f8f8;
+}
+
+.icon {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffd100;
+  transition: background-color 0.3s ease;
+}
+
+.icon:hover {
+  background-color: #f3c500;
+}
+
+.icon img {
+  width: 20px;
+}
+
+/* --- --- CONTENEDOR PRINCIPAL --- --- */
+
+.contenido-principal {
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.contenido-principal__imagen {
+  vertical-align: top;
+  margin-right: 20px;
+  width: 50%;
+  max-width: 550px;
+}
+
+.contenido-principal__contenedor {
+  width: 50%;
+}
+
+.contenido-principal__titulo {
+  font-weight: normal;
+  font-size: 28px;
+}
+
+.contenido-principal__resumen {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 30px;
+  color: #cfcfcf;
+}
+/* Categorias */
+.contenedor {
+  max-width: 2500px;
+  width: 100%;
+  margin: auto;
+}
+.carousel__contenedor {
+  position: relative;
+}
+
+.carousel__anterior,
+.carousel__siguiente {
+  position: absolute;
+  display: block;
+  border: none;
+  font-size: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  background: none;
+  color: black;
+  opacity: 20%;
+  z-index: 1; /* Asegura que los botones estén por encima del contenido */
+}
+
+.carousel__anterior:hover,
+.carousel__siguiente:hover {
+  opacity: 100%;
+}
+
+.carousel__anterior {
+  left: 15px;
+  margin-left: -10px; /* Ajusta el margen para evitar el espacio */
+}
+
+.carousel__siguiente {
+  right: 15px;
+  margin-right: -10px; /* Ajusta el margen para evitar el espacio */
+  z-index: 1;
+}
+
+.carousel__lista {
+  display: flex;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.carousel__elemento {
+  text-align: center;
+  position: relative;
+  display: inline-block; /* Asegura que los elementos estén en línea */
+}
+
+.carousel__indicadores .glider-dot {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background: black;
+  opacity: 0.2;
+  border-radius: 0;
+}
+
+.glider-dots {
+  margin-top: 15px;
+}
+
+.carousel__indicadores .glider-dot:hover {
+  opacity: 0.5;
+}
+
+.carousel__indicadores .glider-dot.active {
+  opacity: 1;
+}
+/* Estilo del contenedor de la imagen */
+.image-container {
+  position: relative;
+}
+/* Estilo del título */
+.title-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 10px;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+  text-align: center;
+}
+
+.titleCategory {
+  color: white;
+}
+.anchorCategory {
+  text-decoration: none;
+}
+.carousel__elemento .title-container {
+  opacity: 0; /* Inicialmente, oculta el título */
+  transition: opacity 0.3s ease; /* Agrega una transición suave */
+}
+
+.carousel__elemento:hover .title-container {
+  opacity: 1; /* Muestra el título al pasar el cursor sobre la tarjeta */
+}
+.imgCategory {
+  width: 85%;
+  height: 400px;
+}
+/* --------------RECOMENDACIONES------------- */
+/* Estilos para las recomendaciones */
+.recomendaciones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px; /* Aumenta el espacio entre las tarjetas */
+  justify-items: center;
+  animation: fadeIn 1s ease; /* Animación para que aparezcan gradualmente */
+}
+
+.title-recomend {
+  font-family: 'Oswald', sans-serif;
+  color: #202020;
+  font-size: 24px; /* Aumenta el tamaño del título */
+  text-align: center;
+  margin-bottom: 20px; /* Agrega espacio inferior */
+  animation: slideInDown 1s ease; /* Animación para que aparezca desde arriba */
+}
+
+.content-recoment-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Estilos para cada tarjeta de recomendación */
+.recoment-card {
+  position: relative;
+  width: 550px;
+  height: 750px;
+  overflow: hidden;
+  margin: 15px;
+  border-radius: 20px;
+  background: #d6d6d6;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease; /* Agrega una transición al hacer hover */
+  animation: fadeIn 1s ease; /* Animación para que aparezcan gradualmente */
+}
+
+.recoment-card:hover {
+  transform: translateY(-10px); /* Agrega efecto de elevación al hacer hover */
+}
+
+.image-container {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+}
+.image-container1 {
+  height: 90%;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+}
+
+.recoment-card h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 30px; /* Añade espacio superior al título */
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.btn-ver {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px; /* Añade espacio entre el título y el botón */
+  animation: fadeInUp 1s ease; /* Animación para que aparezca desde abajo */
+}
+
+.btn-ver a {
+  display: inline-block;
+  padding: 10px 50px; /* Ajusta el padding según sea necesario */
+  background-color: #ffd100;
+  color: #fff; /* Cambia el color del texto según desees */
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+  border: 2px solid gold;
+  border-radius: 30px; /* Ajusta el radio de borde según desees */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Agrega transición de color de fondo y texto */
+  text-transform: uppercase;
+}
+
+.btn-ver a:hover {
+  background-color: darkgoldenrod;
+  color: #fff; /* Cambia el color del texto al pasar el ratón por encima */
+}
+
+.btn-ver h2 {
+  font-size: 15px; /* Ajusta el tamaño del texto */
+  margin-right: 5px;
+}
+
+.btn-ver i {
+  font-size: 20px;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*---------------FOOTER--------------- */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffd100;
+  color: #202020;
+  padding: 30px;
+  width: 100%;
+  height: 15vh;
+  margin: auto;
+}
+
+.footer-logo {
+  display: flex;
+  align-content: flex-end;
+}
+
+.footer-logo img {
+  height: 80px;
+}
+
+.social {
+  display: flex;
+  margin-right: 50px;
+  gap: 10px;
+}
+
+.social i {
+  font-size: 40px;
+  color: #202020;
+}
+
+/* --------------------------RESPONSIVE------------------------ */
+
+/* Media query para dispositivos con una pantalla de más de 1200px de ancho */
+@media only screen and (min-width: 1301px) {
+  header {
+    padding: 20px 30px;
+  }
+
+  .logo-section {
+    max-width: 200px;
+  }
+
+  .logo-section img {
+    width: 150px;
+  }
+
+  .btn-section button {
+    padding: 12px 20px;
+  }
+
+  .category .cards {
+    margin: 30px auto;
+  }
+
+  .card1 .text {
+    justify-content: left;
+    margin-left: 5px;
+  }
+
+  .card4 .text {
+    justify-content: right;
+    margin-right: 5px;
+  }
+
+  .recomendaciones {
+    padding: 60px 40px;
+  }
+  .carousel__anterior,
+  .carousel__siguiente,
+  .carousel__indicadores {
+    display: none; /* Oculta las flechas en dispositivos móviles */
+  }
+}
+
+/* Media query para dispositivos con una pantalla entre 601px y 900px de ancho */
+@media only screen and (min-width: 761px) and (max-width: 1300px) {
+  header {
+    padding: 15px 20px;
+    height: 160px;
+  }
+
+  .logo-section {
+    max-width: 120px;
+  }
+
+  .logo-section img {
+    width: 200px;
+  }
+
+  .logo-section p {
+    font-size: 10px;
+  }
+
+  .btn-section button {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  .category .cards {
+    margin: 20px auto;
+    flex-direction: row;
+  }
+
+  .card1,
+  .card2,
+  .card3,
+  .card4 {
+    width: calc(25% - 20px);
+    margin-bottom: 0;
+    clip-path: none;
+  }
+
+  .recomendaciones {
+    padding: 40px 20px;
+  }
+  .recoment-card {
+    width: 300px;
+    height: 400px;
+  }
+  .recoment-card h3 {
+    font-size: 20px;
+    margin-top: 15px; /* Añade espacio superior al título */
+    margin-bottom: 15px;
+  }
+  .btn-ver {
+    margin-top: 10px; /* Añade espacio entre el título y el botón */
+  }
+
+  .btn-ver a {
+    padding: 5px 50px; /* Ajusta el padding según sea necesario */
+  }
+}
+
+/* Media query para dispositivos con una pantalla hasta 600px de ancho */
+@media only screen and (max-width: 760px) {
+  header {
+    padding: 10px;
+  }
+  .carousel__lista {
+    display: block;
+  }
+  .logo-section {
+    max-width: 100px;
+  }
+
+  .logo-section img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .btn-section button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  nav ul li {
+    margin-right: 10px;
+  }
+
+  .category .cards {
+    margin: 20px auto;
+    flex-direction: column;
+  }
+  .recomendaciones {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* Cambia a una sola columna en pantallas pequeñas */
+  }
+  .card1,
+  .card2,
+  .card3,
+  .card4 {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    clip-path: none;
+  }
+
+  .content-recoment-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .recoment-card {
+    height: auto;
+  }
+
+  .btn-ver {
+    padding: 8px 12px;
+  }
+
+  .social i {
+    font-size: 30px;
+  }
+
+  .recomendaciones {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    justify-items: center;
+    padding: 20px 10px;
+  }
+
+  .btn-section {
+    flex-direction: column;
+  }
+
+  .btn-section button {
+    font-size: 15px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .footer-logo .p {
+    font-size: 0.7em;
+  }
+
+  .recoment-card {
+    width: 300px;
+    height: 400px;
+  }
+
+  .recoment-card h3 {
+    font-size: 20px;
+    margin-top: 10px; /* Añade espacio superior al título */
+    margin-bottom: 10px;
+  }
+  .btn-ver {
+    margin-top: 0px; /* Añade espacio entre el título y el botón */
+  }
+
+  .btn-ver a {
+    padding: 5px 50px; /* Ajusta el padding según sea necesario */
+  }
+}

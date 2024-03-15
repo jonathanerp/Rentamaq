@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../imagenes/Logooscuro.png" type="image/png" />
+    <title>Detalle del Producto</title>
+    <!-- Enlaza tu archivo CSS aquí -->
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/detalle-producto.css" />
+
+    <script
+      src="https://kit.fontawesome.com/ae1d842f3c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Bloque de header -->
+    <header class="headerDetail">
+      <div class="logo-section">
+        <a href="../index.html"
+          ><img src="../imagenes/Logooscuro.png" alt="Logo de la empresa"
+        /></a>
+        <p>El mejor aliado de tus proyectos</p>
+      </div>
+
+      <div class="btn-section">
+        <a href="./signup.html">
+          <button>Crear cuenta</button>
+        </a>
+        <a href="./login.html">
+          <button>Iniciar sesión</button>
+        </a>
+      </div>
+
+      <div class="user-info">
+        <div class="admin-section">
+          <a href="../admin/administracion.html" style="text-decoration: none">
+            <button>Ir al Dashboard</button>
+          </a>
+        </div>
+        <button class="avatar" id="user-details-button">
+          <text class="iniciales"></text>
+        </button>
+        <button id="logout">Cerrar sesion</button>
+        <div class="infoUser"></div>
+      </div>
+    </header>
+
+    <!-- Contenido del detalle del producto -->
+    <main>
+      <div class="back-arrow"></div>
+      <div class="card-container">
+        <section id="detalle-producto"></section>
+      </div>
+      <div id="caracteristicas" class="caracteristicas">
+        <h2>Caracteristicas</h2>
+        <ul id="caracteristica-producto"></ul>
+      </div>
+    </main>
+
+    <!-- Incluye tu pie de página (footer) aquí -->
+    <footer>
+      <div class="footer-logo">
+        <img src="../imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
+        <p>Todos los derechos reservados &copy;</p>
+      </div>
+      <div class="social">
+        <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://twitter.com/?lang=es"
+          ><i class="fa-brands fa-x-twitter"></i
+        ></a>
+      </div>
+    </footer>
+
+    <!-- Inluye tu archivo JavaScript aquí -->
+    <script src="../scripts/productos/getProductoPorId.js"></script>
+    <script type="module" src="../scripts/usuarios/auth.js"></script>
+    <script type="module" src="../scripts/usuarios/renderUserInitials.js"></script>
+  </body>
+</html>
