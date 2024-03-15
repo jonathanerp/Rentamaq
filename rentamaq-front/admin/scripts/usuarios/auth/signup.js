@@ -5,7 +5,6 @@ window.addEventListener('load', function () {
   const nombre = document.getElementById('nombre');
   const apellido = document.getElementById('apellido');
 
-
   document.forms[0].addEventListener('submit', async (event) => {
     event.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +36,7 @@ window.addEventListener('load', function () {
       lastname: apellido.value,
       email: email.value,
       password: nuevopassword.value,
-      roles: ['ROLE_CLIENT'],
+      roles: ['ROLE_ADMIN'],
     };
 
     console.log(payload);
@@ -52,7 +51,7 @@ window.addEventListener('load', function () {
       const res = await fetch('http://localhost:8080/user/signup', settings);
       if (res.status === 201) {
         alert('Usted se ha registrado correctamente, ya es rentamaq!');
-        location.replace('./login.html');
+        location.replace('../../pages/login.html');
       }
     } catch (error) {
       console.log(error);
