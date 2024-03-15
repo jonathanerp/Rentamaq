@@ -1,13 +1,11 @@
 package com.backend.rentamaq.controller;
 
 import com.backend.rentamaq.dto.salida.CategoriaSalidaDto;
+import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
 import com.backend.rentamaq.service.ICategoriaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,10 @@ public class CategoriaController {
     @GetMapping()
     public ResponseEntity<List<CategoriaSalidaDto>> listarCategorias() {
         return new ResponseEntity<>(categoriaService.listarCategorias(), HttpStatus.OK);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<CategoriaSalidaDto> obtenerCategoriaPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(categoriaService.buscarCategoriaPorId(id), HttpStatus.OK);
     }
 }

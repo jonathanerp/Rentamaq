@@ -277,6 +277,7 @@ main {
 }
 
 .carousel__lista {
+  display: flex;
   overflow: hidden;
   margin-top: 30px;
 }
@@ -563,6 +564,7 @@ footer {
     height: 160px;
   }
 
+ 
   .logo-section {
     max-width: 120px;
   }
@@ -620,7 +622,9 @@ footer {
   header {
     padding: 10px;
   }
-
+  .carousel__lista{
+    display: block;
+  }
   .logo-section {
     max-width: 100px;
   }

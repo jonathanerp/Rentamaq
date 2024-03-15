@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ICategoriaService {
     List<CategoriaSalidaDto> listarCategorias();
+
+    CategoriaSalidaDto buscarCategoriaPorId(Long id);
 }

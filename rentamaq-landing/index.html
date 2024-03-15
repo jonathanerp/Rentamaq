@@ -1,132 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Equipos de construccion</title>
+    <script
+      src="https://kit.fontawesome.com/ae1d842f3c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Kanit:wght@100;300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="./styles/styles.css" />
-  <title>Equipos de construccion</title>
-  <script src="https://kit.fontawesome.com/ae1d842f3c.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <!--------- HEADER------------>
-  <header>
-    <div class="logo-section">
-      <a href="index.html"><img src="imagenes/Logooscuro.png" alt="Logo de la empresa" /></a>
-      <p>El mejor aliado de tus proyectos</p>
-    </div>
-
-    <div class="btn-section">
-      <button onclick="window.location.href='auth.html?form=registro'">
-        Crear cuenta
-      </button>
-      <button onclick="window.location.href= 'auth.html'">
-        Iniciar sesión
-      </button>
-    </div>
-
-    <div class="user-info">
-      <div class="admin-section">
-        <a href="../retamaq-app/administracion.html"><img class="adminRoute" src="imagenes/adminicon.png" /></a>
-      </div>  
-      <button class="avatar" id="user-details-button">
-        <text class="iniciales">SM</text>
-      </button>
-      <button id="logout">Cerrar sesion</button>
-      <div class="infoUser">
+  <body>
+    <!--------- HEADER------------>
+    <header>
+      <div class="logo-section">
+        <a href="index.html"
+          ><img src="imagenes/Logooscuro.png" alt="Logo de la empresa"
+        /></a>
+        <p>El mejor aliado de tus proyectos</p>
       </div>
-    </div>
 
-  </header>
-
-  <!-- Listado de productos -->
-  <main>
-    <section class="content-buscador">
-      <div class="buscador">
-        <h2>¿Que buscas para tus proyectos?</h2>
-        <form class="searchForm">
-          <input class="searchInput" type="text" id="searchInput"
-            placeholder="Ingresa palabras claves de tu busqueda..." />
-          <button class="icon" type="submit">
-            <img src="./imagenes/search.svg" alt="" />
-          </button>
-        </form>
+      <div class="btn-section">
+        <button onclick="window.location.href='auth.html?form=registro'">
+          Crear cuenta
+        </button>
+        <button onclick="window.location.href= 'auth.html'">
+          Iniciar sesión
+        </button>
       </div>
-    </section>
- 
-    <div class="contenedor">
-      <div class="carousel">
-        <div class="carousel__contenedor">
-          <button aria-label="Anterior" class="carousel__anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-  
-          <div class="carousel__lista">
-            
-            
-            <div class="carousel__elemento">
-              <div class="image-container1">
-                <img src="./imagenes/maquinariapesada.png" alt="maquinaria pesada" class="imgCategory">
-              </div>
-              <div class="title-container">
-                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
-                  <h3 class="titleCategory">MAQUINARIA PESADA</h3>
-                </a>
-              </div>
-            </div>
-            <div class="carousel__elemento">
-              <div class="image-container1">
-                <img src="./imagenes/equipoconstruccion.png" alt="equipos de construccion" class="imgCategory">
-              </div>
-              <div class="title-container">
-                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
-                  <h3 class="titleCategory">EQUIPOS CONSTRUCCIÓN</h3>
-                </a>
-              </div>
-            </div>
-            <div class="carousel__elemento">
-              <div class="image-container1">
-                <img src="./imagenes/indumentaria.png" alt="indumentaria" class="imgCategory">
-              </div>
-              <div class="title-container">
-                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
-                  <h3 class="titleCategory">INDUMENTARIA</h3>
-                </a>
-              </div>
-            </div>
-            <div class="carousel__elemento">
-              <div class="image-container1">
-                <img src="./imagenes/herramientapequeña.png" alt="herramientas pequeñas" class="imgCategory">
-              </div>
-              <div class="title-container">
-                <a href="maqpesada.html" class="anchorCategory" class="imgCategory">
-                  <h3 class="titleCategory">HERRAMIENTAS PEQUEÑAS</h3>
-                </a>
-              </div>
-            </div>
-            
-            
-          </div>
-  
-          <button aria-label="Siguiente" class="carousel__siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+
+      <div class="user-info">
+        <div class="admin-section">
+          <a href="../retamaq-app/administracion.html"
+            ><img class="adminRoute" src="imagenes/adminicon.png"
+          /></a>
         </div>
-  
-        <div role="tablist" class="carousel__indicadores"></div>
+        <button class="avatar" id="user-details-button">
+          <text class="iniciales">SM</text>
+        </button>
+        <button id="logout">Cerrar sesion</button>
+        <div class="infoUser"></div>
       </div>
-    </div>
-  
+    </header>
 
+    <!-- Listado de productos -->
+    <main>
+      <section class="content-buscador">
+        <div class="buscador">
+          <h2>¿Que buscas para tus proyectos?</h2>
+          <form class="searchForm">
+            <input
+              class="searchInput"
+              type="text"
+              id="searchInput"
+              placeholder="Ingresa palabras claves de tu busqueda..."
+            />
+            <button class="icon" type="submit">
+              <img src="./imagenes/search.svg" alt="" />
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <div class="contenedor">
+        <div class="carousel">
+          <div class="carousel__contenedor">
+            <button aria-label="Anterior" class="carousel__anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="carousel__lista" id="carousel__lista">
+              <!-- <div class="carousel__elemento">
+                <div class="image-container1">
+                  <img
+                    src="./imagenes/maquinariapesada.png"
+                    alt="maquinaria pesada"
+                    class="imgCategory"
+                  />
+                </div>
+                <div class="title-container">
+                  <a
+                    href="maqpesada.html"
+                    class="anchorCategory"
+                    class="imgCategory"
+                  >
+                    <h3 class="titleCategory">MAQUINARIA PESADA</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="image-container1">
+                  <img
+                    src="./imagenes/equipoconstruccion.png"
+                    alt="equipos de construccion"
+                    class="imgCategory"
+                  />
+                </div>
+                <div class="title-container">
+                  <a
+                    href="maqpesada.html"
+                    class="anchorCategory"
+                    class="imgCategory"
+                  >
+                    <h3 class="titleCategory">EQUIPOS CONSTRUCCIÓN</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="image-container1">
+                  <img
+                    src="./imagenes/indumentaria.png"
+                    alt="indumentaria"
+                    class="imgCategory"
+                  />
+                </div>
+                <div class="title-container">
+                  <a
+                    href="maqpesada.html"
+                    class="anchorCategory"
+                    class="imgCategory"
+                  >
+                    <h3 class="titleCategory">INDUMENTARIA</h3>
+                  </a>
+                </div>
+              </div>
+              <div class="carousel__elemento">
+                <div class="image-container1">
+                  <img
+                    src="./imagenes/herramientapequeña.png"
+                    alt="herramientas pequeñas"
+                    class="imgCategory"
+                  />
+                </div>
+                <div class="title-container">
+                  <a
+                    href="maqpesada.html"
+                    class="anchorCategory"
+                    class="imgCategory"
+                  >
+                    <h3 class="titleCategory">HERRAMIENTAS PEQUEÑAS</h3>
+                  </a>
+                </div>
+              </div> -->
+            </div>
+
+            <button aria-label="Siguiente" class="carousel__siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div role="tablist" class="carousel__indicadores"></div>
+        </div>
+      </div>
 
       <!-- categorias -->
 
@@ -138,23 +182,22 @@
         <section id="recomendaciones" class="recomendaciones"></section>
       </div>
       <!-- recomendaciones -->
+    </main>
+    <!-------------------- footer -------------------->
 
-      <!-------------------- footer -------------------->
-
-      <footer>
-        <div class="footer-logo">
-          <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
-          <p>Todos los derechos reservados &copy;</p>
-        </div>
-        <div class="social">
-          <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://twitter.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
-      </footer>
-  </main>
-
-  <script src="./scripts/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
-</body>
-
+    <footer>
+      <div class="footer-logo">
+        <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
+        <p>Todos los derechos reservados &copy;</p>
+      </div>
+      <div class="social">
+        <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://twitter.com/?lang=es"
+          ><i class="fa-brands fa-x-twitter"></i
+        ></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+    <script src="./scripts/script.js"></script>
+  </body>
 </html>
