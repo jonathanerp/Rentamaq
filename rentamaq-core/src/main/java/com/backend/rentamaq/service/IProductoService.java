@@ -20,4 +20,6 @@ public interface IProductoService {
 
     List<Producto> obtenerProductosPorCategoriaId(Long categoriaId);
 
+    List<Producto> obtenerProductosPorNombre(String nombre);
+
 }

@@ -5,6 +5,7 @@ import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
 import com.backend.rentamaq.entity.Producto;
 import com.backend.rentamaq.service.IProductoService;
 import jakarta.validation.Valid;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,5 +47,10 @@ public class ProductoController {
     @GetMapping("categoria/{categoriaId}")
     public List<Producto> obtenerProductosPorCategoriaId(@PathVariable Long categoriaId) {
         return productoService.obtenerProductosPorCategoriaId(categoriaId);
+    }
+
+    @GetMapping("producto/{nombre}")
+    public List<Producto> obtenerProductosPorNombre(@PathVariable String nombre) {
+        return productoService.obtenerProductosPorNombre(nombre);
     }
 }

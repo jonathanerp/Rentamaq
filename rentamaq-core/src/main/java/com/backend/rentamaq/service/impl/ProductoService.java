@@ -128,4 +128,11 @@ public class ProductoService implements IProductoService {
     public List<Producto> obtenerProductosPorCategoriaId(Long categoriaId) {
         return productoRepository.findByCategoriaId(categoriaId);
     }
+
+    @Override
+    public List<Producto> obtenerProductosPorNombre(String nombre) {
+        LOGGER.info("Nombre: {}", nombre);
+        return productoRepository.findByNombreStartingWith(nombre);
+    }
+
 }
