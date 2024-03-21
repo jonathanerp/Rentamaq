@@ -8,7 +8,6 @@ window.addEventListener('load', function () {
     try {
       const res = await fetch(`http://localhost:8080/categorias/${id}`);
       const { products } = await res.json();
-      console.log('aca', products);
       renderizarProductos(products);
     } catch (error) {
       console.error('Error fetching data from API:', error);
@@ -18,7 +17,6 @@ window.addEventListener('load', function () {
 
 function renderizarProductos(productos) {
   const cardsRecomendaciones = document.querySelector('#recomendaciones');
-  console.log(cardsRecomendaciones);
   // Limpiar el contenido existente en caso de que se estén mostrando productos antiguos
   cardsRecomendaciones.innerHTML = '';
 
@@ -26,7 +24,7 @@ function renderizarProductos(productos) {
     cardsRecomendaciones.innerHTML += `
         <div class="recoment-card">
             <div class="image-container">
-                <img src="${producto.urlImagen}" alt="${producto.nombre}">
+                <img src="${producto.imagenPrincipal}" alt="${producto.nombre}">
             </div>
             <h3>${producto.nombre}</h3>
             <div class="btn-ver">

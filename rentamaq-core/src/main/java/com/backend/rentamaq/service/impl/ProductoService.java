@@ -3,8 +3,10 @@ package com.backend.rentamaq.service.impl;
 import com.backend.rentamaq.dto.entrada.ProductoEntradaDto;
 import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
 import com.backend.rentamaq.entity.Categoria;
+import com.backend.rentamaq.entity.Image;
 import com.backend.rentamaq.entity.Producto;
 import com.backend.rentamaq.repository.CategoriaRepository;
+import com.backend.rentamaq.repository.ImageRepository;
 import com.backend.rentamaq.repository.ProductoRepository;
 import com.backend.rentamaq.service.IProductoService;
 import org.modelmapper.ModelMapper;
@@ -26,13 +28,14 @@ public class ProductoService implements IProductoService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ProductoService.class);
     private final ProductoRepository productoRepository;
-
     private final CategoriaRepository categoriaRepository;
+    private final ImageRepository imageRepository;
     private final ModelMapper modelMapper;
 
-    public ProductoService(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ModelMapper modelMapper) {
+    public ProductoService(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ImageRepository imageRepository, ModelMapper modelMapper) {
         this.productoRepository = productoRepository;
         this.categoriaRepository = categoriaRepository;
+        this.imageRepository = imageRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -42,38 +45,54 @@ public class ProductoService implements IProductoService {
 
     @Override
     public ProductoSalidaDto guardarProducto(ProductoEntradaDto productoEntradaDto) {
-
-        MultipartFile imagen = productoEntradaDto.getImagen();
-        String nombreImagen = imagen.getOriginalFilename();
-        String urlImagen = "http://localhost:8080/imagenes/" + nombreImagen;
-
-        try {
-            String ruta = "public/imagenes/";
-            Path subirRuta = Paths.get(ruta);
-
-            if(!Files.exists(subirRuta)){
-                Files.createDirectories(subirRuta);
-            }
-
-            try (InputStream inputStream = imagen.getInputStream()){
-                Files.copy(inputStream, Paths.get(ruta + nombreImagen), StandardCopyOption.REPLACE_EXISTING);
-            }
-        }catch (Exception ex){
-            LOGGER.error("Excepcion: {}", ex.getMessage());
-        }
-
         Producto producto = new Producto();
         producto.setNombre(productoEntradaDto.getNombre());
         producto.setDescripcion(productoEntradaDto.getDescripcion());
-        producto.setUrlImagen(urlImagen);
 
-        Categoria categoria = categoriaRepository.findById(productoEntradaDto.getCategoriaId()).orElse(null);
-        producto.setCategoria(categoria);
+        if (productoEntradaDto.getImagenPrincipal() != null) {
+            MultipartFile imagenPrincipal = productoEntradaDto.getImagenPrincipal();
+            String nombreImagenPrincipal = imagenPrincipal.getOriginalFilename();
+            String urlImagen = "http://localhost:8080/imagenes/" + nombreImagenPrincipal;
+            producto.setImagenPrincipal(urlImagen);
+        }
 
-        productoRepository.save(producto);
+        if (productoEntradaDto.getCategoriaId() != null) {
+            Categoria categoria = categoriaRepository.findById(productoEntradaDto.getCategoriaId()).orElse(null);
+            producto.setCategoria(categoria);
+        }
+
+        Producto resultadoProducto = productoRepository.save(producto);
+
         ProductoSalidaDto productoSalidaDto = entidadADtoSalida(producto);
-        LOGGER.info("Paciente guardado: {}", productoSalidaDto);
+        for (MultipartFile imagen : productoEntradaDto.getImagenes()) {
+            String nombreImagen = imagen.getOriginalFilename();
+            String urlImagen = "http://localhost:8080/imagenes/" + nombreImagen;
+            Image image = new Image();
 
+            try {
+                String ruta = "public/imagenes/";
+                Path subirRuta = Paths.get(ruta);
+
+                if (!Files.exists(subirRuta)) {
+                    Files.createDirectories(subirRuta);
+                }
+
+                try (InputStream inputStream = imagen.getInputStream()) {
+                    Files.copy(inputStream, Paths.get(ruta + nombreImagen), StandardCopyOption.REPLACE_EXISTING);
+                }
+            } catch (Exception ex) {
+                LOGGER.error("Excepcion: {}", ex.getMessage());
+            }
+
+            //Si pasa el try catch almacena la imagen
+            image.setUrl(urlImagen);
+            image.setProducto(resultadoProducto);
+            imageRepository.save(image);
+        }
+
+        LOGGER.info("Producto guardado: {}", productoSalidaDto);
+        List<Image> imagenes = imageRepository.findByProductoId(productoSalidaDto.getId());
+        productoSalidaDto.setImagenes(imagenes);
         return productoSalidaDto;
     }
 
@@ -101,7 +120,7 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public void eliminarPaciente(Long id){
+    public void eliminarPaciente(Long id) {
         if (buscarProductoPorId(id) != null) {
             productoRepository.deleteById(id);
             LOGGER.warn("Se ha eliminado el producto con id: {}", id);
@@ -116,7 +135,7 @@ public class ProductoService implements IProductoService {
         Categoria categoriaBuscada = categoriaRepository.findById(categoriaId).orElse(null);
 
         ProductoSalidaDto productoSalidaDto = null;
-        if (productoBuscado != null && categoriaBuscada != null ) {
+        if (productoBuscado != null && categoriaBuscada != null) {
             productoBuscado.setCategoria(categoriaBuscada);
             productoRepository.save(productoBuscado);
             productoSalidaDto = entidadADtoSalida(productoBuscado);
@@ -125,6 +144,7 @@ public class ProductoService implements IProductoService {
 
         return productoSalidaDto;
     }
+
     public List<Producto> obtenerProductosPorCategoriaId(Long categoriaId) {
         return productoRepository.findByCategoriaId(categoriaId);
     }

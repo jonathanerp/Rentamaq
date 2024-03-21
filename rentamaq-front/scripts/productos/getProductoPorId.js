@@ -6,8 +6,6 @@ window.addEventListener('load', function () {
       const res = await fetch('http://localhost:8080/productos');
       const productos = await res.json();
 
-      console.log('aca', productos);
-
       renderizarProductos(productos);
     } catch (error) {
       console.error('Error fetching data from API:', error);
@@ -25,7 +23,6 @@ window.addEventListener('load', function () {
     divDetalleProducto.innerHTML = '';
 
     let urlAnterior = document.referrer;
-    console.log('URL anterior: ' + urlAnterior);
     backArrow.innerHTML = `
       <a href="${urlAnterior}">
         <i class="fa-solid fa-arrow-left"></i>
@@ -33,9 +30,10 @@ window.addEventListener('load', function () {
 
     productos.forEach((prod) => {
       if (prod.id.toString() === prodId) {
+        console.log(prod);
         divDetalleProducto.innerHTML += `
         <div class="div-imagen">
-            <img src=${prod.urlImagen} alt=${prod.nombre} />
+            <img src=${prod.imagenPrincipal} alt=${prod.nombre} />
         </div>
         <div class="div-texto">
             <h1>${prod.nombre}</h1>
@@ -59,8 +57,6 @@ window.addEventListener('load', function () {
         `http://localhost:8080/caracteristicas/${prodId}`
       );
       const caracteristicas = await res.json();
-
-      console.log('aca', caracteristicas);
 
       renderizarCaracteristicas(caracteristicas);
     } catch (error) {

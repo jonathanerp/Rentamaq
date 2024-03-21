@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
       cardsRecomendaciones.innerHTML += `
           <div class="recoment-card">
               <div class="image-container">
-                  <img src="${producto.urlImagen}" alt="${producto.nombre}">
+                  <img src="${producto.imagenPrincipal}" alt="${producto.nombre}">
               </div>
               <h3>${producto.nombre}</h3>
               <div class="btn-ver">

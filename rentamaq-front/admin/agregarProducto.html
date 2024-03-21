@@ -1,62 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agregar Producto</title>
+    <link rel="stylesheet" href="styles/agregarProducto.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agregar Producto</title>
-  <link rel="stylesheet" href="styles/agregarProducto.css">
+  <body>
+    <header>
+      <div class="logo-section">
+        <a href="administracion.html"
+          ><img src="imagenes/Logooscuro.png" alt="Logo de la empresa"
+        /></a>
+        <p>El mejor aliado de tus proyectos</p>
+      </div>
+      <div class="title-header">
+        <h1>AGREGAR PRODUCTO</h1>
+      </div>
+    </header>
 
-</head>
+    <form id="formularioProducto" class="form">
+      <div>
+        <label for="imagenes">Imagen principal:</label><br />
+        <input
+          type="file"
+          name="imagenPrincipal"
+          accept="image/*"
+          id="imagen"
+        />
+      </div>
+      <div>
+        <label for="nombre">Nombre del producto:</label><br />
+        <input type="text" id="nombre" name="nombre" />
+        <div id="error-nombre" class="error-message"></div>
+      </div>
+      <div>
+        <label for="descripcion">Descripción del producto:</label><br />
+        <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+        <div id="error-descripcion" class="error-message"></div>
+      </div>
+      <div>
+        <label for="categoriaId">Categorias:</label>
+        <select name="categoriaId" id="categoriaId"></select>
+      </div>
+      <div>
+        <label for="imagenes">Agregar imagenes del producto:</label><br />
+        <input
+          type="file"
+          name="imagenes"
+          accept="image/*"
+          id="fileInput"
+          multiple
+        />
+      </div>
+      <div id="imageContainer">
+        <!-- Aquí se mostrarán las imágenes cargadas -->
+      </div>
 
-<body>
-  <header>
-    <div class="logo-section">
-      <a href="administracion.html"><img src="imagenes/Logooscuro.png" alt="Logo de la empresa"></a>
-      <p>El mejor aliado de tus proyectos</p>
-    </div>
-    <div class="title-header">
-      <h1>AGREGAR PRODUCTO</h1>
-    </div>
-  </header>
+      <div>
+        <button type="submit" class="btn primary full">Guardar Producto</button>
+      </div>
+    </form>
+    <footer>
+      <div class="footer-logo">
+        <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa" />
+        <p>Todos los derechos reservados &copy;</p>
+      </div>
+      <div class="social">
+        <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://twitter.com/?lang=es"
+          ><i class="fa-brands fa-x-twitter"></i
+        ></a>
+      </div>
+    </footer>
 
-
-  <form id="formularioProducto" class="form">
-    <div>
-      <label for="nombre">Nombre del producto:</label><br>
-      <input type="text" id="nombre" name="nombre">
-      <div id="error-nombre" class="error-message"></div>
-    </div>
-    <div>
-      <label for="descripcion">Descripción del producto:</label><br>
-      <textarea id="descripcion" name="descripcion" rows="4"></textarea>
-      <div id="error-descripcion" class="error-message"></div>
-    </div>
-    <div>
-      <label for="categoriaId">Categorias:</label>
-      <select name="categoriaId" id="categoriaId">
-      </select>
-    </div>
-    <div>
-      <label for="imagen">Imagen del producto:</label><br>
-      <input type="file" id="imagen" name="imagen" accept="image/*" required>
-    </div>
-    <div>
-      <button type="submit" class="btn primary full">Guardar Producto</button>
-    </div>
-  </form>
-  <footer>
-    <div class="footer-logo">
-      <img src="./imagenes/Logooscuro.png" alt="Isologotipo de la empresa">
-      <p> Todos los derechos reservados &copy;</p>
-    </div>
-    <div class="social">
-      <a href="http://facebook.com"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://twitter.com/?lang=es"><i class="fa-brands fa-x-twitter"></i></a>
-    </div>
-  </footer>
-
-  <script src="scripts/agregarProductos.js" type="module"></script>
-</body>
-
+    <script src="scripts/agregarProductos.js" type="module"></script>
+  </body>
 </html>

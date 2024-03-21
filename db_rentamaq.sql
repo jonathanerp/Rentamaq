@@ -82,7 +82,7 @@ CREATE TABLE `productos` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `descripcion` text,
   `nombre` varchar(255) DEFAULT NULL,
-  `url_imagen` varchar(255) DEFAULT NULL,
+  `imagen_principal` varchar(255) DEFAULT NULL,
   `categoria_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKmlgw7js72hh2xtd4mvpdqfsbe` (`nombre`),
