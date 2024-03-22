@@ -12,12 +12,9 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class UserDto {
-    @NotNull
+    private Long id;
     private String name;
-    @NotNull
     private String lastname;
-    @NotNull
     private String email;
     private Set<Role> roles;
-
 }

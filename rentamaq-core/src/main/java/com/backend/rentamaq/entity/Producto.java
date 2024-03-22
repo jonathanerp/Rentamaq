@@ -20,13 +20,16 @@ public class Producto {
     private String descripcion;
     @Column
     private String imagenPrincipal;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     @JsonIgnore
     private Categoria categoria;
+
     @OneToMany(mappedBy = "producto")
     @JsonIgnore
     private List<Image> imagenes;
+
     @OneToMany(mappedBy = "producto")
     @JsonIgnore
     private List<Caracteristica> caracteristicas;

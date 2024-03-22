@@ -22,21 +22,22 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private CustomerDetailsService userDetailsService;
     private Claims claims = null;
-    private String username = null;
+    private String email = null;
     private String token = null;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String autorizationHeader = request.getHeader("Authorization");
 
-        if (autorizationHeader != null && autorizationHeader.startsWith("Bearer ")) {
+        if (autorizationHeader != null && autorizationHeader.startsWith("Bearer")) {
             token = autorizationHeader.substring(7);
-            username = jwtUtil.extractUsername(token);
+            email = jwtUtil.extractEmail(token);
             claims = jwtUtil.extractAllClaims(token);
         }
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+        if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             if (jwtUtil.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
@@ -57,6 +58,6 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
     public String getCurrentUser() {
-        return username;
+        return email;
     }
 }

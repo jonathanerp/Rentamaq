@@ -1,9 +1,11 @@
 package com.backend.rentamaq.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +23,7 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
@@ -28,6 +31,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Reservacion> reservaciones;
 
     public User() {
     }

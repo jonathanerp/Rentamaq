@@ -73,8 +73,7 @@ public class UserService {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(data.getEmail(), data.getPassword()));
         if (authentication.isAuthenticated()) {
-            Optional<User> user = userRepository.findByEmail(customerDetailsService.getUserDetail().getEmail());
-            return jwtUtil.generateToken(user.get().getId(), customerDetailsService.getUserDetail().getRoles());
+            return jwtUtil.generateToken(customerDetailsService.getUserDetail().getEmail(), customerDetailsService.getUserDetail().getId(), customerDetailsService.getUserDetail().getRoles());
         } else {
             throw new BadRequestException("Contraseña o email incorrectos", "User");
         }

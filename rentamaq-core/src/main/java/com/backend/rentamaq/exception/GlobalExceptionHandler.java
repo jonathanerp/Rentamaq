@@ -33,6 +33,8 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, String> procesarInternalServerError(Exception exception) {
         Map<String, String> exceptionMessage = new HashMap<>();
+        String mensaje = exception.getMessage();
+
         if (exception.getMessage().startsWith("could not execute statement")) {
             exceptionMessage.put("nombre", "El nombre ya esta en uso");
         } else if (exception.getMessage().startsWith("Bad credentials")) {
@@ -40,7 +42,13 @@ public class GlobalExceptionHandler {
             exceptionMessage.put("message", responseException.getMessage());
             exceptionMessage.put("entity", responseException.getEntity());
         } else {
-            exceptionMessage.put("message", "Internal Server error: " + exception.getMessage());
+            if (mensaje != null && !mensaje.isEmpty()) {
+                int index = mensaje.lastIndexOf(":");
+                if (index != -1 && index < mensaje.length() - 1) {
+                    mensaje = mensaje.substring(index + 1).trim();
+                }
+            }
+            exceptionMessage.put("message", mensaje);
         }
         return exceptionMessage;
     }
