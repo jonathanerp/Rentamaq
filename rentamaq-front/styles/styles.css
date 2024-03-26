@@ -199,6 +199,39 @@ main {
   width: 20px;
 }
 
+.suggestions {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 70%; /* Ajustar el ancho al 70% */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilo para resaltar el texto coincidente */
+.highlight {
+  font-weight: bold;
+  color: #007bff;
+}
+
 /* --- --- CONTENEDOR PRINCIPAL --- --- */
 
 .contenido-principal {
@@ -342,6 +375,23 @@ main {
 }
 /* --------------RECOMENDACIONES------------- */
 /* Estilos para las recomendaciones */
+
+#searchResults h2 {
+  font-family: 'Oswald', sans-serif; /* Utiliza la misma fuente que el h2 de recomendaciones */
+  color: #202020;
+  font-size: 24px; /* Aumenta el tamaño del título */
+  text-align: center;
+  margin-bottom: 20px; /* Agrega espacio inferior */
+}
+
+#searchResults {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  flex-direction: column; /* Alinea los elementos en una columna */
+  margin-top: 50px; /* Ajusta el margen superior según sea necesario */
+}
+
 .recomendaciones {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
