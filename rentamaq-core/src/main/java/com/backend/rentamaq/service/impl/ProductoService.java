@@ -8,6 +8,7 @@ import com.backend.rentamaq.entity.Producto;
 import com.backend.rentamaq.repository.CategoriaRepository;
 import com.backend.rentamaq.repository.ImageRepository;
 import com.backend.rentamaq.repository.ProductoRepository;
+import com.backend.rentamaq.repository.ReservacionRepository;
 import com.backend.rentamaq.service.IProductoService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,12 +31,14 @@ public class ProductoService implements IProductoService {
     private final Logger LOGGER = LoggerFactory.getLogger(ProductoService.class);
     private final ProductoRepository productoRepository;
     private final CategoriaRepository categoriaRepository;
+    private final ReservacionRepository reservacionRepository;
     private final ImageRepository imageRepository;
     private final ModelMapper modelMapper;
 
-    public ProductoService(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ImageRepository imageRepository, ModelMapper modelMapper) {
+    public ProductoService(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ReservacionRepository reservacionRepository,ImageRepository imageRepository, ModelMapper modelMapper) {
         this.productoRepository = productoRepository;
         this.categoriaRepository = categoriaRepository;
+        this.reservacionRepository = reservacionRepository;
         this.imageRepository = imageRepository;
         this.modelMapper = modelMapper;
     }
@@ -144,7 +148,7 @@ public class ProductoService implements IProductoService {
 
         return productoSalidaDto;
     }
-
+    @Override
     public List<Producto> obtenerProductosPorCategoriaId(Long categoriaId) {
         return productoRepository.findByCategoriaId(categoriaId);
     }
@@ -155,4 +159,19 @@ public class ProductoService implements IProductoService {
         return productoRepository.findByNombreStartingWith(nombre);
     }
 
+    @Override
+    public List<Producto> obtenerProductosPorFecha(LocalDate inicio_reservacion, LocalDate fin_reservacion) {
+        List<Long> productoIds = reservacionRepository.findProductoIdsByInicioReservacionNotBetween(inicio_reservacion, fin_reservacion);
+        return productoRepository.findAllById(productoIds);
+    }
+
+    @Override
+    public List<Producto> obtenerProductosPorNombreYFecha(String nombre, LocalDate inicio_reservacion, LocalDate fin_reservacion) {
+        List<Long> productoIds = reservacionRepository.findProductoIdsByInicioReservacionNotBetween(inicio_reservacion, fin_reservacion);
+        if (nombre != null && !nombre.isEmpty()) {
+            return productoRepository.findByNombreStartingWithAndIdIn(nombre, productoIds);
+        } else {
+            return productoRepository.findAllById(productoIds);
+        }
+    }
 }

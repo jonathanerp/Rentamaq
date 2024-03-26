@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @Service
 public class ReservacionService {
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductoService.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(ReservacionService.class);
     private final ReservacionRepository reservacionRepository;
     private final ProductoRepository productoRepository;
     private final UserRepository userRepository;

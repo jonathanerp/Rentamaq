@@ -4,6 +4,7 @@ import com.backend.rentamaq.dto.entrada.ProductoEntradaDto;
 import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
 import com.backend.rentamaq.entity.Producto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IProductoService {
@@ -21,5 +22,9 @@ public interface IProductoService {
     List<Producto> obtenerProductosPorCategoriaId(Long categoriaId);
 
     List<Producto> obtenerProductosPorNombre(String nombre);
+
+    List<Producto> obtenerProductosPorNombreYFecha(String nombre, LocalDate fechaInicio, LocalDate fechaFin);
+
+    List<Producto> obtenerProductosPorFecha(LocalDate fechaInicio, LocalDate fechaFin);
 
 }

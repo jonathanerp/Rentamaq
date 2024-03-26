@@ -1,6 +1,5 @@
 package com.backend.rentamaq.dto.salida;
 
-import com.backend.rentamaq.entity.Producto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
