@@ -55,6 +55,25 @@ public class ProductoController {
         return productoService.obtenerProductosPorNombre(nombre);
     }
 
+    @GetMapping("fecha")
+    public ResponseEntity<List<Producto>> obtenerProductosPorFecha(
+            @RequestParam(required = false) LocalDate fechaInicio,
+            @RequestParam(required = false) LocalDate fechaFin) {
+
+        List<Producto> productos = productoService.obtenerProductosPorFecha(fechaInicio, fechaFin);
+        return ResponseEntity.ok(productos);
+    }
+
+    @GetMapping("nombreyfecha")
+    public ResponseEntity<List<Producto>> obtenerProductosPorNombreYFecha(
+            @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) LocalDate fechaInicio,
+            @RequestParam(required = false) LocalDate fechaFin) {
+
+        List<Producto> productos = productoService.obtenerProductosPorNombreYFecha(nombre, fechaInicio, fechaFin);
+        return ResponseEntity.ok(productos);
+    }
+
     @PostMapping("nombreyfecha")
     public ResponseEntity<List<Producto>> obtenerProductosPorBusqueda(@RequestBody ProductosPorBusquedaSalidaDto productosPorBusquedaSalidaDto) {
 
