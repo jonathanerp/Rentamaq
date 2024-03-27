@@ -1,7 +1,7 @@
 package com.backend.rentamaq.service.impl;
 
+import com.backend.rentamaq.dto.entrada.CategoriaEntradaDto;
 import com.backend.rentamaq.dto.salida.CategoriaSalidaDto;
-import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
 import com.backend.rentamaq.entity.Categoria;
 import com.backend.rentamaq.entity.Producto;
 import com.backend.rentamaq.repository.CategoriaRepository;
@@ -11,7 +11,13 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,4 +61,39 @@ public class CategoriaService implements ICategoriaService {
 
         return categoriaSalidaDto;
     }
+
+    @Override
+    public CategoriaSalidaDto guardarCategoria(CategoriaEntradaDto categoriaEntradaDto) {
+
+        MultipartFile imagen = categoriaEntradaDto.getImagen();
+        String nombreImagen = imagen.getOriginalFilename();
+        String urlImagen = "http://localhost:8080/imagenes/categorias/" + nombreImagen;
+
+        try {
+            String ruta = "public/imagenes/categorias/";
+            Path subirRuta = Paths.get(ruta);
+
+            if(!Files.exists(subirRuta)){
+                Files.createDirectories(subirRuta);
+            }
+
+            try (InputStream inputStream = imagen.getInputStream()){
+                Files.copy(inputStream, Paths.get(ruta + nombreImagen), StandardCopyOption.REPLACE_EXISTING);
+            }
+        }catch (Exception ex){
+            LOGGER.error("Excepcion: {}", ex.getMessage());
+        }
+
+        Categoria categoria = new Categoria();
+        categoria.setTitulo(categoriaEntradaDto.getTitulo());
+        categoria.setDescripcion(categoriaEntradaDto.getDescripcion());
+        categoria.setUrlImagen(urlImagen);
+
+        categoriaRepository.save(categoria);
+        CategoriaSalidaDto categoriaSalidaDto = entidadADtoSalida(categoria);
+        LOGGER.info("Categoria guardada: {}", categoriaSalidaDto);
+
+        return categoriaSalidaDto;
+    }
+
 }
