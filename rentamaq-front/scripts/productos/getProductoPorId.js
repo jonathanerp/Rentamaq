@@ -26,27 +26,35 @@ window.addEventListener('load', function () {
     backArrow.innerHTML = `
       <a href="${urlAnterior}">
         <i class="fa-solid fa-arrow-left"></i>
-      </a>`;
+      </a>
+      <button class="btn-reservar">Reservar ahora</button>
+    `;
 
     productos.forEach((prod) => {
       if (prod.id.toString() === prodId) {
         console.log(prod);
         divDetalleProducto.innerHTML += `
-        <div class="div-imagen">
-            <img src=${prod.imagenPrincipal} alt=${prod.nombre} />
-        </div>
-        <div class="div-texto">
-            <h1>${prod.nombre}</h1>
-            <div>
-                <h3>Descripción General</h3>
-                <p>
-                ${prod.descripcion}
-                </p>
-            </div>
-        </div>
-              `;
+          <div class="div-imagen">
+              <img src=${prod.imagenPrincipal} alt=${prod.nombre} />
+              <i class="fa-solid fa-heart btn-favorito" data-product-id="${prod.id}"></i>
+          </div>
+          <div class="div-texto">
+              <h1>${prod.nombre}</h1>
+              <div>
+                  <h3>Descripción General</h3>
+                  <p>
+                  ${prod.descripcion}
+                  </p>
+              </div>
+          </div>
+          <div class="puntuacion">
+              ${renderizarEstrellas(prod.puntuacion)}
+          </div>
+        `;
       }
     });
+
+
   }
 
   cargarCaracteristicas();
@@ -76,7 +84,23 @@ window.addEventListener('load', function () {
           <img src=${car.urlImagen} alt="No disponible" class="icono"/>
           ${car.descripcion}
         </li>
-            `;
+      `;
     });
   }
+
+  function renderizarEstrellas(puntuacion) {
+    const estrellasHTML = [];
+    const maxEstrellas = 5; // Suponiendo un máximo de 5 estrellas
+
+    for (let i = 0; i < maxEstrellas; i++) {
+      if (i < puntuacion) {
+        estrellasHTML.push('<i class="fa-solid fa-star"></i>'); // Ícono de estrella llena
+      } else {
+        estrellasHTML.push('<i class="fa-regular fa-star"></i>'); // Ícono de estrella vacía
+      }
+    }
+
+    return estrellasHTML.join(''); // Convertimos el array en una cadena de HTML
+  }
+
 });
