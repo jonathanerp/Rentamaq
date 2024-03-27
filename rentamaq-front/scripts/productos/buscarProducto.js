@@ -7,24 +7,27 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Evitar que el formulario se envíe
         
         // Obtener el valor del campo de búsqueda
-        const searchTerm = document.getElementById('searchInput').value.trim();
-        
-        // Verificar si el término de búsqueda no está vacío
-        if (searchTerm.length > 0) {
-            // Realizar la búsqueda de productos
-            buscarProductos(searchTerm);
+        const nombre = document.getElementById('searchInput').value.trim();
+        const fechaInicio = document.getElementById('fechaInicio').value;
+        const fechaFin = document.getElementById('fechaFin').value;
+
+        if (nombre && fechaInicio && fechaFin) {
+            buscarProductosPorNombreYFecha(nombre, fechaInicio, fechaFin);
+        } else if (nombre && fechaInicio === '' && fechaFin === '') {
+            buscarProductosPorNombre(nombre);
+        } else if (fechaInicio && fechaFin) {
+            buscarProductosPorFecha(fechaInicio, fechaFin);
         } else {
-            // El campo de búsqueda está vacío, no hacer nada
-            console.log('El campo de búsqueda está vacío.');
+        alert('Por favor, ingresa al menos un campo para realizar la búsqueda.');
         }
     });
 });
 
 // Función para buscar productos
-async function buscarProductos(searchTerm) {
+async function buscarProductosPorNombre(nombre) {
     try {
         // Realizar una solicitud al servidor con el término de búsqueda
-        const response = await fetch(`http://localhost:8080/productos/producto/${searchTerm}`);
+        const response = await fetch(`http://localhost:8080/productos/producto/${nombre}`);
         
         // Verificar si la solicitud fue exitosa
         if (!response.ok) {
@@ -43,6 +46,53 @@ async function buscarProductos(searchTerm) {
         console.error('Error al buscar productos:', error);
     }
 }
+
+async function buscarProductosPorFecha(fechaInicio, fechaFin) {
+    try {
+        // Realizar una solicitud al servidor con el término de búsqueda
+        const response = await fetch(`http://localhost:8080/productos/fecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+        
+        // Verificar si la solicitud fue exitosa
+        if (!response.ok) {
+            throw new Error('No se pudo obtener la información del servidor.');
+        }
+        
+        // Convertir la respuesta a formato JSON
+        const productos = await response.json();
+        console.log(productos);
+
+        // Mostrar los resultados de la búsqueda en la interfaz de usuario
+        mostrarResultadosBusqueda(productos);
+        
+    } catch (error) {
+        // Manejar cualquier error que ocurra durante la búsqueda
+        console.error('Error al buscar productos:', error);
+    }
+}
+
+async function buscarProductosPorNombreYFecha(nombre, fechaInicio, fechaFin) {
+    try {
+        // Realizar una solicitud al servidor con el término de búsqueda
+        const response = await fetch(`http://localhost:8080/productos/nombreyfecha?nombre=${nombre}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+        
+        // Verificar si la solicitud fue exitosa
+        if (!response.ok) {
+            throw new Error('No se pudo obtener la información del servidor.');
+        }
+        
+        // Convertir la respuesta a formato JSON
+        const productos = await response.json();
+        console.log(productos);
+
+        // Mostrar los resultados de la búsqueda en la interfaz de usuario
+        mostrarResultadosBusqueda(productos);
+        
+    } catch (error) {
+        // Manejar cualquier error que ocurra durante la búsqueda
+        console.error('Error al buscar productos:', error);
+    }
+}
+
 
 // Función para mostrar los resultados de la búsqueda en la interfaz de usuario
 function mostrarResultadosBusqueda(productos) {
