@@ -18,6 +18,8 @@
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body>
@@ -35,6 +37,33 @@
       <a href="./login.html">
         <button>Iniciar sesión</button>
       </a>
+
+      <!-- Favoritos -->
+
+			<div class="menu-header">
+				<button id="button-header-favorite">
+					<i class="fa-solid fa-heart"></i>
+					<span class="counter-favorite">0</span>
+				</button>
+				<button>
+					<i class="fa-solid fa-bag-shopping"></i>
+					<span class="counter-cart">0</span>
+				</button>
+			</div>
+
+			<div class="container-list-favorites">
+				<div class="header-favorite">
+					<h3>Mis Favoritos</h3>
+					<i class="fa-solid fa-xmark" id="btn-close"></i>
+				</div>
+				<hr />
+				<div class="list-favorites">
+					<div class="card-favorite">
+						<p class="title">Audífonos Bluetooth Pro</p>
+						<p>$150</p>
+					</div>
+				</div>
+			</div>
     </div>
 
     <div class="user-info">
@@ -51,12 +80,60 @@
     </div>
   </header>
 
+ 
   <!-- Contenido del detalle del producto -->
   <main>
     <div class="back-arrow"></div>
+    <button id="btnFecha">Reservar ahora</button>
+    <input id="fechaInicio" type="text" placeholder="Fecha de inicio">
+<input id="fechaFin" type="text" placeholder="Fecha de fin">
     <div class="card-container">
-      <section id="detalle-producto"></section>
+      <section id="detalle-producto">
+
+        <div class="content-card-product" data-product-id="1">
+
+        </div>
+      </section>
+
+
+      <div class="container-products">
+        <div class="card-product">
+
+          <div class="content-card-product" data-product-id="1">
+            <h3>Mezcladora Concreto</h3>
+            <p>
+
+            </p>
+            <div class="footer-card-product">
+              <span class="price">$100.000</span>
+
+              <div class="container-buttons-card">
+                <button class="favorite">
+                  <i
+                    class="fa-regular fa-heart"
+                    id="favorite-regular"
+                  ></i>
+                  <i
+                    class="fa-solid fa-heart"
+                    id="added-favorite"
+                  ></i>
+                </button>
+                <button class="cart">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
+
+
+
+
     <div id="caracteristicas" class="caracteristicas">
       <h2>Caracteristicas</h2>
       <ul id="caracteristica-producto"></ul>
@@ -68,6 +145,8 @@
   <a href="./politicas_productos.html" class="BtnCompartir">Politicas</a>
    </div>
   </main>
+
+
 
   <!-- Incluye tu pie de página (footer) aquí -->
   <footer>
@@ -89,7 +168,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- Bootstrap JS (o cualquier otra biblioteca que proporcione modales) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
+  <script src="../scripts/productos/agregarFavoritos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script>
 
 </body>
 

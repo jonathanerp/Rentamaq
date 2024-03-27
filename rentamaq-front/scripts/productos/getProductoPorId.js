@@ -1,4 +1,6 @@
 window.addEventListener('load', function () {
+
+
   cargarProductos();
 
   async function cargarProductos() {
@@ -18,6 +20,7 @@ window.addEventListener('load', function () {
   function renderizarProductos(productos) {
     const divDetalleProducto = document.querySelector('#detalle-producto');
     const backArrow = document.querySelector('.back-arrow');
+
     // Limpiar el contenido existente en caso de que se estén mostrando productos antiguos
     backArrow.innerHTML = '';
     divDetalleProducto.innerHTML = '';
@@ -27,7 +30,6 @@ window.addEventListener('load', function () {
       <a href="${urlAnterior}">
         <i class="fa-solid fa-arrow-left"></i>
       </a>
-      <button class="btn-reservar">Reservar ahora</button>
     `;
 
     productos.forEach((prod) => {
@@ -36,10 +38,9 @@ window.addEventListener('load', function () {
         divDetalleProducto.innerHTML += `
           <div class="div-imagen">
               <img src=${prod.imagenPrincipal} alt=${prod.nombre} />
-              <i class="fa-solid fa-heart btn-favorito" data-product-id="${prod.id}"></i>
           </div>
           <div class="div-texto">
-              <h1>${prod.nombre}</h1>
+              <h3>${prod.nombre}</h3>
               <div>
                   <h3>Descripción General</h3>
                   <p>
@@ -47,15 +48,25 @@ window.addEventListener('load', function () {
                   </p>
               </div>
           </div>
+
+
+
+
           <div class="puntuacion">
               ${renderizarEstrellas(prod.puntuacion)}
           </div>
+
+
+          
+
+
         `;
       }
     });
-
-
   }
+
+
+
 
   cargarCaracteristicas();
 
@@ -102,5 +113,45 @@ window.addEventListener('load', function () {
 
     return estrellasHTML.join(''); // Convertimos el array en una cadena de HTML
   }
+
+
+    var fechaInicio = document.getElementById('fechaInicio');
+    var fechaFin = document.getElementById('fechaFin');
+
+    flatpickr(fechaInicio, {
+      dateFormat: 'Y-m-d',
+      minDate: 'today',
+      locale: 'es',
+      plugins: [new confirmDatePlugin({})]
+    });
+
+    flatpickr(fechaFin, {
+      dateFormat: 'Y-m-d',
+      minDate: 'today',
+      locale: 'es',
+      plugins: [new confirmDatePlugin({})]
+    });
+
+    fechaInicio._flatpickr.config.onChange.push(function(selectedDates, dateStr, instance) {
+      fechaFin._flatpickr.set('minDate', dateStr);
+    });
+
+    fechaFin._flatpickr.config.onChange.push(function(selectedDates, dateStr, instance) {
+      fechaInicio._flatpickr.set('maxDate', dateStr);
+    });
+
+    fechaInicio._flatpickr.config.onClose.push(function(selectedDates, dateStr, instance) {
+      if (selectedDates.length === 0) {
+        fechaFin._flatpickr.clear();
+      }
+    });
+
+    fechaFin._flatpickr.config.onClose.push(function(selectedDates, dateStr, instance) {
+      if (selectedDates.length === 0) {
+        fechaInicio._flatpickr.clear();
+      }
+    });
+
+
 
 });

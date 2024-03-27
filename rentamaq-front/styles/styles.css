@@ -61,7 +61,7 @@ header {
 
 .btn-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-end;
   align-content: center;
   gap: 5px;
