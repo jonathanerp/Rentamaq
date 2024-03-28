@@ -56,41 +56,16 @@ public class ProductoController {
     }
 
     @GetMapping("fecha")
-    public ResponseEntity<List<Producto>> obtenerProductosPorFecha(
-            @RequestParam(required = false) LocalDate fechaInicio,
-            @RequestParam(required = false) LocalDate fechaFin) {
-
+    public ResponseEntity<List<Producto>> obtenerProductosPorFecha( LocalDate fechaInicio, LocalDate fechaFin) {
         List<Producto> productos = productoService.obtenerProductosPorFecha(fechaInicio, fechaFin);
         return ResponseEntity.ok(productos);
     }
 
     @GetMapping("nombreyfecha")
-    public ResponseEntity<List<Producto>> obtenerProductosPorNombreYFecha(
-            @RequestParam(required = false) String nombre,
-            @RequestParam(required = false) LocalDate fechaInicio,
-            @RequestParam(required = false) LocalDate fechaFin) {
+    public ResponseEntity<List<Producto>> obtenerProductosPorNombreYFecha( String nombre, LocalDate fechaInicio, LocalDate fechaFin) {
 
         List<Producto> productos = productoService.obtenerProductosPorNombreYFecha(nombre, fechaInicio, fechaFin);
         return ResponseEntity.ok(productos);
-    }
-
-    @PostMapping("nombreyfecha")
-    public ResponseEntity<List<Producto>> obtenerProductosPorBusqueda(@RequestBody ProductosPorBusquedaSalidaDto productosPorBusquedaSalidaDto) {
-
-        String nombre = productosPorBusquedaSalidaDto.getNombre();
-        LocalDate fechaInicio = productosPorBusquedaSalidaDto.getFechaInicio();
-        LocalDate fechaFin = productosPorBusquedaSalidaDto.getFechaFin();
-
-        if (nombre != null && !nombre.isEmpty() && (fechaInicio != null || fechaFin != null)) {
-            List<Producto> productos = productoService.obtenerProductosPorNombreYFecha(nombre, fechaInicio, fechaFin);
-            return ResponseEntity.ok(productos);
-        } else if (nombre != null && !nombre.isEmpty()) {
-            List<Producto> productos = productoService.obtenerProductosPorNombre(nombre);
-            return ResponseEntity.ok(productos);
-        } else {
-                List<Producto> productos = productoService.obtenerProductosPorFecha(fechaInicio, fechaFin);
-                return ResponseEntity.ok(productos);
-        }
     }
 }
 

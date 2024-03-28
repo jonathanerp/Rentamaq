@@ -161,17 +161,13 @@ public class ProductoService implements IProductoService {
 
     @Override
     public List<Producto> obtenerProductosPorFecha(LocalDate inicio_reservacion, LocalDate fin_reservacion) {
-        List<Long> productoIds = reservacionRepository.findProductoIdsByInicioReservacionNotBetween(inicio_reservacion, fin_reservacion);
-        return productoRepository.findAllById(productoIds);
+        return productoRepository.findProductosFueraDeRangoDeFecha(inicio_reservacion, fin_reservacion);
     }
 
     @Override
     public List<Producto> obtenerProductosPorNombreYFecha(String nombre, LocalDate inicio_reservacion, LocalDate fin_reservacion) {
-        List<Long> productoIds = reservacionRepository.findProductoIdsByInicioReservacionNotBetween(inicio_reservacion, fin_reservacion);
-        if (nombre != null && !nombre.isEmpty()) {
-            return productoRepository.findByNombreStartingWithAndIdIn(nombre, productoIds);
-        } else {
-            return productoRepository.findAllById(productoIds);
-        }
+        List<Producto> productosFueraDeRango = productoRepository.findProductosFueraDeRangoDeFecha(inicio_reservacion, fin_reservacion);
+        return productoRepository.findByNombreStartingWithAndProductIn(nombre, productosFueraDeRango);
     }
+
 }
