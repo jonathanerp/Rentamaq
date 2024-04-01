@@ -49,17 +49,15 @@ window.addEventListener('load', function () {
               </div>
           </div>
 
-
-
-
-          <div class="puntuacion">
-              ${renderizarEstrellas(prod.puntuacion)}
-          </div>
-
-
-          
-
-
+          <div class="container">
+      <div class="rating">
+        <input type="radio" name="clr1" style="--c:#ff9933">
+        <input type="radio" name="clr1" style="--c:#ff9933">
+        <input type="radio" name="clr1" style="--c:#ff9933">
+        <input type="radio" name="clr1" style="--c:#ff9933">
+        <input type="radio" name="clr1" style="--c:#ff9933">
+      </div>
+    </div>
         `;
       }
     });
@@ -113,45 +111,5 @@ window.addEventListener('load', function () {
 
     return estrellasHTML.join(''); // Convertimos el array en una cadena de HTML
   }
-
-
-    var fechaInicio = document.getElementById('fechaInicio');
-    var fechaFin = document.getElementById('fechaFin');
-
-    flatpickr(fechaInicio, {
-      dateFormat: 'Y-m-d',
-      minDate: 'today',
-      locale: 'es',
-      plugins: [new confirmDatePlugin({})]
-    });
-
-    flatpickr(fechaFin, {
-      dateFormat: 'Y-m-d',
-      minDate: 'today',
-      locale: 'es',
-      plugins: [new confirmDatePlugin({})]
-    });
-
-    fechaInicio._flatpickr.config.onChange.push(function(selectedDates, dateStr, instance) {
-      fechaFin._flatpickr.set('minDate', dateStr);
-    });
-
-    fechaFin._flatpickr.config.onChange.push(function(selectedDates, dateStr, instance) {
-      fechaInicio._flatpickr.set('maxDate', dateStr);
-    });
-
-    fechaInicio._flatpickr.config.onClose.push(function(selectedDates, dateStr, instance) {
-      if (selectedDates.length === 0) {
-        fechaFin._flatpickr.clear();
-      }
-    });
-
-    fechaFin._flatpickr.config.onClose.push(function(selectedDates, dateStr, instance) {
-      if (selectedDates.length === 0) {
-        fechaInicio._flatpickr.clear();
-      }
-    });
-
-
 
 });
