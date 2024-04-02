@@ -1,6 +1,4 @@
 window.addEventListener('load', function () {
-
-
   cargarProductos();
 
   async function cargarProductos() {
@@ -16,6 +14,7 @@ window.addEventListener('load', function () {
 
   const urlSearchParams = new URLSearchParams(window.location.search);
   const prodId = urlSearchParams.get('id');
+  var rangosInhabilitados = [];
 
   function renderizarProductos(productos) {
     const divDetalleProducto = document.querySelector('#detalle-producto');
@@ -63,9 +62,6 @@ window.addEventListener('load', function () {
     });
   }
 
-
-
-
   cargarCaracteristicas();
 
   async function cargarCaracteristicas() {
@@ -97,6 +93,28 @@ window.addEventListener('load', function () {
     });
   }
 
+  cargarCalendario();
+
+  async function cargarCalendario() {
+    try {
+      const res = await fetch(
+        `http://localhost:8080/reservaciones/producto/${prodId}`
+      );
+      const calendario = await res.json();
+      console.log(calendario);
+      renderizarCalendario(calendario);
+    } catch (error) {
+      console.error('Error fetching data from API:', error);
+    }
+  }
+
+  function renderizarCalendario(calendario) {
+    calendario.forEach((cal) => {
+      console.log("Datos seleccionados: " + cal.inicioReservacion);
+      rangosInhabilitados.push({ inicio: cal.inicioReservacion, fin: cal.finReservacion});
+    });
+  }
+
   function renderizarEstrellas(puntuacion) {
     const estrellasHTML = [];
     const maxEstrellas = 5; // Suponiendo un máximo de 5 estrellas
@@ -112,4 +130,56 @@ window.addEventListener('load', function () {
     return estrellasHTML.join(''); // Convertimos el array en una cadena de HTML
   }
 
+  $(function() {
+    console.log(rangosInhabilitados);
+  
+      $('input[name="daterange"]').daterangepicker({
+        "locale": {
+          "format": "MM/DD/YYYY",
+          "separator": " - ",
+          "applyLabel": "Apply",
+          "cancelLabel": "Cancel",
+          "fromLabel": "From",
+          "toLabel": "To",
+          "customRangeLabel": "Custom",
+          "weekLabel": "W",
+          "daysOfWeek": [
+              "Do",
+              "Lu",
+              "Ma",
+              "Mi",
+              "Ju",
+              "Vi",
+              "Sa"
+          ],
+          "monthNames": [
+              "Enero",
+              "Febrero",
+              "Marzo",
+              "Abril",
+              "Mayo",
+              "Junio",
+              "Julio",
+              "Agosto",
+              "Septiembre",
+              "Octubre",
+              "Noviembre",
+              "Diciembre"
+          ],
+          "firstDay": 1
+      },
+        opens: 'center',
+        isInvalidDate: function(date) {
+          for (var i = 0; i < rangosInhabilitados.length; i++) {
+            var rango = rangosInhabilitados[i];
+            if (date.isBetween(rango.inicio, rango.fin, null, '[]')) {
+              return true;
+            }
+          }
+          return false;
+        }
+      }, function(start, end, label) {
+        console.log("Datos seleccionados: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+      });
+    });
 });
