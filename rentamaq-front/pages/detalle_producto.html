@@ -91,7 +91,18 @@
 
         </div>
       </section>
-
+      
+      <div id="popupReserva" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="cerrarPopup()">&times;</span>
+          <h2 id="popupTitle" style="display: none;">¿Deseas confirmar tu reserva?</h2>
+          <div id="detallesReserva" style="display: none;"></div>
+          <div class="popup-buttons" style="display: none;">
+            <button onclick="regresarDetalleProducto()">Regresar a detalle de producto</button>
+            <button id="confirmarReservaBtn">Confirmar reserva</button>
+          </div>
+        </div>
+      </div>
 
       <div class="container-products">
         <div class="card-product">
@@ -146,7 +157,7 @@
 
    <h3 id="selectedDates">Fechas seleccionadas:</h3>
    <div>
-    <input type="text" name="daterange" id="calendarioId" value="01/01/2025 - 01/15/2025" />
+    <input type="text" name="daterange" id="calendarioId" value="01/01/2023 - 01/15/2023" />
   </div>
 
   </main>
@@ -166,6 +177,7 @@
   </footer>
 
   <!-- Inluye tu archivo JavaScript aquí -->
+  <script src="../scripts/productos/validacionUsuarioLoggeadoReserva.js"></script>
   <script src="../scripts/productos/getProductoPorId.js"></script>
   <script type="module" src="../scripts/usuarios/auth.js"></script>
   <script type="module" src="../scripts/usuarios/renderUserInitials.js"></script>
