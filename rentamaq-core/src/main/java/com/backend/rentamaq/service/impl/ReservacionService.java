@@ -63,7 +63,7 @@ public class ReservacionService {
         if (crearReservacionDto.getFinReservacion().isBefore(crearReservacionDto.getInicioReservacion())) {
             throw new BadRequestException("Fecha de fin de reservacion incorrecta", "Reservacion");
         }
-        List<Reservacion> reservaciones = reservacionRepository.findAll();
+        List<Reservacion> reservaciones = reservacionRepository.findAllByProductoId(producto.get().getId());
         LocalDate inicioNuevaReservacion = crearReservacionDto.getInicioReservacion();
         LocalDate finNuevaReservacion = crearReservacionDto.getFinReservacion();
 
