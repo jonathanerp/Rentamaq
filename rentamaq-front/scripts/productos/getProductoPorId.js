@@ -16,7 +16,13 @@ window.addEventListener('load', function () {
 
   const urlSearchParams = new URLSearchParams(window.location.search);
   const prodId = urlSearchParams.get('id');
+  const token = localStorage.getItem('token');
+  const decodedToken = JSON.parse(atob(token.split('.')[1]));
+  const userId = decodedToken.userId;
+  let inicioReservacion = "";
+  let finReservacion = "";
   var rangosInhabilitados = [];
+  const confirmarReservaBtn = document.getElementById('confirmarReservaBtn');
 
   function renderizarProductos(productos) {
     const divDetalleProducto = document.querySelector('#detalle-producto');
@@ -51,10 +57,14 @@ window.addEventListener('load', function () {
         `;
 
         // Agregar nombre y descripción del producto al pop-up
-
-        document.getElementById('nombre-producto').innerText = prod.nombre;
-        // document.getElementById('descripcion-producto').innerText =
-        //   prod.descripcion;
+        document.getElementById('nombre-producto').value = prod.nombre;
+        document.getElementById('descripcion-producto').value = prod.descripcion;
+        const contenedorImagen = document.getElementById("contenedor-imagen");
+        const imagen = document.createElement("img");
+        imagen.src = prod.imagenPrincipal;
+        imagen.width = 200;
+        imagen.height = 200;
+        contenedorImagen.appendChild(imagen);
       }
     });
   }
@@ -189,8 +199,10 @@ window.addEventListener('load', function () {
       document.getElementById('popup').style.display = 'block';
       document.getElementById('fecha-inicio').innerText =
         fechaInicio.format('YYYY-MM-DD');
+      inicioReservacion = fechaInicio.format('YYYY-MM-DD');
       document.getElementById('fecha-fin').innerText =
         fechaFin.format('YYYY-MM-DD');
+      finReservacion = fechaFin.format('YYYY-MM-DD');
 
       try {
         user = await cargarDatosUsuario();
@@ -210,6 +222,42 @@ window.addEventListener('load', function () {
     closeBtn.addEventListener('click', function () {
       // Ocultar el pop-up al hacer clic en la "X"
       document.getElementById('popup').style.display = 'none';
+    });
+  });
+  confirmarReservaBtn.addEventListener('click', function() {
+    const data = {
+      inicioReservacion: inicioReservacion, 
+      finReservacion: finReservacion, 
+      productoId: prodId,
+    };
+    
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token ? `Bearer ${token}` : '',
+      },
+      body: JSON.stringify(data),
+    };
+    
+    const url = 'http://localhost:8080/reservaciones';
+
+    fetch(url, requestOptions)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al crear la reservación');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Manejar la respuesta exitosa aquí
+      console.log('Reservación creada exitosamente:', data);
+      alert('¡Reserva confirmada!');
+    })
+    .catch(error => {
+      // Manejar errores aquí
+      console.error('Error al crear la reservación:', error);
+      alert('¡Hubo un error en la reserva!');
     });
   });
 });

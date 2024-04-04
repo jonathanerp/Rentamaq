@@ -2,7 +2,6 @@ package com.backend.rentamaq.controller;
 
 import com.backend.rentamaq.dto.entrada.ProductoEntradaDto;
 import com.backend.rentamaq.dto.salida.ProductoSalidaDto;
-import com.backend.rentamaq.dto.salida.ProductosPorBusquedaSalidaDto;
 import com.backend.rentamaq.entity.Producto;
 import com.backend.rentamaq.service.IProductoService;
 import jakarta.validation.Valid;

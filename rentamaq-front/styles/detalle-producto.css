@@ -632,12 +632,15 @@ section {
 /* Contenido del pop-up */
 .modal-content {
   background-color: #f8f9fa; /* Fondo blanco */
-  margin: 10% auto; /* Márgenes superior e inferior automáticos, centrando verticalmente */
   padding: 20px;
   border: 1px solid #343a40; /* Borde oscuro */
   border-radius: 10px; /* Bordes redondeados */
-  width: 80%; /* Ancho del contenido del pop-up */
+  width: 50%; /* Ancho del contenido del pop-up */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
 }
 
 /* Estilos para el botón de cerrar */
@@ -672,7 +675,9 @@ label {
 input[type='text'],
 input[type='email'],
 input[type='date'],
-input[type='submit'] {
+button[id='confirmarReservaBtn'],
+textarea[id='comentarios'],
+textarea[id='descripcion-producto']{
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -685,13 +690,13 @@ input[type='submit'] {
 input[type='text']:focus,
 input[type='email']:focus,
 input[type='date']:focus,
-input[type='submit']:focus {
+button[id='confirmarReservaBtn']:focus {
   outline: none;
   border-color: #343a40; /* Color del borde oscuro al enfocar */
 }
 
 /* Estilos para el botón de enviar */
-input[type='submit'] {
+button[id='confirmarReservaBtn'] {
   background-color: #007bff; /* Color de fondo azul */
   color: white; /* Color del texto blanco */
   font-size: 16px;
@@ -700,7 +705,7 @@ input[type='submit'] {
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
 }
 
-input[type='submit']:hover {
+button[id='confirmarReservaBtn']:hover {
   background-color: #0056b3; /* Color de fondo azul oscuro al pasar el ratón */
 }
 
