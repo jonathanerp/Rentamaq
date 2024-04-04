@@ -95,31 +95,29 @@
     <!-- Contenido del detalle del producto -->
     <main>
       <div class="back-arrow"></div>
-      <button id="btnFecha" onclick="openModal()">Reservar ahora</button>
+
       <!-- <button id="btnFecha" onclick="openModal()" >Detalles de Reserva</button> -->
 
       <div class="card-container">
         <section id="detalle-producto">
           <div class="content-card-product" data-product-id="1"></div>
         </section>
-
-        <div class="container-products">
-          <div class="card-product">
-            <div class="content-card-product" data-product-id="1">
-              <h3>Mezcladora Concreto</h3>
-              <div class="footer-card-product">
-                <span class="price">$100.000</span>
-                <div class="container-buttons-card">
-                  <button class="favorite">
-                    <i class="fa-regular fa-heart" id="favorite-regular"></i>
-                    <i class="fa-solid fa-heart" id="added-favorite"></i>
-                  </button>
-                  <button class="cart">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+        <div class="container">
+          <div class="rating">
+            <input type="radio" name="clr1" style="--c: #ff9933" />
+            <input type="radio" name="clr1" style="--c: #ff9933" />
+            <input type="radio" name="clr1" style="--c: #ff9933" />
+            <input type="radio" name="clr1" style="--c: #ff9933" />
+            <input type="radio" name="clr1" style="--c: #ff9933" />
+          </div>
+          <div class="container-buttons-card">
+            <button class="favorite">
+              <i class="fa-regular fa-heart" id="favorite-regular"></i>
+              <i class="fa-solid fa-heart" id="added-favorite"></i>
+            </button>
+            <button class="cart">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -146,13 +144,9 @@
         >
       </div>
 
-      <h3 id="selectedDates">Fechas seleccionadas:</h3>
+      <h1 id="selectedDates" class="reserva-title">Reservar</h1>
       <div class="calendario">
-        <input
-          type="text"
-          name="daterange"
-          id="calendarioId"
-        />
+        <input type="text" name="daterange" id="calendarioId" />
       </div>
 
       <!-- Pop-up -->

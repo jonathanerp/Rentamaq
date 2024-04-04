@@ -1,5 +1,5 @@
 import { cargarDatosUsuario } from '../usuarios/getUserData.js';
-
+import userSession from '../usuarios/auth/session.js';
 window.addEventListener('load', function () {
   cargarProductos();
   var user;
@@ -47,16 +47,6 @@ window.addEventListener('load', function () {
                   ${prod.descripcion}
                   </p>
               </div>
-          </div>
-
-          <div class="container">
-            <div class="rating">
-              <input type="radio" name="clr1" style="--c:#ff9933">
-              <input type="radio" name="clr1" style="--c:#ff9933">
-              <input type="radio" name="clr1" style="--c:#ff9933">
-              <input type="radio" name="clr1" style="--c:#ff9933">
-              <input type="radio" name="clr1" style="--c:#ff9933">
-            </div>
           </div>
         `;
 
@@ -146,8 +136,8 @@ window.addEventListener('load', function () {
         locale: {
           format: 'MM/DD/YYYY',
           separator: ' - ',
-          applyLabel: 'Apply',
-          cancelLabel: 'Cancel',
+          applyLabel: 'Aplicar fechas',
+          cancelLabel: 'Cancelar',
           fromLabel: 'From',
           toLabel: 'To',
           customRangeLabel: 'Custom',
@@ -192,6 +182,10 @@ window.addEventListener('load', function () {
     );
 
     async function mostrarPopUp(fechaInicio, fechaFin) {
+      if (!userSession()) {
+        alert('Debe estar logueado para iniciar una reservacion!');
+        location.replace('./login.html');
+      }
       document.getElementById('popup').style.display = 'block';
       document.getElementById('fecha-inicio').innerText =
         fechaInicio.format('YYYY-MM-DD');

@@ -30,7 +30,7 @@ main {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #ffd100;;
+  background-color: #ffd100;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -44,7 +44,7 @@ main {
   background-color: goldenrod;
 }
 
-.calendario{
+.calendario {
   margin-bottom: 300px;
 }
 
@@ -94,7 +94,7 @@ main {
 }
 
 /* Rating */
-.rating{
+.rating {
   position: relative;
   display: flex;
   flex-direction: row-reverse;
@@ -105,7 +105,7 @@ main {
   border-radius: 30px;
 }
 
-.rating input{
+.rating input {
   position: relative;
   width: 20px;
   height: 20px;
@@ -115,51 +115,52 @@ main {
   cursor: pointer;
 }
 
-.rating input::before{
+.rating input::before {
   content: '\f005';
   position: absolute;
   font-family: fontawesome;
   font-size: 12px;
   color: #111;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .rating input:hover ~ input::before,
-.rating input:hover::before, .rating input:checked ~ input::before,
-.rating input:checked::before{
+.rating input:hover::before,
+.rating input:checked ~ input::before,
+.rating input:checked::before {
   color: var(--c);
 }
 
 /* Calendario */
-.calendar{
+.calendar {
   width: 350px;
   background-color: #fff;
   margin: 0 auto;
   font-family: Arial, sans-serif;
   border-radius: 5px;
-  box-shadow: 0 10px 29px -7px rgba(63,63,63,0.48);
+  box-shadow: 0 10px 29px -7px rgba(63, 63, 63, 0.48);
   margin-bottom: 50px;
 }
 
-.calendar-header{
+.calendar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.calendar-header button{
+.calendar-header button {
   background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: 18px;
 }
 
-.calendar-body{
+.calendar-body {
   display: grid;
-  grid-template-columns: repeat(7,1fr);
+  grid-template-columns: repeat(7, 1fr);
 }
 
-.calendar-day{
+.calendar-day {
   border: 1px solid #fff;
   border-radius: 50%;
   padding: 10px;
@@ -168,22 +169,26 @@ main {
   cursor: pointer;
 }
 
-.calendar-day:hover{
+.calendar-day:hover {
   background-color: #ddd !important;
   transition: background-color 0.3s ease;
 }
 
-.calendar-day.selected{
+.calendar-day.selected {
   border: 1px solid #003879d0;
-  background-color: rgba(70,201,240);
+  background-color: rgba(70, 201, 240);
 }
 
-.calendar-day.range{
+.calendar-day.range {
   border: 1px solid #007900d0;
-  background-color: rgba(86,238,86);
+  background-color: rgba(86, 238, 86);
 }
-
-#prevBtn, #nextBtn{
+.daterangepicker td.disabled,
+.daterangepicker option.disabled {
+  color: red;
+}
+#prevBtn,
+#nextBtn {
   width: 40px;
   height: 40px;
   padding: 10px;
@@ -192,22 +197,22 @@ main {
   background-color: #fff;
 }
 
-#prevBtn:hover{
+#prevBtn:hover {
   background-color: #ddd !important;
   transition: background-color 0.3s ease;
 }
 
-#nextBtn:hover{
+#nextBtn:hover {
   background-color: #ddd !important;
   transition: background-color 0.3s ease;
 }
 
-#selectedDates{
+#selectedDates {
   font-family: 'Poppins';
   margin-bottom: 15px;
 }
 
-#currentMonth{
+#currentMonth {
   font-family: 'Poppins';
   font-size: 18px;
 }
@@ -215,194 +220,195 @@ main {
 /* Favoritos */
 
 .menu-header {
-	display: flex;
-	gap: 35px;
-	align-items: center;
+  display: flex;
+  gap: 35px;
+  align-items: center;
 }
 
 .menu-header button {
-	border: none;
-	background: none;
-	outline: none;
-	width: 45px;
-	height: 45px;
-	color: #fff;
-	font-size: 22px;
-	position: relative;
-	cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  font-size: 22px;
+  position: relative;
+  cursor: pointer;
   display: flex;
   justify-content: center;
-
 }
 
 .menu-header button:hover {
-	transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .counter-favorite,
 .counter-cart {
-	font-size: 10px;
-	position: absolute;
-	background-color: orange;
-	color: #000;
-	font-weight: 700;
-	width: 20px;
-	height: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	bottom: 0;
-	right: 0;
-	border-radius: 50%;
+  font-size: 10px;
+  position: absolute;
+  background-color: orange;
+  color: #000;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
 }
 
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 
 .container-products {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	margin: 30px 0;
-	gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px 0;
+  gap: 30px;
 }
 
 .card-product {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  cursor: pointer;
 }
 
 .content-card-product {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	padding: 10px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 25px;
 }
 
 .container-img {
-	height: 200px;
-	border-radius: 12px;
-	overflow: hidden;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .container-img img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .footer-card-product {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
 }
 
 .price {
-	font-weight: 700;
-	font-size: 24px;
-	color: #555;
+  font-weight: 700;
+  font-size: 24px;
+  color: #555;
   margin-right: 400px;
 }
 
 .container-buttons-card {
-	display: flex;
-	gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .container-buttons-card button {
-	border: none;
-	background: none;
-	outline: none;
-	cursor: pointer;
-	box-shadow: 0px 0px 15px #00000025;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	font-size: 18px;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px #00000025;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
 }
 
 /* ********************************** */
 /*         LISTA DE FAVORITOS         */
 /* ********************************** */
 .container-list-favorites {
-	position: fixed;
-	top: 0;
-	right: 0;
-	transform: translateX(400px);
-	background-color: #555;
-	opacity: 0;
-	width: 400px;
-	height: 100vh;
-	transition: all 0.5s linear;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(400px);
+  background-color: #555;
+  opacity: 0;
+  width: 400px;
+  height: 100vh;
+  transition: all 0.5s linear;
 }
 
 .container-list-favorites.show {
-	opacity: 1;
-	transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .header-favorite {
-	padding: 15px 30px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-favorite i {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .list-favorites {
-	padding: 35px 20px;
-	display: flex;
-	flex-direction: column;
-	gap: 25px;
+  padding: 35px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .list-favorites .card-favorite {
-	width: 100%;
-	background-color: #fff;
-	box-shadow: 0px 0px 20px #00000065;
-	padding: 20px;
-	border-radius: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 30px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px #00000065;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .card-favorite .title {
-	color: #000;
-	flex: 1;
+  color: #000;
+  flex: 1;
 }
 
 .card-favorite p:last-child {
-	font-weight: 700;
-	font-size: 22px;
-	color: #000;
+  font-weight: 700;
+  font-size: 22px;
+  color: #000;
 }
 
 /* ------------------- */
 
 #added-favorite {
-	color: red;
-	display: none;
+  color: red;
+  display: none;
 }
 
 #favorite-regular.active {
-	background-color: red;
-	display: none;
+  background-color: red;
+  display: none;
 }
 
 #added-favorite.active {
-	display: block;
-	color: red;
+  display: block;
+  color: red;
 }
-
 
 /* Fin Favoritos */
 
@@ -425,25 +431,20 @@ main {
   justify-content: space-between;
 }
 
-.btn-reservar{
+.reserva-title {
   display: block;
   font-family: 'Kanit', sans-serif;
   background-color: #ffd100;
   padding: 10px;
-  color: #333533;
+  margin-top: 20px;
+  color: #424242;
   border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  border-radius: 5px;
   text-align: center;
-  font-size: 15px;
-  box-shadow: inset 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
   text-decoration: none;
 }
 
 /* Estilos adicionales para mejorar la apariencia del botón */
-.btn-reservar:hover {
-  background-color: goldenrod; /* Color de fondo del botón al pasar el ratón */
-}
 
 .back-arrow a {
   font-size: 30px; /* Reduciendo el tamaño de la flecha */
@@ -491,7 +492,6 @@ section {
   color: red;
   font-size: 24px;
 }
-
 
 .div-texto {
   font-family: 'Inclusive Sans', sans-serif;
@@ -565,16 +565,19 @@ section {
   display: inline-block;
 }
 
-.puntuacion{
+.puntuacion {
   margin-right: 550px;
-
 }
-.BtnContenedor{
- margin-left: 1000px;
- margin-bottom: 20px;
+.BtnContenedor {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.BtnCompartir{
+.BtnCompartir {
   /* display: block; */
   font-family: 'Kanit', sans-serif;
   background-color: #ffd100;
@@ -594,13 +597,13 @@ section {
   background-color: goldenrod; /* Color de fondo del botón al pasar el ratón */
 }
 
-.fa-share-alt{
+.fa-share-alt {
   margin-left: 10px;
 }
 
 .whatsapp-button {
   display: inline-block;
-  background-color: #25D366;
+  background-color: #25d366;
   color: #fff;
   text-decoration: none;
   padding: 10px 20px;
@@ -608,7 +611,7 @@ section {
   font-weight: bold;
 }
 .whatsapp-button:hover {
-  background-color: #128C7E;
+  background-color: #128c7e;
 }
 
 /* pop up */
@@ -666,10 +669,10 @@ label {
 }
 
 /* Estilos para los campos de entrada del formulario */
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="submit"] {
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='submit'] {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -679,16 +682,16 @@ input[type="submit"] {
   box-sizing: border-box;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="date"]:focus,
-input[type="submit"]:focus {
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='date']:focus,
+input[type='submit']:focus {
   outline: none;
   border-color: #343a40; /* Color del borde oscuro al enfocar */
 }
 
 /* Estilos para el botón de enviar */
-input[type="submit"] {
+input[type='submit'] {
   background-color: #007bff; /* Color de fondo azul */
   color: white; /* Color del texto blanco */
   font-size: 16px;
@@ -697,7 +700,7 @@ input[type="submit"] {
   transition: background-color 0.3s ease; /* Transición suave del color de fondo */
 }
 
-input[type="submit"]:hover {
+input[type='submit']:hover {
   background-color: #0056b3; /* Color de fondo azul oscuro al pasar el ratón */
 }
 
@@ -712,8 +715,6 @@ input[type="submit"]:hover {
 .modal.active {
   display: block;
 }
-
-
 
 @keyframes fadeInLeft {
   from {
@@ -742,38 +743,37 @@ input[type="submit"]:hover {
   .back-arrow {
     margin-top: 100px;
   }
-  header{
+  header {
     height: 180px;
   }
-  main{
-    width: 830px
+  main {
+    width: 830px;
   }
 
-  footer{
+  footer {
     width: 830px;
   }
   section {
     flex-direction: column;
     padding: 10px;
   }
-  section{
+  section {
     align-content: center;
-
   }
-  #btnFecha{
+  #btnFecha {
     margin-left: 0px;
     font-size: 30px;
   }
-  .btn-section{
+  .btn-section {
     flex-direction: row;
   }
-  .puntuacion{
+  .puntuacion {
     margin-right: 130px;
   }
-  .btn-reservar{
+  .btn-reservar {
     margin-bottom: 20px;
   }
-  .BtnContenedor{
+  .BtnContenedor {
     margin-left: 5px;
     margin-bottom: 20px;
   }
@@ -785,7 +785,7 @@ input[type="submit"]:hover {
     position: relative;
   }
 
-  .footer-card-product{
+  .footer-card-product {
     display: grid;
   }
   .card-container {
@@ -812,7 +812,7 @@ input[type="submit"]:hover {
     transform: translateY(0); /* Eliminar la transformación */
     margin-bottom: 10px; /* Agregar margen inferior para separar cada característica */
   }
-  .calendario{
+  .calendario {
     margin-bottom: 600px;
   }
 }
