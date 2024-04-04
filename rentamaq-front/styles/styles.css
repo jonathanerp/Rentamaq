@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -84,7 +86,7 @@ header {
   text-decoration: none;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -224,8 +226,10 @@ main {
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 70%; /* Ajustar el ancho al 70% */
-  margin: 0 auto; /* Centrar horizontalmente */
+  width: 70%;
+  /* Ajustar el ancho al 70% */
+  margin: 0 auto;
+  /* Centrar horizontalmente */
 }
 
 .suggestion-item:hover {
@@ -238,7 +242,7 @@ main {
   color: #007bff;
 }
 
-#fechaInicio{
+#fechaInicio {
   margin-left: 10px;
   margin-right: 10px;
   padding: 10px;
@@ -246,7 +250,7 @@ main {
   border-radius: 10px;
 }
 
-#fechaFin{
+#fechaFin {
   margin-left: 10px;
   margin-right: 10px;
   padding: 10px;
@@ -254,6 +258,114 @@ main {
   border-radius: 10px;
 }
 
+/* Spinner */
+.lds-spinner {
+  /* change color here */
+  color: #f7cf3b
+}
+
+.lds-spinner,
+.lds-spinner div,
+.lds-spinner div:after {
+  box-sizing: border-box;
+}
+.lds-spinner {
+  color: currentColor;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 3.2px;
+  left: 36.8px;
+  width: 6.4px;
+  height: 17.6px;
+  border-radius: 20%;
+  background: currentColor;
+}
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  animation-delay: -1.1s;
+}
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  animation-delay: -1s;
+}
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  animation-delay: -0.9s;
+}
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  animation-delay: -0.8s;
+}
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  animation-delay: -0.7s;
+}
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  animation-delay: -0.6s;
+}
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  animation-delay: -0.5s;
+}
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  animation-delay: -0.4s;
+}
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  animation-delay: -0.3s;
+}
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  animation-delay: -0.2s;
+}
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  animation-delay: -0.1s;
+}
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  animation-delay: 0s;
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.loader{
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  color: #f7cf3b;
+  z-index: 10000;
+  clip-path: circle(150% at 100% 0);
+  transition: clip-path 4s ease-in-out;
+}
+
+.loader2{
+  clip-path: circle(0% at 100% 0);
+}
 /* --- --- CONTENEDOR PRINCIPAL --- --- */
 
 .contenido-principal {
@@ -283,12 +395,14 @@ main {
   line-height: 30px;
   color: #cfcfcf;
 }
+
 /* Categorias */
 .contenedor {
   max-width: 2500px;
   width: 100%;
   margin: auto;
 }
+
 .carousel__contenedor {
   position: relative;
 }
@@ -307,7 +421,8 @@ main {
   background: none;
   color: black;
   opacity: 20%;
-  z-index: 1; /* Asegura que los botones estén por encima del contenido */
+  z-index: 1;
+  /* Asegura que los botones estén por encima del contenido */
 }
 
 .carousel__anterior:hover,
@@ -317,12 +432,14 @@ main {
 
 .carousel__anterior {
   left: 15px;
-  margin-left: -10px; /* Ajusta el margen para evitar el espacio */
+  margin-left: -10px;
+  /* Ajusta el margen para evitar el espacio */
 }
 
 .carousel__siguiente {
   right: 15px;
-  margin-right: -10px; /* Ajusta el margen para evitar el espacio */
+  margin-right: -10px;
+  /* Ajusta el margen para evitar el espacio */
   z-index: 1;
 }
 
@@ -335,7 +452,8 @@ main {
 .carousel__elemento {
   text-align: center;
   position: relative;
-  display: inline-block; /* Asegura que los elementos estén en línea */
+  display: inline-block;
+  /* Asegura que los elementos estén en línea */
 }
 
 .carousel__indicadores .glider-dot {
@@ -358,10 +476,12 @@ main {
 .carousel__indicadores .glider-dot.active {
   opacity: 1;
 }
+
 /* Estilo del contenedor de la imagen */
 .image-container {
   position: relative;
 }
+
 /* Estilo del título */
 .title-container {
   position: absolute;
@@ -380,55 +500,74 @@ main {
 .titleCategory {
   color: white;
 }
+
 .anchorCategory {
   text-decoration: none;
 }
+
 .carousel__elemento .title-container {
-  opacity: 0; /* Inicialmente, oculta el título */
-  transition: opacity 0.3s ease; /* Agrega una transición suave */
+  opacity: 0;
+  /* Inicialmente, oculta el título */
+  transition: opacity 0.3s ease;
+  /* Agrega una transición suave */
 }
 
 .carousel__elemento:hover .title-container {
-  opacity: 1; /* Muestra el título al pasar el cursor sobre la tarjeta */
+  opacity: 1;
+  /* Muestra el título al pasar el cursor sobre la tarjeta */
 }
+
 .imgCategory {
   width: 85%;
   height: 400px;
 }
+
 /* --------------RECOMENDACIONES------------- */
 /* Estilos para las recomendaciones */
 
 #searchResults h2 {
-  font-family: 'Oswald', sans-serif; /* Utiliza la misma fuente que el h2 de recomendaciones */
+  font-family: 'Oswald', sans-serif;
+  /* Utiliza la misma fuente que el h2 de recomendaciones */
   color: #202020;
-  font-size: 24px; /* Aumenta el tamaño del título */
+  font-size: 24px;
+  /* Aumenta el tamaño del título */
   text-align: center;
-  margin-bottom: 20px; /* Agrega espacio inferior */
+  margin-bottom: 20px;
+  /* Agrega espacio inferior */
 }
 
 #searchResults {
   display: flex;
-  justify-content: center; /* Centra horizontalmente el contenido */
-  align-items: center; /* Centra verticalmente el contenido */
-  flex-direction: column; /* Alinea los elementos en una columna */
-  margin-top: 50px; /* Ajusta el margen superior según sea necesario */
+  justify-content: center;
+  /* Centra horizontalmente el contenido */
+  align-items: center;
+  /* Centra verticalmente el contenido */
+  flex-direction: column;
+  /* Alinea los elementos en una columna */
+  margin-top: 50px;
+  /* Ajusta el margen superior según sea necesario */
 }
 
 .recomendaciones {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 60px; /* Aumenta el espacio entre las tarjetas */
+  gap: 60px;
+  /* Aumenta el espacio entre las tarjetas */
   justify-items: center;
-  animation: fadeIn 1s ease; /* Animación para que aparezcan gradualmente */
+  animation: fadeIn 1s ease;
+  /* Animación para que aparezcan gradualmente */
 }
 
 .title-recomend {
   font-family: 'Oswald', sans-serif;
   color: #202020;
-  font-size: 24px; /* Aumenta el tamaño del título */
+  font-size: 24px;
+  /* Aumenta el tamaño del título */
   text-align: center;
-  margin-bottom: 20px; /* Agrega espacio inferior */
-  animation: slideInDown 1s ease; /* Animación para que aparezca desde arriba */
+  margin-bottom: 20px;
+  /* Agrega espacio inferior */
+  animation: slideInDown 1s ease;
+  /* Animación para que aparezca desde arriba */
 }
 
 .content-recoment-cards {
@@ -447,12 +586,15 @@ main {
   border-radius: 20px;
   background: #d6d6d6;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease; /* Agrega una transición al hacer hover */
-  animation: fadeIn 1s ease; /* Animación para que aparezcan gradualmente */
+  transition: transform 0.3s ease;
+  /* Agrega una transición al hacer hover */
+  animation: fadeIn 1s ease;
+  /* Animación para que aparezcan gradualmente */
 }
 
 .recoment-card:hover {
-  transform: translateY(-10px); /* Agrega efecto de elevación al hacer hover */
+  transform: translateY(-10px);
+  /* Agrega efecto de elevación al hacer hover */
 }
 
 .image-container {
@@ -460,6 +602,7 @@ main {
   height: 70%;
   overflow: hidden;
 }
+
 .image-container1 {
   height: 90%;
   overflow: hidden;
@@ -468,14 +611,16 @@ main {
 .image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+  object-fit: cover;
+  /* Ajusta la imagen para que cubra todo el contenedor */
 }
 
 .recoment-card h3 {
   font-family: 'Oswald', sans-serif;
   font-size: 30px;
   text-align: center;
-  margin-top: 30px; /* Añade espacio superior al título */
+  margin-top: 30px;
+  /* Añade espacio superior al título */
   margin-bottom: 30px;
   text-transform: uppercase;
 }
@@ -484,30 +629,38 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 40px; /* Añade espacio entre el título y el botón */
-  animation: fadeInUp 1s ease; /* Animación para que aparezca desde abajo */
+  margin-top: 40px;
+  /* Añade espacio entre el título y el botón */
+  animation: fadeInUp 1s ease;
+  /* Animación para que aparezca desde abajo */
 }
 
 .btn-ver a {
   display: inline-block;
-  padding: 10px 50px; /* Ajusta el padding según sea necesario */
+  padding: 10px 50px;
+  /* Ajusta el padding según sea necesario */
   background-color: #ffd100;
-  color: #fff; /* Cambia el color del texto según desees */
+  color: #fff;
+  /* Cambia el color del texto según desees */
   font-family: 'Open Sans', sans-serif;
   text-decoration: none;
   border: 2px solid gold;
-  border-radius: 30px; /* Ajusta el radio de borde según desees */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Agrega transición de color de fondo y texto */
+  border-radius: 30px;
+  /* Ajusta el radio de borde según desees */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Agrega transición de color de fondo y texto */
   text-transform: uppercase;
 }
 
 .btn-ver a:hover {
   background-color: darkgoldenrod;
-  color: #fff; /* Cambia el color del texto al pasar el ratón por encima */
+  color: #fff;
+  /* Cambia el color del texto al pasar el ratón por encima */
 }
 
 .btn-ver h2 {
-  font-size: 15px; /* Ajusta el tamaño del texto */
+  font-size: 15px;
+  /* Ajusta el tamaño del texto */
   margin-right: 5px;
 }
 
@@ -520,6 +673,7 @@ main {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -530,6 +684,7 @@ main {
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -541,6 +696,7 @@ main {
     opacity: 0;
     transform: translateY(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -617,10 +773,12 @@ footer {
   .recomendaciones {
     padding: 60px 40px;
   }
+
   .carousel__anterior,
   .carousel__siguiente,
   .carousel__indicadores {
-    display: none; /* Oculta las flechas en dispositivos móviles */
+    display: none;
+    /* Oculta las flechas en dispositivos móviles */
   }
 }
 
@@ -665,21 +823,27 @@ footer {
   .recomendaciones {
     padding: 40px 20px;
   }
+
   .recoment-card {
     width: 300px;
     height: 400px;
   }
+
   .recoment-card h3 {
     font-size: 20px;
-    margin-top: 15px; /* Añade espacio superior al título */
+    margin-top: 15px;
+    /* Añade espacio superior al título */
     margin-bottom: 15px;
   }
+
   .btn-ver {
-    margin-top: 10px; /* Añade espacio entre el título y el botón */
+    margin-top: 10px;
+    /* Añade espacio entre el título y el botón */
   }
 
   .btn-ver a {
-    padding: 5px 50px; /* Ajusta el padding según sea necesario */
+    padding: 5px 50px;
+    /* Ajusta el padding según sea necesario */
   }
 }
 
@@ -688,9 +852,11 @@ footer {
   header {
     padding: 10px;
   }
+
   .carousel__lista {
     display: block;
   }
+
   .logo-section {
     max-width: 100px;
   }
@@ -713,12 +879,13 @@ footer {
     margin: 20px auto;
     flex-direction: column;
   }
+
   .recomendaciones {
-    grid-template-columns: repeat(
-      1,
-      1fr
-    ); /* Cambia a una sola columna en pantallas pequeñas */
+    grid-template-columns: repeat(1,
+        1fr);
+    /* Cambia a una sola columna en pantallas pequeñas */
   }
+
   .card1,
   .card2,
   .card3,
@@ -777,14 +944,18 @@ footer {
 
   .recoment-card h3 {
     font-size: 20px;
-    margin-top: 10px; /* Añade espacio superior al título */
+    margin-top: 10px;
+    /* Añade espacio superior al título */
     margin-bottom: 10px;
   }
+
   .btn-ver {
-    margin-top: 0px; /* Añade espacio entre el título y el botón */
+    margin-top: 0px;
+    /* Añade espacio entre el título y el botón */
   }
 
   .btn-ver a {
-    padding: 5px 50px; /* Ajusta el padding según sea necesario */
+    padding: 5px 50px;
+    /* Ajusta el padding según sea necesario */
   }
 }

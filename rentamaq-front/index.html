@@ -31,6 +31,11 @@
   </head>
 
   <body>
+     <!-- Spinner circular-->
+
+      <div class="lds-spinner loader" id="loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+
     <!--------- HEADER------------>
     <header>
       <div class="logo-section">
@@ -82,7 +87,7 @@
 
             <label for="fechaFin">Fecha de Fin:</label>
             <input type="date" id="fechaFin" name="fechaFin">
-            
+
             <button class="icon" id="searchButton" type="submit">
               <img src="./imagenes/search.svg" alt="" />
             </button>
@@ -113,7 +118,7 @@
       <!------------------------ recomendaciones ----------------->
 
       <section id="searchResults"></section>
-      
+
       <div class="title-recomend">
         <h2>Recomendaciones</h2>
       </div>
@@ -121,6 +126,8 @@
         <section id="recomendaciones" class="recomendaciones"></section>
       </div>
       <!-- recomendaciones -->
+
+
     </main>
     <!-------------------- footer -------------------->
 
@@ -136,6 +143,8 @@
         ></a>
       </div>
     </footer>
+
+  </div>
     <script src="scripts/categorias/getCategorias.js"></script>
     <script src="scripts/productos/getProductos.js"></script>
     <script src="scripts/categorias/carruselCategorias.js"></script>
@@ -146,5 +155,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
     <script src="scripts/productos/renderBuscadorListaProductos.js"></script>
+    <script src="./scripts/spinner.js"></script>
   </body>
 </html>
