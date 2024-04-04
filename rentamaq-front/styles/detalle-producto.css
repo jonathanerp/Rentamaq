@@ -598,6 +598,123 @@ section {
   margin-left: 10px;
 }
 
+.whatsapp-button {
+  display: inline-block;
+  background-color: #25D366;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.whatsapp-button:hover {
+  background-color: #128C7E;
+}
+
+/* pop up */
+/* Estilos para el pop-up */
+/* Estilos para el pop-up */
+.modal {
+  display: none; /* Por defecto, ocultar el pop-up */
+  position: fixed; /* Posición fija para que esté superpuesto en la ventana */
+  z-index: 1; /* Asegura que el pop-up esté por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Permite desplazarse dentro del pop-up si el contenido es demasiado grande */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+}
+
+/* Contenido del pop-up */
+.modal-content {
+  background-color: #f8f9fa; /* Fondo blanco */
+  margin: 10% auto; /* Márgenes superior e inferior automáticos, centrando verticalmente */
+  padding: 20px;
+  border: 1px solid #343a40; /* Borde oscuro */
+  border-radius: 10px; /* Bordes redondeados */
+  width: 80%; /* Ancho del contenido del pop-up */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+  color: #343a40; /* Color del texto oscuro */
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #dc3545; /* Color del texto rojo oscuro */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilos para el formulario dentro del pop-up */
+#reservation-form {
+  margin-top: 20px;
+}
+
+/* Estilos para las etiquetas del formulario */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #343a40; /* Color del texto oscuro */
+}
+
+/* Estilos para los campos de entrada del formulario */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="submit"]:focus {
+  outline: none;
+  border-color: #343a40; /* Color del borde oscuro al enfocar */
+}
+
+/* Estilos para el botón de enviar */
+input[type="submit"] {
+  background-color: #007bff; /* Color de fondo azul */
+  color: white; /* Color del texto blanco */
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Color de fondo azul oscuro al pasar el ratón */
+}
+
+/* Estilos para el mensaje de reserva */
+#reservation-message {
+  margin-top: 10px;
+  font-style: italic;
+  color: #28a745; /* Color del texto verde */
+}
+
+/* Mostrar el pop-up cuando está activo */
+.modal.active {
+  display: block;
+}
+
+
+
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -697,8 +814,5 @@ section {
   }
   .calendario{
     margin-bottom: 600px;
-  }
-  .daterangepicker{
-   padding-left: 100px;
   }
 }

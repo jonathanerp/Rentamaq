@@ -9,7 +9,6 @@ window.addEventListener('load', function () {
       email: usuario.value,
       password: password.value,
     };
-    console.log(payload);
 
     const settings = {
       method: 'POST',
@@ -23,6 +22,11 @@ window.addEventListener('load', function () {
         const data = await res.json();
         alert('Inicio de sesión exitoso!');
         localStorage.setItem('token', data.token);
+
+        // Obtenemos la información del usuario y la guardamos en el backend
+        const userInfo = await obtenerInformacionUsuario(data.token);
+        guardarInformacionUsuario(userInfo);
+
         location.replace('../index.html');
       } else {
         alert(
@@ -36,4 +40,47 @@ window.addEventListener('load', function () {
       );
     }
   });
+
+  async function obtenerInformacionUsuario(token) {
+    const settings = {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    };
+
+    try {
+      const res = await fetch('http://localhost:8080/user/info', settings);
+      if (res.status === 200) {
+        return await res.json();
+      } else {
+        throw new Error('Error al obtener la información del usuario');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error al obtener la información del usuario');
+    }
+  }
+
+  async function guardarInformacionUsuario(userInfo) {
+    const settings = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userInfo)
+    };
+
+    try {
+      const res = await fetch('http://localhost:8080/user/profile', settings);
+      if (res.status === 201) {
+        console.log('Información del usuario guardada correctamente');
+      } else {
+        throw new Error('Error al guardar la información del usuario');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error al guardar la información del usuario');
+    }
+  }
 });

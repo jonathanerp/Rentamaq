@@ -1,5 +1,6 @@
 window.addEventListener('load', function () {
   cargarProductos();
+  var user;
 
   async function cargarProductos() {
     try {
@@ -49,15 +50,19 @@ window.addEventListener('load', function () {
           </div>
 
           <div class="container">
-      <div class="rating">
-        <input type="radio" name="clr1" style="--c:#ff9933">
-        <input type="radio" name="clr1" style="--c:#ff9933">
-        <input type="radio" name="clr1" style="--c:#ff9933">
-        <input type="radio" name="clr1" style="--c:#ff9933">
-        <input type="radio" name="clr1" style="--c:#ff9933">
-      </div>
-    </div>
+            <div class="rating">
+              <input type="radio" name="clr1" style="--c:#ff9933">
+              <input type="radio" name="clr1" style="--c:#ff9933">
+              <input type="radio" name="clr1" style="--c:#ff9933">
+              <input type="radio" name="clr1" style="--c:#ff9933">
+              <input type="radio" name="clr1" style="--c:#ff9933">
+            </div>
+          </div>
         `;
+
+        // Agregar nombre y descripción del producto al pop-up
+        document.getElementById('nombre-producto').innerText = prod.nombre;
+        document.getElementById('descripcion-producto').innerText = prod.descripcion;
       }
     });
   }
@@ -132,54 +137,94 @@ window.addEventListener('load', function () {
 
   $(function() {
     console.log(rangosInhabilitados);
-  
-      $('input[name="daterange"]').daterangepicker({
-        "locale": {
-          "format": "MM/DD/YYYY",
-          "separator": " - ",
-          "applyLabel": "Apply",
-          "cancelLabel": "Cancel",
-          "fromLabel": "From",
-          "toLabel": "To",
-          "customRangeLabel": "Custom",
-          "weekLabel": "W",
-          "daysOfWeek": [
-              "Do",
-              "Lu",
-              "Ma",
-              "Mi",
-              "Ju",
-              "Vi",
-              "Sa"
-          ],
-          "monthNames": [
-              "Enero",
-              "Febrero",
-              "Marzo",
-              "Abril",
-              "Mayo",
-              "Junio",
-              "Julio",
-              "Agosto",
-              "Septiembre",
-              "Octubre",
-              "Noviembre",
-              "Diciembre"
-          ],
-          "firstDay": 1
+
+    $('input[name="daterange"]').daterangepicker({
+      "locale": {
+        "format": "MM/DD/YYYY",
+        "separator": " - ",
+        "applyLabel": "Apply",
+        "cancelLabel": "Cancel",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "customRangeLabel": "Custom",
+        "weekLabel": "W",
+        "daysOfWeek": [
+            "Do",
+            "Lu",
+            "Ma",
+            "Mi",
+            "Ju",
+            "Vi",
+            "Sa"
+        ],
+        "monthNames": [
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"
+        ],
+        "firstDay": 1
       },
-        opens: 'center',
-        isInvalidDate: function(date) {
-          for (var i = 0; i < rangosInhabilitados.length; i++) {
-            var rango = rangosInhabilitados[i];
-            if (date.isBetween(rango.inicio, rango.fin, null, '[]')) {
-              return true;
-            }
+      opens: 'center',
+      isInvalidDate: function(date) {
+        for (var i = 0; i < rangosInhabilitados.length; i++) {
+          var rango = rangosInhabilitados[i];
+          if (date.isBetween(rango.inicio, rango.fin, null, '[]')) {
+            return true;
           }
-          return false;
         }
-      }, function(start, end, label) {
-        console.log("Datos seleccionados: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-      });
+        return false;
+      }
+    }, function(start, end, label) {
+      console.log("Datos seleccionados: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+      mostrarPopUp(start, end);
     });
+
+    async function mostrarPopUp(fechaInicio, fechaFin) {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('fecha-inicio').innerText = fechaInicio.format('YYYY-MM-DD');
+      document.getElementById('fecha-fin').innerText = fechaFin.format('YYYY-MM-DD');
+
+      try {
+        const token = localStorage.getItem('token');
+        if (token) {
+          const decodedToken = JSON.parse(atob(token.split('.')[1]));
+          const userId = decodedToken.userId;
+          const url = `http://localhost:8080/user/${userId}`;
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error('Error al obtener la información del usuario');
+          }
+          user = await response.json();
+
+          // Renderizar los datos del usuario en el popup
+          document.getElementById('nombre').innerText = user.name;
+          document.getElementById('apellido').innerText = user.lastname;
+          document.getElementById('email').innerText = user.email;
+        } else {
+          throw new Error('Error al obtener la información del usuario');
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    // Obtener el elemento de cierre (la "X")
+    var closeBtn = document.querySelector('.close');
+
+    // Agregar un evento de clic al elemento de cierre
+    closeBtn.addEventListener('click', function() {
+      // Ocultar el pop-up al hacer clic en la "X"
+      document.getElementById('popup').style.display = 'none';
+    });
+  });
 });
