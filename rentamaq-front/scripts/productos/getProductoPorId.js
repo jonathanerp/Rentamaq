@@ -16,11 +16,16 @@ window.addEventListener('load', function () {
 
   const urlSearchParams = new URLSearchParams(window.location.search);
   const prodId = urlSearchParams.get('id');
-  const token = localStorage.getItem('token');
-  const decodedToken = JSON.parse(atob(token.split('.')[1]));
-  const userId = decodedToken.userId;
-  let inicioReservacion = "";
-  let finReservacion = "";
+  let token = localStorage.getItem('token');
+  let decodedToken;
+  let userId;
+  if (token) {
+    decodedToken = JSON.parse(atob(token.split('.')[1]));
+    userId = decodedToken.userId;
+  }
+
+  let inicioReservacion = '';
+  let finReservacion = '';
   var rangosInhabilitados = [];
   const confirmarReservaBtn = document.getElementById('confirmarReservaBtn');
 
@@ -58,9 +63,10 @@ window.addEventListener('load', function () {
 
         // Agregar nombre y descripción del producto al pop-up
         document.getElementById('nombre-producto').value = prod.nombre;
-        document.getElementById('descripcion-producto').value = prod.descripcion;
-        const contenedorImagen = document.getElementById("contenedor-imagen");
-        const imagen = document.createElement("img");
+        document.getElementById('descripcion-producto').value =
+          prod.descripcion;
+        const contenedorImagen = document.getElementById('contenedor-imagen');
+        const imagen = document.createElement('img');
         imagen.src = prod.imagenPrincipal;
         imagen.width = 200;
         imagen.height = 200;
@@ -77,7 +83,7 @@ window.addEventListener('load', function () {
         `http://localhost:8080/caracteristicas/${prodId}`
       );
       const caracteristicas = await res.json();
-
+      console.log('aca', caracteristicas);
       renderizarCaracteristicas(caracteristicas);
     } catch (error) {
       console.error('Error fetching data from API:', error);
@@ -224,40 +230,41 @@ window.addEventListener('load', function () {
       document.getElementById('popup').style.display = 'none';
     });
   });
-  confirmarReservaBtn.addEventListener('click', function() {
+
+  confirmarReservaBtn.addEventListener('click', function () {
     const data = {
-      inicioReservacion: inicioReservacion, 
-      finReservacion: finReservacion, 
+      inicioReservacion: inicioReservacion,
+      finReservacion: finReservacion,
       productoId: prodId,
     };
-    
+
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token ? `Bearer ${token}` : '',
+        Authorization: token ? `Bearer ${token}` : '',
       },
       body: JSON.stringify(data),
     };
-    
+
     const url = 'http://localhost:8080/reservaciones';
 
     fetch(url, requestOptions)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al crear la reservación');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Manejar la respuesta exitosa aquí
-      console.log('Reservación creada exitosamente:', data);
-      alert('¡Reserva confirmada!');
-    })
-    .catch(error => {
-      // Manejar errores aquí
-      console.error('Error al crear la reservación:', error);
-      alert('¡Hubo un error en la reserva!');
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error al crear la reservación');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Manejar la respuesta exitosa aquí
+        console.log('Reservación creada exitosamente:', data);
+        alert('¡Reserva confirmada!');
+      })
+      .catch((error) => {
+        // Manejar errores aquí
+        console.error('Error al crear la reservación:', error);
+        alert('¡Hubo un error en la reserva!');
+      });
   });
 });

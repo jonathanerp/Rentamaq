@@ -40,14 +40,14 @@ public class SecurityConfiguration {
                                 .requestMatchers(
                                         "/imagenes/**",
                                         "/productos",
+                                        "/caracteristicas/**",
+                                        "/reservaciones/**",
                                         "/productos/**",
                                         "/roles",
                                         "/user/**",
                                         "/user",
-                                        "/categorias/**",
-                                        "/caracteristicas/**",
-                                        "/reservaciones/**"
-                                ).permitAll()
+                                        "/categorias/**"
+                                        ).permitAll()
 //                        .requestMatchers(HttpMethod.POST, "api/v1/**").hasRole("ADMIN")
 //                        .requestMatchers(HttpMethod.GET, "api/v1/**").hasAnyRole("USER", "ADMIN")
 //                        .requestMatchers(HttpMethod.PUT, "api/v1/**").hasRole("ADMIN")
