@@ -1,3 +1,5 @@
+import { cargarDatosUsuario } from '../usuarios/getUserData.js';
+
 window.addEventListener('load', function () {
   cargarProductos();
   var user;
@@ -6,7 +8,6 @@ window.addEventListener('load', function () {
     try {
       const res = await fetch('http://localhost:8080/productos');
       const productos = await res.json();
-
       renderizarProductos(productos);
     } catch (error) {
       console.error('Error fetching data from API:', error);
@@ -34,7 +35,6 @@ window.addEventListener('load', function () {
 
     productos.forEach((prod) => {
       if (prod.id.toString() === prodId) {
-        console.log(prod);
         divDetalleProducto.innerHTML += `
           <div class="div-imagen">
               <img src=${prod.imagenPrincipal} alt=${prod.nombre} />
@@ -61,8 +61,10 @@ window.addEventListener('load', function () {
         `;
 
         // Agregar nombre y descripción del producto al pop-up
+
         document.getElementById('nombre-producto').innerText = prod.nombre;
-        document.getElementById('descripcion-producto').innerText = prod.descripcion;
+        // document.getElementById('descripcion-producto').innerText =
+        //   prod.descripcion;
       }
     });
   }
@@ -106,7 +108,7 @@ window.addEventListener('load', function () {
         `http://localhost:8080/reservaciones/producto/${prodId}`
       );
       const calendario = await res.json();
-      console.log(calendario);
+      // console.log(calendario);
       renderizarCalendario(calendario);
     } catch (error) {
       console.error('Error fetching data from API:', error);
@@ -115,8 +117,11 @@ window.addEventListener('load', function () {
 
   function renderizarCalendario(calendario) {
     calendario.forEach((cal) => {
-      console.log("Datos seleccionados: " + cal.inicioReservacion);
-      rangosInhabilitados.push({ inicio: cal.inicioReservacion, fin: cal.finReservacion});
+      // console.log('Datos seleccionados: ' + cal.inicioReservacion);
+      rangosInhabilitados.push({
+        inicio: cal.inicioReservacion,
+        fin: cal.finReservacion,
+      });
     });
   }
 
@@ -135,84 +140,70 @@ window.addEventListener('load', function () {
     return estrellasHTML.join(''); // Convertimos el array en una cadena de HTML
   }
 
-  $(function() {
-    console.log(rangosInhabilitados);
-
-    $('input[name="daterange"]').daterangepicker({
-      "locale": {
-        "format": "MM/DD/YYYY",
-        "separator": " - ",
-        "applyLabel": "Apply",
-        "cancelLabel": "Cancel",
-        "fromLabel": "From",
-        "toLabel": "To",
-        "customRangeLabel": "Custom",
-        "weekLabel": "W",
-        "daysOfWeek": [
-            "Do",
-            "Lu",
-            "Ma",
-            "Mi",
-            "Ju",
-            "Vi",
-            "Sa"
-        ],
-        "monthNames": [
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"
-        ],
-        "firstDay": 1
-      },
-      opens: 'center',
-      isInvalidDate: function(date) {
-        for (var i = 0; i < rangosInhabilitados.length; i++) {
-          var rango = rangosInhabilitados[i];
-          if (date.isBetween(rango.inicio, rango.fin, null, '[]')) {
-            return true;
+  $(function () {
+    $('input[name="daterange"]').daterangepicker(
+      {
+        locale: {
+          format: 'MM/DD/YYYY',
+          separator: ' - ',
+          applyLabel: 'Apply',
+          cancelLabel: 'Cancel',
+          fromLabel: 'From',
+          toLabel: 'To',
+          customRangeLabel: 'Custom',
+          weekLabel: 'W',
+          daysOfWeek: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+          monthNames: [
+            'Enero',
+            'Febrero',
+            'Marzo',
+            'Abril',
+            'Mayo',
+            'Junio',
+            'Julio',
+            'Agosto',
+            'Septiembre',
+            'Octubre',
+            'Noviembre',
+            'Diciembre',
+          ],
+          firstDay: 1,
+        },
+        opens: 'center',
+        isInvalidDate: function (date) {
+          for (var i = 0; i < rangosInhabilitados.length; i++) {
+            var rango = rangosInhabilitados[i];
+            if (date.isBetween(rango.inicio, rango.fin, null, '[]')) {
+              return true;
+            }
           }
-        }
-        return false;
+          return false;
+        },
+      },
+      function (start, end, label) {
+        console.log(
+          'Datos seleccionados: ' +
+            start.format('YYYY-MM-DD') +
+            ' to ' +
+            end.format('YYYY-MM-DD')
+        );
+        mostrarPopUp(start, end);
       }
-    }, function(start, end, label) {
-      console.log("Datos seleccionados: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-      mostrarPopUp(start, end);
-    });
+    );
 
     async function mostrarPopUp(fechaInicio, fechaFin) {
       document.getElementById('popup').style.display = 'block';
-      document.getElementById('fecha-inicio').innerText = fechaInicio.format('YYYY-MM-DD');
-      document.getElementById('fecha-fin').innerText = fechaFin.format('YYYY-MM-DD');
+      document.getElementById('fecha-inicio').innerText =
+        fechaInicio.format('YYYY-MM-DD');
+      document.getElementById('fecha-fin').innerText =
+        fechaFin.format('YYYY-MM-DD');
 
       try {
-        const token = localStorage.getItem('token');
-        if (token) {
-          const decodedToken = JSON.parse(atob(token.split('.')[1]));
-          const userId = decodedToken.userId;
-          const url = `http://localhost:8080/user/${userId}`;
-          const response = await fetch(url);
-
-          if (!response.ok) {
-            throw new Error('Error al obtener la información del usuario');
-          }
-          user = await response.json();
-
-          // Renderizar los datos del usuario en el popup
-          document.getElementById('nombre').innerText = user.name;
-          document.getElementById('apellido').innerText = user.lastname;
-          document.getElementById('email').innerText = user.email;
-        } else {
-          throw new Error('Error al obtener la información del usuario');
-        }
+        user = await cargarDatosUsuario();
+        // Renderizar los datos del usuario en el popup
+        document.getElementById('fname').value = user.name;
+        document.getElementById('lname').value = user.lastname;
+        document.getElementById('email').value = user.email;
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -222,7 +213,7 @@ window.addEventListener('load', function () {
     var closeBtn = document.querySelector('.close');
 
     // Agregar un evento de clic al elemento de cierre
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
       // Ocultar el pop-up al hacer clic en la "X"
       document.getElementById('popup').style.display = 'none';
     });

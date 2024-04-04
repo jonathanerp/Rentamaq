@@ -1,5 +1,3 @@
-import userSession from './auth/session.js';
-
 export async function cargarDatosUsuario() {
   let user;
   const token = localStorage.getItem('token');
