@@ -620,7 +620,7 @@ section {
 .modal {
   display: none; /* Por defecto, ocultar el pop-up */
   position: fixed; /* Posición fija para que esté superpuesto en la ventana */
-  z-index: 1; /* Asegura que el pop-up esté por encima de otros elementos */
+  z-index: 1000; /* Asegura que el pop-up esté por encima de otros elementos */
   left: 0;
   top: 0;
   width: 100%; /* Ancho completo */
@@ -637,9 +637,9 @@ section {
   border-radius: 10px; /* Bordes redondeados */
   width: 50%; /* Ancho del contenido del pop-up */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  position: fixed; 
-  top: 50%; 
-  left: 50%; 
+  position: fixed;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -677,7 +677,7 @@ input[type='email'],
 input[type='date'],
 button[id='confirmarReservaBtn'],
 textarea[id='comentarios'],
-textarea[id='descripcion-producto']{
+textarea[id='descripcion-producto'] {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
