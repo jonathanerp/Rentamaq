@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -43,6 +44,55 @@ main {
   background-color: goldenrod;
 }
 
+.calendario{
+  margin-bottom: 300px;
+}
+
+.flatpickr-calendar {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flatpickr-days {
+  padding: 10px;
+}
+
+.flatpickr-monthDropdown-months,
+.flatpickr-yearDropdown-years,
+.flatpickr-hour,
+.flatpickr-minute {
+  padding: 5px;
+}
+
+.flatpickr-day {
+  padding: 8px;
+}
+
+.flatpickr-day.today {
+  background-color: #f0f0f0;
+}
+
+.flatpickr-day.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  padding: 5px;
+  background-color: #f0f0f0;
+  border: none;
+}
+
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
 /* Rating */
 .rating{
   position: relative;
@@ -81,17 +131,87 @@ main {
 }
 
 /* Calendario */
-.daterangepicker td.disabled, .daterangepicker option.disabled {
-  color: red;
+.calendar{
+  width: 350px;
+  background-color: #fff;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+  box-shadow: 0 10px 29px -7px rgba(63,63,63,0.48);
+  margin-bottom: 50px;
 }
 
-#calendarioId{
-  margin-top: 10px;
-  margin-bottom: 130px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+.calendar-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.calendar-header button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.calendar-body{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+}
+
+.calendar-day{
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.calendar-day:hover{
+  background-color: #ddd !important;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-day.selected{
+  border: 1px solid #003879d0;
+  background-color: rgba(70,201,240);
+}
+
+.calendar-day.range{
+  border: 1px solid #007900d0;
+  background-color: rgba(86,238,86);
+}
+
+#prevBtn, #nextBtn{
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  margin: 0 10px 0 10px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+#prevBtn:hover{
+  background-color: #ddd !important;
+  transition: background-color 0.3s ease;
+}
+
+#nextBtn:hover{
+  background-color: #ddd !important;
+  transition: background-color 0.3s ease;
+}
+
+#selectedDates{
+  font-family: 'Poppins';
+  margin-bottom: 15px;
+}
+
+#currentMonth{
+  font-family: 'Poppins';
+  font-size: 18px;
+}
+
 /* Favoritos */
 
 .menu-header {
@@ -478,6 +598,123 @@ section {
   margin-left: 10px;
 }
 
+.whatsapp-button {
+  display: inline-block;
+  background-color: #25D366;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.whatsapp-button:hover {
+  background-color: #128C7E;
+}
+
+/* pop up */
+/* Estilos para el pop-up */
+/* Estilos para el pop-up */
+.modal {
+  display: none; /* Por defecto, ocultar el pop-up */
+  position: fixed; /* Posición fija para que esté superpuesto en la ventana */
+  z-index: 1; /* Asegura que el pop-up esté por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Permite desplazarse dentro del pop-up si el contenido es demasiado grande */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+}
+
+/* Contenido del pop-up */
+.modal-content {
+  background-color: #f8f9fa; /* Fondo blanco */
+  margin: 10% auto; /* Márgenes superior e inferior automáticos, centrando verticalmente */
+  padding: 20px;
+  border: 1px solid #343a40; /* Borde oscuro */
+  border-radius: 10px; /* Bordes redondeados */
+  width: 80%; /* Ancho del contenido del pop-up */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+  color: #343a40; /* Color del texto oscuro */
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #dc3545; /* Color del texto rojo oscuro */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilos para el formulario dentro del pop-up */
+#reservation-form {
+  margin-top: 20px;
+}
+
+/* Estilos para las etiquetas del formulario */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #343a40; /* Color del texto oscuro */
+}
+
+/* Estilos para los campos de entrada del formulario */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="submit"]:focus {
+  outline: none;
+  border-color: #343a40; /* Color del borde oscuro al enfocar */
+}
+
+/* Estilos para el botón de enviar */
+input[type="submit"] {
+  background-color: #007bff; /* Color de fondo azul */
+  color: white; /* Color del texto blanco */
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Color de fondo azul oscuro al pasar el ratón */
+}
+
+/* Estilos para el mensaje de reserva */
+#reservation-message {
+  margin-top: 10px;
+  font-style: italic;
+  color: #28a745; /* Color del texto verde */
+}
+
+/* Mostrar el pop-up cuando está activo */
+.modal.active {
+  display: block;
+}
+
+
+
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -502,6 +739,19 @@ section {
 
 /* Media query para dispositivos móviles */
 @media only screen and (max-width: 768px) {
+  .back-arrow {
+    margin-top: 100px;
+  }
+  header{
+    height: 180px;
+  }
+  main{
+    width: 830px
+  }
+
+  footer{
+    width: 830px;
+  }
   section {
     flex-direction: column;
     padding: 10px;
@@ -510,7 +760,13 @@ section {
     align-content: center;
 
   }
-
+  #btnFecha{
+    margin-left: 0px;
+    font-size: 30px;
+  }
+  .btn-section{
+    flex-direction: row;
+  }
   .puntuacion{
     margin-right: 130px;
   }
@@ -529,19 +785,22 @@ section {
     position: relative;
   }
 
-
+  .footer-card-product{
+    display: grid;
+  }
   .card-container {
-    max-width: 350px;
+    max-width: 650px;
   }
   .div-texto {
-    width: 280px; /* Ajustar el ancho del texto al 100% para ocupar todo el ancho */
+    width: 380px; /* Ajustar el ancho del texto al 100% para ocupar todo el ancho */
     height: auto; /* Permitir que la altura del texto se ajuste automáticamente */
     margin-left: -40px;
   }
 
   #caracteristicas {
     width: 90%; /* Ajustar el ancho de las características al 100% para ocupar todo el ancho */
-    margin-bottom: 20px; /* Agregar margen inferior para separar las características del footer */
+    margin-bottom: 70px; /* Agregar margen inferior para separar las características del footer */
+    margin-top: 70px;
   }
 
   #caracteristicas ul {
@@ -552,5 +811,8 @@ section {
     opacity: 1; /* Mostrar todas las características */
     transform: translateY(0); /* Eliminar la transformación */
     margin-bottom: 10px; /* Agregar margen inferior para separar cada característica */
+  }
+  .calendario{
+    margin-bottom: 600px;
   }
 }
