@@ -23,7 +23,7 @@ window.addEventListener('load', function () {
     try {
       const res = await fetch('http://localhost:8080/productos');
       const productos = await res.json();
-
+      console.log(productos);
       renderizarProductos(productos);
     } catch (error) {
       console.error('Error fetching data from API:', error);

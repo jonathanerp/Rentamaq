@@ -35,7 +35,7 @@ public class ProductoService implements IProductoService {
     private final ImageRepository imageRepository;
     private final ModelMapper modelMapper;
 
-    public ProductoService(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ReservacionRepository reservacionRepository,ImageRepository imageRepository, ModelMapper modelMapper) {
+    public ProductoService(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ReservacionRepository reservacionRepository, ImageRepository imageRepository, ModelMapper modelMapper) {
         this.productoRepository = productoRepository;
         this.categoriaRepository = categoriaRepository;
         this.reservacionRepository = reservacionRepository;
@@ -102,8 +102,7 @@ public class ProductoService implements IProductoService {
 
     @Override
     public List<ProductoSalidaDto> listarProductos() {
-        List<ProductoSalidaDto> listaProductos = new java.util.ArrayList<>(productoRepository.findAll().stream()
-                .map(this::entidadADtoSalida).toList());
+        List<ProductoSalidaDto> listaProductos = new java.util.ArrayList<>(productoRepository.findAll().stream().map(this::entidadADtoSalida).toList());
 
         LOGGER.info("Listado de todos los productos: {}", listaProductos);
         Collections.shuffle(listaProductos);
@@ -148,6 +147,7 @@ public class ProductoService implements IProductoService {
 
         return productoSalidaDto;
     }
+
     @Override
     public List<Producto> obtenerProductosPorCategoriaId(Long categoriaId) {
         return productoRepository.findByCategoriaId(categoriaId);
