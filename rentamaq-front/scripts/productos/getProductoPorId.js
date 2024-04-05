@@ -260,6 +260,7 @@ window.addEventListener('load', function () {
         // Manejar la respuesta exitosa aquí
         console.log('Reservación creada exitosamente:', data);
         alert('¡Reserva confirmada!');
+        window.location.href = '/index.html'; 
       })
       .catch((error) => {
         // Manejar errores aquí
